@@ -1,0 +1,15 @@
+{
+    "sign_in" : "Sign In",
+    "sign_up" : "Sign Up",
+    "login" : "Login",
+    "register" : "Register",
+    "forget_password": "Forget Password",
+    "change_password": "Change Password",
+    "confirm_code" : "Confirm Code",
+    "username" : "Username",
+    "password" : "Password",
+    "confirm_password" : "Confirm Password",
+    "email" : "Email Address",
+    "login_to_your_account" : "Login To Your Account",
+    "create_new_account": "Dont Have Account?"
+}
