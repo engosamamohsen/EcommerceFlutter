@@ -1,37 +1,51 @@
+import 'dart:convert';
+
 import 'package:auth/network/provider.dart';
+import 'package:auth/utils/toast_message.dart';
 import 'package:dio/dio.dart';
 
 class ApiService {
   Dio? _dio;
   // final ProgressProvider _progressProvider;
-
+  final String base_url = "https://cashierthru.com/admin/public/api/";
   ApiService() {
      _dio = Dio(
       BaseOptions(
-        baseUrl: "https://ceraj.cashierthru.com/api/",
+        baseUrl: base_url,
         receiveTimeout: const Duration(minutes: 1),
         connectTimeout: const Duration(minutes: 1),
         receiveDataWhenStatusError: true,
+        validateStatus: (status) {
+          // Handle specific status codes
+          return status! < 500; // Handle status codes < 500 (e.g., 401, 403, etc.)
+        },
 
       )
      );
+     // Disable SSL certificate verification (development only)
+    // (_dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate = (client) {
+    //   client.badCertificateCallback = (cert, host, port) => true;
+    // };
+
     _dio!.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) {
         // Show progress or loader here
-        print('Request started');
+        print(options.path);
                 // _progressProvider.showProgress();
         handler.next(options);
       },
       onResponse: (response, handler) {
         // Hide progress or loader here
                 // _progressProvider.hideProgress();
-        print('Request successful');
-        handler.next(response);
+        if(response.statusCode != 200){
+          handleStatusCode(response.statusCode!, response.data["message"]);
+        }else {
+          handler.next(response);
+        }
       },
       onError: (DioException error, handler) {
         // Hide progress or loader here
-        print('Request failed:' + error.message.toString() + "," + error.error.toString());
-                // _progressProvider.hideProgress();
+        // _progressProvider.hideProgress();
         _handleError(error);
         handler.next(error);
       },
@@ -52,11 +66,10 @@ class ApiService {
   // Generic POST request
   Future<Response?> post(String endpoint, Map<String, dynamic>? data) async {
     try {
-      print("call api");
       Response response = await _dio!.post(endpoint, data: data);
       return response;
     } catch (e) {
-      print("exce "+e.toString());
+      handleStatusCode(0,e.toString());
       // Handle DioError here or rethrow
     }
     return null;
@@ -72,4 +85,15 @@ class ApiService {
       print('Request error: ${error.message}');
     }
   }
+
+  void handleStatusCode(int statusCode , String message) {
+    // print("jsonHandleError:"+responseData);
+  // Decode JSON response to a Map
+   try {
+    // Use the extracted data
+    ToastMessageHelper.showErrorMessage(message.toString());
+  } catch (e) {
+    print("Parsing error: ${e.toString()}");
+  }
+}
 }

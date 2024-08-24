@@ -122,6 +122,5 @@ class LoginView extends StatelessWidget {
     LoginModel loginModel = LoginModel(email : emailController.text,password: passwordController.text);
 
       final response = await apiService.post(EndPoint.login,loginModel.toMap());
-      print(response);
   }
 }
