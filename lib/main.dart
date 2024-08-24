@@ -1,5 +1,5 @@
 import 'package:auth/generated/l10n.dart';
-import 'package:auth/views/splash.view.dart';
+import 'package:auth/views/splash/splash.view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 

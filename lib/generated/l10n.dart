@@ -170,11 +170,71 @@ class S {
     );
   }
 
-  /// `Dont Have Account?`
-  String get create_new_account {
+  /// `Dont have an Account? `
+  String get dont_have_account {
     return Intl.message(
-      'Dont Have Account?',
-      name: 'create_new_account',
+      'Dont have an Account? ',
+      name: 'dont_have_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit`
+  String get submit {
+    return Intl.message(
+      'Submit',
+      name: 'submit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OTP`
+  String get otp {
+    return Intl.message(
+      'OTP',
+      name: 'otp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `is required`
+  String get is_required {
+    return Intl.message(
+      'is required',
+      name: 'is_required',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter valid email address`
+  String get please_enter_valid_email {
+    return Intl.message(
+      'Please enter valid email address',
+      name: 'please_enter_valid_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Your OTP had been sent to you`
+  String get please_enter_your_otp_had_been_sent_to_you {
+    return Intl.message(
+      'Please Enter Your OTP had been sent to you',
+      name: 'please_enter_your_otp_had_been_sent_to_you',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Your Email Address You Will recieve a link will recieve a link create a new password via email`
+  String get please_enter_your_email_address_you_will {
+    return Intl.message(
+      'Please Enter Your Email Address You Will recieve a link will recieve a link create a new password via email',
+      name: 'please_enter_your_email_address_you_will',
       desc: '',
       args: [],
     );

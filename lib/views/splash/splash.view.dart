@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:auth/utils/global.colors.dart';
-import 'package:auth/views/login.view.dart';
+import 'package:auth/views/auth/login.view.dart';
 import 'package:flutter/material.dart';
 
 class SplashView extends StatelessWidget {

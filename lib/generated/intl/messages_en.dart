@@ -27,18 +27,29 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_code": MessageLookupByLibrary.simpleMessage("Confirm Code"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
-        "create_new_account":
-            MessageLookupByLibrary.simpleMessage("Dont Have Account?"),
+        "dont_have_account":
+            MessageLookupByLibrary.simpleMessage("Dont have an Account? "),
         "email": MessageLookupByLibrary.simpleMessage("Email Address"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("Forget Password"),
+        "is_required": MessageLookupByLibrary.simpleMessage("is required"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "login_to_your_account":
             MessageLookupByLibrary.simpleMessage("Login To Your Account"),
+        "otp": MessageLookupByLibrary.simpleMessage("OTP"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "please_enter_valid_email": MessageLookupByLibrary.simpleMessage(
+            "Please enter valid email address"),
+        "please_enter_your_email_address_you_will":
+            MessageLookupByLibrary.simpleMessage(
+                "Please Enter Your Email Address You Will recieve a link will recieve a link create a new password via email"),
+        "please_enter_your_otp_had_been_sent_to_you":
+            MessageLookupByLibrary.simpleMessage(
+                "Please Enter Your OTP had been sent to you"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "sign_in": MessageLookupByLibrary.simpleMessage("Sign In"),
         "sign_up": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "username": MessageLookupByLibrary.simpleMessage("Username")
       };
 }
