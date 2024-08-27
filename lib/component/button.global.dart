@@ -1,4 +1,4 @@
-import 'package:auth/utils/global.colors.dart';
+import 'package:auth/core/app_color.dart';
 import 'package:flutter/material.dart';
 
 class ButtonGlobal extends StatelessWidget {

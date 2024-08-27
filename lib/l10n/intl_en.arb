@@ -1,4 +1,7 @@
 {
+    "favourite" : "Favourite",
+    "profile" : "Profile",
+    "home" : "Home",
     "sign_in" : "Sign In",
     "sign_up" : "Sign Up",
     "login" : "Login",
