@@ -29,13 +29,7 @@ class LoginView extends StatelessWidget {
       child: BlocConsumer<AuthCubit, AuthStates>(
         listener: (context, state) {},
         builder: (context, state) {
-          if (state is AuthLoadingState) {
-            return const Center(
-                child: Text(
-              "Loading........",
-              style: TextStyle(fontSize: 30),
-            ));
-          } else {
+          print("state: "+state.toString());
             return Scaffold(
               backgroundColor: Colors.white,
               body: SafeArea(
@@ -137,7 +131,6 @@ class LoginView extends StatelessWidget {
                     )),
               )),
             );
-          }
         },
       ),
     );

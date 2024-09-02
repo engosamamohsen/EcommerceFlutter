@@ -14,16 +14,26 @@ class AuthCubit extends Cubit<AuthStates> {
 
   void login({required email, required password}) async {
     LoginModel model = LoginModel(email: email, password: password);
+    print("start");
     emit(AuthLoadingState());
+    print("start loading");
     Response? response = await apiService.post(EndPoint.login, model.toMap());
+    print("start response");
     if (response != null) {
-      jsonDecode(response.data);
+      print("start not null");
+      // jsonDecode(response.data);
+            // Map<String, dynamic> data = jsonDecode(response.data);
+      // print('Decoded response data: $data');
+
       if (response.statusCode == 200) {
+      print("start print 200");
         emit(AuthSuccessState());
       } else {
+      print("start print not 200");
         emit(AuthSuccessState());
       }
     }
+    print("start init state");
     emit(AuthInitState());
   }
 }

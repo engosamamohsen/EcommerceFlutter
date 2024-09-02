@@ -15,6 +15,7 @@ class ApiService {
         receiveTimeout: const Duration(minutes: 1),
         connectTimeout: const Duration(minutes: 1),
         receiveDataWhenStatusError: true,
+        responseType: ResponseType.json,
         validateStatus: (status) {
           // Handle specific status codes
           return status! < 500; // Handle status codes < 500 (e.g., 401, 403, etc.)
@@ -39,9 +40,8 @@ class ApiService {
                 // _progressProvider.hideProgress();
         if(response.statusCode != 200){
           handleStatusCode(response.statusCode!, response.data["message"]);
-        }else {
-          handler.next(response);
         }
+          handler.next(response);
       },
       onError: (DioException error, handler) {
         // Hide progress or loader here
@@ -65,13 +65,20 @@ class ApiService {
 
   // Generic POST request
   Future<Response?> post(String endpoint, Map<String, dynamic>? data) async {
+    print("start post call");
     try {
       Response response = await _dio!.post(endpoint, data: data);
+      print("start post response");
       return response;
-    } catch (e) {
+    } on DioException catch (e) {
+    print("start post response DioError catch");
+    handleStatusCode(e.response?.statusCode ?? 0, e.toString());
+  }  catch (e) {
+      print("start post response catch");
       handleStatusCode(0,e.toString());
       // Handle DioError here or rethrow
     }
+    print("start post null");
     return null;
   }
 
