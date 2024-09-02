@@ -1,15 +1,10 @@
-class LoginModel{
-
-  LoginModel({ required this.email , required this.password });
+class LoginModel {
+  LoginModel({required this.email, required this.password});
 
   final String email;
   final String password;
 
   Map<String, dynamic> toMap() {
-    return {
-      'name': email,
-      'password' : password
-    };
+    return {'name': email, 'password': password};
   }
-
 }
