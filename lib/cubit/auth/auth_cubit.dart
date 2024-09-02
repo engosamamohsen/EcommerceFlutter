@@ -13,7 +13,7 @@ class AuthCubit extends Cubit<AuthStates> {
   ApiService apiService = ApiService();
 
   void login({required email, required password}) async {
-    LoginModel model = LoginModel(email: email.text, password: password);
+    LoginModel model = LoginModel(email: email, password: password);
     emit(AuthLoadingState());
     Response? response = await apiService.post(EndPoint.login, model.toMap());
     if (response != null) {
