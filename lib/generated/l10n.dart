@@ -230,11 +230,31 @@ class S {
     );
   }
 
+  /// `Phone`
+  String get phone {
+    return Intl.message(
+      'Phone',
+      name: 'phone',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `is required`
   String get is_required {
     return Intl.message(
       'is required',
       name: 'is_required',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Make A new Account`
+  String get please_make_new_account {
+    return Intl.message(
+      'Please Make A new Account',
+      name: 'please_make_new_account',
       desc: '',
       args: [],
     );

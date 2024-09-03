@@ -40,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Login To Your Account"),
         "otp": MessageLookupByLibrary.simpleMessage("OTP"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "please_enter_valid_email": MessageLookupByLibrary.simpleMessage(
             "Please enter valid email address"),
         "please_enter_your_email_address_you_will":
@@ -48,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "please_enter_your_otp_had_been_sent_to_you":
             MessageLookupByLibrary.simpleMessage(
                 "Please Enter Your OTP had been sent to you"),
+        "please_make_new_account":
+            MessageLookupByLibrary.simpleMessage("Please Make A new Account"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "sign_in": MessageLookupByLibrary.simpleMessage("Sign In"),

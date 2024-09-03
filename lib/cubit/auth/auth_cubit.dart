@@ -1,7 +1,12 @@
 import 'dart:convert';
 
 import 'package:auth/cubit/auth/auth_state.dart';
-import 'package:auth/models/loginModel.dart';
+import 'package:auth/db_helper/app_storage.dart';
+import 'package:auth/models/confirm_password/confirm_password.dart';
+import 'package:auth/models/forget_password/forget_password.dart';
+import 'package:auth/models/login/login_request.dart';
+import 'package:auth/models/login/login_response.dart';
+import 'package:auth/models/register/register_request.dart';
 import 'package:auth/network/api_service.dart';
 import 'package:auth/network/end_point.dart';
 import 'package:bloc/bloc.dart';
@@ -11,29 +16,86 @@ class AuthCubit extends Cubit<AuthStates> {
   AuthCubit() : super(AuthInitState());
 
   ApiService apiService = ApiService();
+  AppStorage appStorage = AppStorage();
 
   void login({required email, required password}) async {
-    LoginModel model = LoginModel(email: email, password: password);
-    print("start");
+    LoginRequest model = LoginRequest(email: email, password: password);
     emit(AuthLoadingState());
-    print("start loading");
     Response? response = await apiService.post(EndPoint.login, model.toMap());
-    print("start response");
     if (response != null) {
-      print("start not null");
-      // jsonDecode(response.data);
-            // Map<String, dynamic> data = jsonDecode(response.data);
-      // print('Decoded response data: $data');
-
+      if (response.data is Map<String, dynamic>) {
+        final Map<String, dynamic> json = response.data as Map<String, dynamic>;
+        UserResponse user = UserResponse.fromJson(json);
+        appStorage.putUser(user);
+        UserResponse userSaved = await appStorage.getUser();
+        print("start user email ${userSaved.data?.email} ");
+      }
       if (response.statusCode == 200) {
-      print("start print 200");
-        emit(AuthSuccessState());
-      } else {
-      print("start print not 200");
         emit(AuthSuccessState());
       }
     }
-    print("start init state");
+    emit(AuthInitState());
+  }
+
+  void register(
+      {required name,
+      required email,
+      required phone,
+      required password}) async {
+    RegisterRequest model = RegisterRequest(
+        name: name, email: email, phone: phone, password: password);
+    emit(AuthInitState());
+    Response? response =
+        await apiService.post(EndPoint.register, model.toMap());
+    if (response != null) {
+      if (response.data is Map<String, dynamic>) {
+        final Map<String, dynamic> json = response.data as Map<String, dynamic>;
+        UserResponse user = UserResponse.fromJson(json);
+        //save user in cache
+      }
+      if (response.statusCode == 200) {
+        emit(AuthSuccessState());
+      }
+    }
+    emit(AuthInitState());
+  }
+
+  void forgetPassword({required email}) async {
+    ForgetPasswordRequest model = ForgetPasswordRequest(email: email);
+
+    emit(AuthInitState());
+    Response? response =
+        await apiService.post(EndPoint.forgetPassword, model.toMap());
+    if (response != null) {
+      if (response.data is Map<String, dynamic>) {
+        final Map<String, dynamic> json = response.data as Map<String, dynamic>;
+        UserResponse user = UserResponse.fromJson(json);
+        //save user in cache
+      }
+      if (response.statusCode == 200) {
+        emit(AuthSuccessState());
+      }
+    }
+    emit(AuthInitState());
+  }
+
+  void confirmPassword(email, code) async {
+    emit(AuthLoadingState());
+    ConfirmPasswordRequest model =
+        ConfirmPasswordRequest(email: email, code: code);
+
+    Response? response =
+        await apiService.post(EndPoint.forgetPassword, model.toMap());
+    if (response != null) {
+      if (response.data is Map<String, dynamic>) {
+        final Map<String, dynamic> json = response.data as Map<String, dynamic>;
+        UserResponse user = UserResponse.fromJson(json);
+        //save user in cache
+      }
+      if (response.statusCode == 200) {
+        emit(AuthSuccessState());
+      }
+    }
     emit(AuthInitState());
   }
 }
