@@ -4,7 +4,6 @@ import 'package:auth/cubit/auth/auth_cubit.dart';
 import 'package:auth/cubit/auth/auth_state.dart';
 import 'package:auth/db_helper/app_storage.dart';
 import 'package:auth/generated/l10n.dart';
-import 'package:auth/models/login/login_request.dart';
 import 'package:auth/models/login/login_response.dart';
 import 'package:auth/network/api_service.dart';
 import 'package:auth/network/end_point.dart';

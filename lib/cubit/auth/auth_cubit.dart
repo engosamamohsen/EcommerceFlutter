@@ -22,18 +22,22 @@ class AuthCubit extends Cubit<AuthStates> {
     LoginRequest model = LoginRequest(email: email, password: password);
     emit(AuthLoadingState());
     Response? response = await apiService.post(EndPoint.login, model.toMap());
+    print("start post call cubit");
+
     if (response != null) {
-      if (response.data is Map<String, dynamic>) {
+      print("start post call cubit not null");
+      if (response.statusCode == 200 && response.data is Map<String, dynamic>) {
+        print("start post call cubit not null dynamic");
         final Map<String, dynamic> json = response.data as Map<String, dynamic>;
         UserResponse user = UserResponse.fromJson(json);
         appStorage.putUser(user);
         UserResponse userSaved = await appStorage.getUser();
-        print("start user email ${userSaved.data?.email} ");
-      }
-      if (response.statusCode == 200) {
         emit(AuthSuccessState());
+        // print("start user email ${userSaved.data?.email} ");
       }
     }
+
+    print("start post call cubit not init");
     emit(AuthInitState());
   }
 
@@ -48,12 +52,10 @@ class AuthCubit extends Cubit<AuthStates> {
     Response? response =
         await apiService.post(EndPoint.register, model.toMap());
     if (response != null) {
-      if (response.data is Map<String, dynamic>) {
+      if (response.statusCode == 200 && response.data is Map<String, dynamic>) {
         final Map<String, dynamic> json = response.data as Map<String, dynamic>;
         UserResponse user = UserResponse.fromJson(json);
         //save user in cache
-      }
-      if (response.statusCode == 200) {
         emit(AuthSuccessState());
       }
     }
@@ -67,12 +69,10 @@ class AuthCubit extends Cubit<AuthStates> {
     Response? response =
         await apiService.post(EndPoint.forgetPassword, model.toMap());
     if (response != null) {
-      if (response.data is Map<String, dynamic>) {
+      if (response.statusCode == 200 && response.data is Map<String, dynamic>) {
         final Map<String, dynamic> json = response.data as Map<String, dynamic>;
         UserResponse user = UserResponse.fromJson(json);
         //save user in cache
-      }
-      if (response.statusCode == 200) {
         emit(AuthSuccessState());
       }
     }
@@ -87,13 +87,11 @@ class AuthCubit extends Cubit<AuthStates> {
     Response? response =
         await apiService.post(EndPoint.forgetPassword, model.toMap());
     if (response != null) {
-      if (response.data is Map<String, dynamic>) {
+      if (response.statusCode == 200 && response.data is Map<String, dynamic>) {
         final Map<String, dynamic> json = response.data as Map<String, dynamic>;
         UserResponse user = UserResponse.fromJson(json);
-        //save user in cache
-      }
-      if (response.statusCode == 200) {
         emit(AuthSuccessState());
+        //save user in cache
       }
     }
     emit(AuthInitState());
