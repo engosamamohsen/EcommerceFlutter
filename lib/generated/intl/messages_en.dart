@@ -22,6 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "app_name": MessageLookupByLibrary.simpleMessage("Ceraj"),
+        "cancel_order": MessageLookupByLibrary.simpleMessage("Cancel Order"),
+        "cart": MessageLookupByLibrary.simpleMessage("Cart"),
+        "category": MessageLookupByLibrary.simpleMessage("Category"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("Change Password"),
         "confirm_code": MessageLookupByLibrary.simpleMessage("Confirm Code"),
@@ -29,8 +33,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "dont_have_account":
             MessageLookupByLibrary.simpleMessage("Dont have an Account? "),
+        "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "email": MessageLookupByLibrary.simpleMessage("Email Address"),
         "favourite": MessageLookupByLibrary.simpleMessage("Favourite"),
+        "flash_sale": MessageLookupByLibrary.simpleMessage("Flash Sale"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("Forget Password"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
@@ -38,6 +44,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "login_to_your_account":
             MessageLookupByLibrary.simpleMessage("Login To Your Account"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "most_sale": MessageLookupByLibrary.simpleMessage("Most Sale"),
+        "newest_products":
+            MessageLookupByLibrary.simpleMessage("Newest Products"),
+        "order_details": MessageLookupByLibrary.simpleMessage("Order Details"),
+        "orders": MessageLookupByLibrary.simpleMessage("Orders"),
         "otp": MessageLookupByLibrary.simpleMessage("OTP"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
@@ -51,11 +63,20 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Please Enter Your OTP had been sent to you"),
         "please_make_new_account":
             MessageLookupByLibrary.simpleMessage("Please Make A new Account"),
+        "privacy_and_policy":
+            MessageLookupByLibrary.simpleMessage("Privacy And Policy"),
+        "product_details":
+            MessageLookupByLibrary.simpleMessage("Product Details"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "see_all": MessageLookupByLibrary.simpleMessage("See All"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "sign_in": MessageLookupByLibrary.simpleMessage("Sign In"),
         "sign_up": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
-        "username": MessageLookupByLibrary.simpleMessage("Username")
+        "username": MessageLookupByLibrary.simpleMessage("Username"),
+        "welcome_in": MessageLookupByLibrary.simpleMessage("Welcome in"),
+        "wishlist": MessageLookupByLibrary.simpleMessage("Wishlist")
       };
 }
