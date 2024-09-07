@@ -59,8 +59,12 @@ class ApiService {
       return response;
     } catch (e) {
       // Handle DioError here or rethrow
-      rethrow;
+      // rethrow;
+
+      print("start post response catch");
+      handleStatusCode(0, e.toString());
     }
+    return null;
   }
 
   // Generic POST request

@@ -1,7 +1,7 @@
 import 'package:auth/component/text_global.dart';
 import 'package:auth/core/app_color.dart';
 import 'package:auth/generated/l10n.dart';
-import 'package:auth/views/home/products/product_item.dart';
+import 'package:auth/views/products/product_item.dart';
 import 'package:flutter/material.dart';
 
 class HomeCategoryProduct extends StatelessWidget {

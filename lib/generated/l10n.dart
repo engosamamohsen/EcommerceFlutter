@@ -430,6 +430,16 @@ class S {
     );
   }
 
+  /// `Network Error Please Try Again`
+  String get network_error {
+    return Intl.message(
+      'Network Error Please Try Again',
+      name: 'network_error',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please Make A new Account`
   String get please_make_new_account {
     return Intl.message(

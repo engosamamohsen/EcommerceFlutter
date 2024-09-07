@@ -1,3 +1,6 @@
+import 'package:auth/models/category/category_model.dart';
+import 'package:auth/models/product/product_model.dart';
+
 class HomeResponse {
   HomeResponse({
     required this.status,
@@ -33,7 +36,7 @@ class Data {
     required this.mostSale,
   });
   late final List<Banners> banners;
-  late final List<Categories> categories;
+  late final List<CategoryModel> categories;
   late final List<NewestProduct> newestProduct;
   late final Null address;
   late final FlashSale flashSale;
@@ -43,7 +46,7 @@ class Data {
     banners =
         List.from(json['banners']).map((e) => Banners.fromJson(e)).toList();
     categories = List.from(json['categories'])
-        .map((e) => Categories.fromJson(e))
+        .map((e) => CategoryModel.fromJson(e))
         .toList();
     newestProduct = List.from(json['newest_product'])
         .map((e) => NewestProduct.fromJson(e))
@@ -83,31 +86,6 @@ class Banners {
     final _data = <String, dynamic>{};
     _data['id'] = id;
     _data['banner'] = banner;
-    return _data;
-  }
-}
-
-class Categories {
-  Categories({
-    required this.id,
-    required this.name,
-    required this.icon,
-  });
-  late final int id;
-  late final String name;
-  late final String icon;
-
-  Categories.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    icon = json['icon'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['name'] = name;
-    _data['icon'] = icon;
     return _data;
   }
 }
@@ -163,63 +141,19 @@ class FlashSale {
     required this.products,
   });
   late final String expiredAt;
-  late final List<Products> products;
+  late final List<ProductModel> products;
 
   FlashSale.fromJson(Map<String, dynamic> json) {
     expiredAt = json['expired_at'];
-    products =
-        List.from(json['products']).map((e) => Products.fromJson(e)).toList();
+    products = List.from(json['products'])
+        .map((e) => ProductModel.fromJson(e))
+        .toList();
   }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
     _data['expired_at'] = expiredAt;
-    _data['products'] = products.map((e) => e.toJson()).toList();
-    return _data;
-  }
-}
-
-class Products {
-  Products({
-    required this.id,
-    required this.name,
-    this.description,
-    required this.price,
-    required this.image,
-    required this.likes,
-    required this.isLike,
-    required this.rate,
-  });
-  late final int id;
-  late final String name;
-  late final String? description;
-  late final String price;
-  late final String image;
-  late final int likes;
-  late final bool isLike;
-  late final double rate;
-
-  Products.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    description = null;
-    price = json['price'];
-    image = json['image'];
-    likes = json['likes'];
-    isLike = json['isLike'];
-    rate = json['rate'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['name'] = name;
-    _data['description'] = description;
-    _data['price'] = price;
-    _data['image'] = image;
-    _data['likes'] = likes;
-    _data['isLike'] = isLike;
-    _data['rate'] = rate;
+    // _data['products'] = ProductModel.map((e) => e.toJson()).toList();
     return _data;
   }
 }

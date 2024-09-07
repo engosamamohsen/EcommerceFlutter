@@ -46,6 +46,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Login To Your Account"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "most_sale": MessageLookupByLibrary.simpleMessage("Most Sale"),
+        "network_error": MessageLookupByLibrary.simpleMessage(
+            "Network Error Please Try Again"),
         "newest_products":
             MessageLookupByLibrary.simpleMessage("Newest Products"),
         "order_details": MessageLookupByLibrary.simpleMessage("Order Details"),

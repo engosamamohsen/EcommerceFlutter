@@ -3,4 +3,5 @@ class EndPoint {
   static const register = "register";
   static const forgetPassword = "check-email";
   static const changePassword = "change-forget-password";
+  static const home = "home";
 }
