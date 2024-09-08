@@ -1,3 +1,4 @@
+import 'package:auth/component/image/image_round.dart';
 import 'package:auth/models/home/home_response.dart';
 import 'package:auth/utils/global.assets.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class SliderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _pages = List.generate(slider.length,
-        (index) => ImagePlaceHolder(imagePath: slider[index].banner));
+        (index) => ImageRound(image: slider[index].banner, round: 50.0));
 
     return SizedBox(
       width: double.infinity,

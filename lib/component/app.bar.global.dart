@@ -1,4 +1,3 @@
-import 'package:auth/core/app_color.dart';
 import 'package:flutter/material.dart';
 
 class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
