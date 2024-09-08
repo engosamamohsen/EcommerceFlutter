@@ -60,6 +60,16 @@ class S {
     );
   }
 
+  /// `EGP`
+  String get currency {
+    return Intl.message(
+      'EGP',
+      name: 'currency',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Favourite`
   String get favourite {
     return Intl.message(

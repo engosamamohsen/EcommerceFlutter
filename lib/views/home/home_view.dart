@@ -1,20 +1,16 @@
 import 'package:auth/component/loading_view.dart';
 import 'package:auth/component/network/network_error_view.dart';
 import 'package:auth/component/slider/slider_view.dart';
-import 'package:auth/component/text.form.global.dart';
 import 'package:auth/component/text_global.dart';
 import 'package:auth/core/app_color.dart';
 import 'package:auth/cubit/home/home_cubit.dart';
 import 'package:auth/cubit/home/home_state.dart';
 import 'package:auth/generated/l10n.dart';
 import 'package:auth/models/home/home_response.dart';
-import 'package:auth/utils/global.assets.dart';
 import 'package:auth/views/home/home_categories.dart';
 import 'package:auth/views/home/home_category_product.dart';
-import 'package:auth/views/products/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -50,30 +46,31 @@ class _HomeViewState extends State<HomeView> {
                     : state is HomeSuccessState<HomeResponse>
                         ? ListView.builder(
                             scrollDirection: Axis.vertical,
+                            itemCount: 1,
                             itemBuilder: (context, index) {
                               return Column(
                                 children: [
+                                  HomeBar(),
+                                  const SizedBox(height: 30),
+                                  SliderView( slider : state.data.data.banners),
+                                  const SizedBox(height: 30),
                                   HomeCategories(
                                       categories: state.data.data.categories),
-                                  HomeCategories(
-                                      categories: state.data.data.categories),
-                                  HomeCategories(
-                                      categories: state.data.data.categories),
-                                  HomeCategories(
-                                      categories: state.data.data.categories),
-                                  HomeCategories(
-                                      categories: state.data.data.categories),
-                                  HomeCategories(
-                                      categories: state.data.data.categories),
+                                  const SizedBox(height: 30),
+                                  HomeCategoryProduct(
+                                      title: S.of(context).flash_sale,
+                                      products:
+                                          state.data.data.flashSale.products),
+                                  const SizedBox(height: 30),
+                                  HomeCategoryProduct(
+                                      title: S.of(context).newest_products,
+                                      products: state.data.data.newestProduct),
+                                  const SizedBox(height: 30),
+                                  HomeCategoryProduct(
+                                      title: S.of(context).most_sale,
+                                      products: state.data.data.mostSale),
                                 ],
                               );
-                              // HomeBar(),
-                              // const SizedBox(height: 30),
-                              // SliderView(),
-                              // const SizedBox(height: 30),
-
-                              // const SizedBox(height: 30),
-                              // HomeCategoryProduct(title: "welcome"),
                             },
                           )
                         : NetworkError()),

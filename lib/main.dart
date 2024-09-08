@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         debugShowMaterialGrid: false,
         theme: ThemeData(useMaterial3: true),
-        home: HomeView(),
+        home: SplashView(),
       ),
     );
   }

@@ -1,16 +1,14 @@
 import 'package:auth/component/text_global.dart';
 import 'package:auth/core/app_color.dart';
 import 'package:auth/generated/l10n.dart';
+import 'package:auth/models/product/product_model.dart';
 import 'package:auth/utils/global.assets.dart';
 import 'package:flutter/material.dart';
 
 class ProductItemView extends StatelessWidget {
-  const ProductItemView(
-      {super.key,
-      this.imageUrl = "https://i.ytimg.com/vi/eqqapM_Ce4w/maxresdefault.jpg",
-      this.width = 120,
-      this.height = 120});
-  final String imageUrl;
+  ProductItemView(
+      {super.key, required this.product, this.width = 120, this.height = 120});
+  final ProductModel product;
   final double width;
   final double height;
 
@@ -25,7 +23,7 @@ class ProductItemView extends StatelessWidget {
               child: Image.network(
                 width: width,
                 height: height,
-                imageUrl, // Your image URL
+                product.image, // Your image URL
                 loadingBuilder: (BuildContext context, Widget child,
                     ImageChunkEvent? loadingProgress) {
                   if (loadingProgress == null) {
@@ -56,14 +54,14 @@ class ProductItemView extends StatelessWidget {
         ),
         SizedBox(height: 10),
         TextGlobal(
-          text: "بسم الله بسم الله بسم الله بسم الله",
+          text: product.name,
           fontSize: 14,
           fontWeight: FontWeight.normal,
           color: Colors.black,
         ),
         SizedBox(height: 5),
         TextGlobal(
-          text: "120 EGP",
+          text: "${product.price} ${S.of(context).currency}",
           maxLines: 2,
           fontSize: 14,
           fontWeight: FontWeight.bold,

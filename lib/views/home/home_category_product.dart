@@ -1,13 +1,15 @@
 import 'package:auth/component/text_global.dart';
 import 'package:auth/core/app_color.dart';
 import 'package:auth/generated/l10n.dart';
+import 'package:auth/models/product/product_model.dart';
 import 'package:auth/views/products/product_item.dart';
 import 'package:flutter/material.dart';
 
 class HomeCategoryProduct extends StatelessWidget {
-  const HomeCategoryProduct({super.key, required this.title});
+  HomeCategoryProduct({super.key, required this.title, required this.products});
 
   final String title;
+  List<ProductModel> products = [];
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +35,17 @@ class HomeCategoryProduct extends StatelessWidget {
           height: 10,
         ),
         SizedBox(
-          height: 350, // Adjust height based on the product item height
+          height: 250, // Adjust height based on the product item height
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: 6, // Adjust this to the actual number of products
+            itemCount:
+                products.length, // Adjust this to the actual number of products
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: ProductItemView(),
+                child: ProductItemView(
+                  product: products[index],
+                ),
               );
             },
           ),

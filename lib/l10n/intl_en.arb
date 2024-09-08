@@ -1,5 +1,6 @@
 {
     "app_name": "Ceraj",
+    "currency" : "EGP",
     "favourite": "Favourite",
     "profile": "Profile",
     "home": "Home",

@@ -31,6 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_code": MessageLookupByLibrary.simpleMessage("Confirm Code"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
+        "currency": MessageLookupByLibrary.simpleMessage("EGP"),
         "dont_have_account":
             MessageLookupByLibrary.simpleMessage("Dont have an Account? "),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),

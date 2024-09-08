@@ -37,10 +37,10 @@ class Data {
   });
   late final List<Banners> banners;
   late final List<CategoryModel> categories;
-  late final List<NewestProduct> newestProduct;
+  late final List<ProductModel> newestProduct;
   late final Null address;
   late final FlashSale flashSale;
-  late final List<MostSale> mostSale;
+  late final List<ProductModel> mostSale;
 
   Data.fromJson(Map<String, dynamic> json) {
     banners =
@@ -49,12 +49,13 @@ class Data {
         .map((e) => CategoryModel.fromJson(e))
         .toList();
     newestProduct = List.from(json['newest_product'])
-        .map((e) => NewestProduct.fromJson(e))
+        .map((e) => ProductModel.fromJson(e))
         .toList();
     address = null;
     flashSale = FlashSale.fromJson(json['flash_sale']);
-    mostSale =
-        List.from(json['most_sale']).map((e) => MostSale.fromJson(e)).toList();
+    mostSale = List.from(json['most_sale'])
+        .map((e) => ProductModel.fromJson(e))
+        .toList();
   }
 
   Map<String, dynamic> toJson() {
