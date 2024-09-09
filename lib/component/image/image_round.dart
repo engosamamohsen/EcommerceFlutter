@@ -3,9 +3,16 @@ import 'package:auth/component/network/loading_view_full.dart';
 import 'package:flutter/material.dart';
 
 class ImageRound extends StatefulWidget {
-  ImageRound({super.key, required this.image, required this.round});
+  ImageRound(
+      {super.key,
+      required this.image,
+      this.width = 150,
+      this.height = 150,
+      required this.round});
   final String image;
   final double round;
+  final double width;
+  final double height;
 
   @override
   State<ImageRound> createState() => _ImageRoundState();
@@ -15,8 +22,8 @@ class _ImageRoundState extends State<ImageRound> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 150,
-      height: 150,
+      width: widget.width,
+      height: widget.height,
       // decoration: BoxDecoration(
       //   borderRadius:
       //       BorderRadius.circular(widget.round), // Border radius of 10

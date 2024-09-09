@@ -10,6 +10,7 @@ final List<String> imagesPath = [
 ];
 
 late List<Widget> _pages;
+late List<Widget> _dots;
 
 class SliderView extends StatelessWidget {
   SliderView({super.key, required this.slider});
@@ -19,6 +20,14 @@ class SliderView extends StatelessWidget {
   Widget build(BuildContext context) {
     _pages = List.generate(slider.length,
         (index) => ImageRound(image: slider[index].banner, round: 50.0));
+    _dots = List.generate(
+        slider.length,
+        (index) => ImageRound(
+              image: slider[index].banner,
+              round: 50.0,
+              width: 20,
+              height: 20,
+            ));
 
     return SizedBox(
       width: double.infinity,

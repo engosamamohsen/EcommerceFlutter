@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ImageLoad extends StatelessWidget {
-  ImageLoad({super.key, required this.image});
+class ImageCircle extends StatelessWidget {
+  ImageCircle({super.key, required this.image});
   final String image;
 
   @override
