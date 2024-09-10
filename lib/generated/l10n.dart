@@ -440,6 +440,16 @@ class S {
     );
   }
 
+  /// `Categories`
+  String get categories {
+    return Intl.message(
+      'Categories',
+      name: 'categories',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Network Error Please Try Again`
   String get network_error {
     return Intl.message(

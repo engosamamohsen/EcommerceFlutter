@@ -38,6 +38,7 @@
     "logout": "Logout",
     "is_required": "is required",
     "welcome_in": "Welcome in",
+    "categories" : "Categories",
     "network_error": "Network Error Please Try Again",
     "please_make_new_account": "Please Make A new Account",
     "please_enter_valid_email": "Please enter valid email address",

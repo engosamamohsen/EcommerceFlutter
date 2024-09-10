@@ -43,7 +43,7 @@ class _HomeViewState extends State<HomeView> {
             backgroundColor: Colors.white,
             bottomNavigationBar: BottomNavigationApp(),
             body: Container(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(8),
                 child: state is HomeLoadingState
                     ? const LoadingViewFull()
                     : state is HomeSuccessState<HomeResponse>
@@ -52,11 +52,18 @@ class _HomeViewState extends State<HomeView> {
                             itemCount: 1,
                             itemBuilder: (context, index) {
                               return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   HomeBar(),
                                   const SizedBox(height: 30),
                                   SliderView(slider: state.data.data.banners),
                                   const SizedBox(height: 30),
+                                  TextGlobal(
+                                    text: S.of(context).categories,
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                   HomeCategories(
                                       categories: state.data.data.categories),
                                   const SizedBox(height: 30),

@@ -38,7 +38,7 @@ class AuthCubit extends Cubit<AuthStates> {
     }
 
     print("start post call cubit not init");
-    emit(AuthInitState());
+    // emit(AuthInitState());
   }
 
   void register(

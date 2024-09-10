@@ -7,15 +7,15 @@ class AppStorage {
   final FlutterSecureStorage flutterSecureStorage =
       const FlutterSecureStorage();
 
-  String token = "TOKEN";
-  String user = "USER";
+  String _token = "TOKEN";
+  String _user = "USER";
 
   void putToken(value) {
-    flutterSecureStorage.write(key: token, value: value);
+    flutterSecureStorage.write(key: _token, value: value);
   }
 
   Future<String?> readToken() async {
-    String? value = await flutterSecureStorage.read(key: token);
+    String? value = await flutterSecureStorage.read(key: _token);
     return value;
   }
 
@@ -34,11 +34,11 @@ class AppStorage {
 
   void putUser(UserResponse userResponse) {
     putToken(userResponse.data?.jwtToken);
-    flutterSecureStorage.write(key: user, value: jsonEncode(userResponse));
+    flutterSecureStorage.write(key: _user, value: jsonEncode(userResponse));
   }
 
   Future<UserResponse> getUser() async {
-    String? result = await flutterSecureStorage.read(key: user);
+    String? result = await flutterSecureStorage.read(key: _user);
     if (result != null && result.isNotEmpty) {
       Map<String, dynamic> userMap = jsonDecode(result);
       UserResponse userResponse = UserResponse.fromJson(userMap);

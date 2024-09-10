@@ -15,41 +15,41 @@ class ButtonGlobal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-        onTap: onTap,
-        child: Center(
-          child: SizedBox(
-            width: width,
-            child: Container(
-              alignment: Alignment.center,
-              height: 50,
-              decoration: BoxDecoration(
-                  color: GlobalColors.mainColor,
-                  borderRadius: const BorderRadius.all(Radius.circular(6)),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black.withOpacity(0.1), blurRadius: 6)
-                  ]),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (showProgress)
-                    const SizedBox(
-                      height: 32, // Smaller size for the progress indicator
-                      width: 32,
-                      child: CircularProgressIndicator(
-                          color: Colors.white, strokeWidth: 2),
-                    ),
-                  if (showProgress) const SizedBox(width: 8),
-                  Text(
-                    text,
-                    style: const TextStyle(color: Colors.white, fontSize: 18),
+    return Center(
+      child: SizedBox(
+        width: width,
+        child: Container(
+          alignment: Alignment.center,
+          height: 50,
+          decoration: BoxDecoration(
+              color: GlobalColors.mainColor,
+              borderRadius: const BorderRadius.all(Radius.circular(6)),
+              boxShadow: [
+                BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 6)
+              ]),
+          child: InkWell(
+            onTap: onTap,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (showProgress)
+                  const SizedBox(
+                    height: 32, // Smaller size for the progress indicator
+                    width: 32,
+                    child: CircularProgressIndicator(
+                        color: Colors.white, strokeWidth: 2),
                   ),
-                ],
-              ),
+                if (showProgress) const SizedBox(width: 8),
+                Text(
+                  text,
+                  style: const TextStyle(color: Colors.white, fontSize: 18),
+                ),
+              ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

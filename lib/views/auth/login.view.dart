@@ -12,6 +12,7 @@ import 'package:auth/core/app_color.dart';
 import 'package:auth/component/text.form.global.dart';
 import 'package:auth/views/auth/forget.password.view.dart';
 import 'package:auth/views/auth/register.view.dart';
+import 'package:auth/views/home/home_view.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -86,11 +87,16 @@ class LoginView extends StatelessWidget {
                                 email: emailController.text,
                                 password: passwordController.text);
                           }
-
-                          // Navigator.push(context,
-                          //     MaterialPageRoute(builder: (BuildContext context) {
-                          //   return RegisterView();
-                          // }));
+                          if (state is AuthSuccessState) {
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) {
+                                return HomeView();
+                              }),
+                              (Route<dynamic> route) => false,
+                            );
+                          }
                         },
                       ),
                       const SizedBox(height: 30),
