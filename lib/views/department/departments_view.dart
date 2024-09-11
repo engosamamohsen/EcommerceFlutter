@@ -10,6 +10,8 @@ class DepartmentsView extends StatefulWidget {
 class _DepartmentViewState extends State<DepartmentsView> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Center(
+      child: Text("wild card"),
+    );
   }
 }

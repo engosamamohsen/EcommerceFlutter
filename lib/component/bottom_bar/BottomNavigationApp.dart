@@ -6,7 +6,9 @@ import 'package:auth/views/profile/profile_view.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigationApp extends StatefulWidget {
-  const BottomNavigationApp({super.key});
+  const BottomNavigationApp({super.key, required this.onTapPage});
+
+  final Function(Widget) onTapPage;
 
   @override
   State<BottomNavigationApp> createState() => _BottomNavigationAppState();
@@ -15,15 +17,23 @@ class BottomNavigationApp extends StatefulWidget {
 class _BottomNavigationAppState extends State<BottomNavigationApp> {
   int _selectedIndex = 0;
 
+  final list = [HomeView(), DepartmentsView(), CartView(), ProfileView()];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      widget.onTapPage(list[index]);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      currentIndex: _selectedIndex,
+      showSelectedLabels: true,
+      selectedItemColor: GlobalColors.mainColor,
+      unselectedItemColor: GlobalColors.secondaryColor,
+      onTap: _onItemTapped,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
@@ -42,10 +52,6 @@ class _BottomNavigationAppState extends State<BottomNavigationApp> {
           label: 'Profile',
         ),
       ],
-      currentIndex: _selectedIndex,
-      selectedItemColor: GlobalColors.mainColor,
-      unselectedItemColor: GlobalColors.secondaryColor,
-      onTap: _onItemTapped,
     );
   }
 }

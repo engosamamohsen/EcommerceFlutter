@@ -1,8 +1,5 @@
 import 'package:auth/cubit/home/home_cubit.dart';
 import 'package:auth/generated/l10n.dart';
-import 'package:auth/views/auth/login.view.dart';
-import 'package:auth/views/home/home_view.dart';
-import 'package:auth/views/main/main_screen_view.dart';
 import 'package:auth/views/splash/splash.view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
