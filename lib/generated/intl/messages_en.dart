@@ -22,16 +22,22 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "add_address": MessageLookupByLibrary.simpleMessage("Add Adress"),
+        "add_to_cart": MessageLookupByLibrary.simpleMessage("Add To Cart"),
         "app_name": MessageLookupByLibrary.simpleMessage("Ceraj"),
+        "area": MessageLookupByLibrary.simpleMessage("area"),
+        "building": MessageLookupByLibrary.simpleMessage("Building"),
         "cancel_order": MessageLookupByLibrary.simpleMessage("Cancel Order"),
         "cart": MessageLookupByLibrary.simpleMessage("Cart"),
         "categories": MessageLookupByLibrary.simpleMessage("Categories"),
         "category": MessageLookupByLibrary.simpleMessage("Category"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("Change Password"),
+        "city": MessageLookupByLibrary.simpleMessage("City"),
         "confirm_code": MessageLookupByLibrary.simpleMessage("Confirm Code"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
+        "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "currency": MessageLookupByLibrary.simpleMessage("EGP"),
         "dont_have_account":
             MessageLookupByLibrary.simpleMessage("Dont have an Account? "),
@@ -39,15 +45,25 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage("Email Address"),
         "favourite": MessageLookupByLibrary.simpleMessage("Favourite"),
         "flash_sale": MessageLookupByLibrary.simpleMessage("Flash Sale"),
+        "flat": MessageLookupByLibrary.simpleMessage("Flat"),
+        "floor": MessageLookupByLibrary.simpleMessage("Floor"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("Forget Password"),
+        "governate": MessageLookupByLibrary.simpleMessage("Governate"),
+        "guest": MessageLookupByLibrary.simpleMessage("Guest"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "is_required": MessageLookupByLibrary.simpleMessage("is required"),
+        "loading_please_wait":
+            MessageLookupByLibrary.simpleMessage("Loading Please Wait ...."),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "login_to_your_account":
             MessageLookupByLibrary.simpleMessage("Login To Your Account"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "manage_address":
+            MessageLookupByLibrary.simpleMessage("Manage Address"),
         "most_sale": MessageLookupByLibrary.simpleMessage("Most Sale"),
+        "my_address": MessageLookupByLibrary.simpleMessage("My Addresses"),
+        "my_orders": MessageLookupByLibrary.simpleMessage("My Orders"),
         "network_error": MessageLookupByLibrary.simpleMessage(
             "Network Error Please Try Again"),
         "newest_products":
@@ -57,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "otp": MessageLookupByLibrary.simpleMessage("OTP"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
+        "please_enter": MessageLookupByLibrary.simpleMessage("Please Enter"),
         "please_enter_valid_email": MessageLookupByLibrary.simpleMessage(
             "Please enter valid email address"),
         "please_enter_your_email_address_you_will":
@@ -74,11 +91,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "search_in": MessageLookupByLibrary.simpleMessage("Search in"),
         "see_all": MessageLookupByLibrary.simpleMessage("See All"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "sign_in": MessageLookupByLibrary.simpleMessage("Sign In"),
         "sign_up": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "special_sign": MessageLookupByLibrary.simpleMessage("Special Sign"),
+        "street": MessageLookupByLibrary.simpleMessage("Street"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
+        "total_price": MessageLookupByLibrary.simpleMessage("Total Price"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "welcome_in": MessageLookupByLibrary.simpleMessage("Welcome in"),
         "wishlist": MessageLookupByLibrary.simpleMessage("Wishlist")

@@ -1,4 +1,4 @@
-import 'package:auth/component/text_global.dart';
+import 'package:auth/component/text/text_global.dart';
 import 'package:auth/core/app_color.dart';
 import 'package:flutter/material.dart';
 

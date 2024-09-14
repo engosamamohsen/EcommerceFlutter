@@ -19,6 +19,10 @@ class AppStorage {
     return value;
   }
 
+  Future<void> removeToken() async {
+    await flutterSecureStorage.delete(key: _token);
+  }
+
   void putKey(key, value) {
     flutterSecureStorage.write(key: key, value: value);
   }

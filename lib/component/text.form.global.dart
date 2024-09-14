@@ -24,7 +24,6 @@ class TextFormGlobal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(6),
@@ -41,7 +40,7 @@ class TextFormGlobal extends StatelessWidget {
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(6),
               borderSide: BorderSide(
-                  color: GlobalColors.mainColor), // Normal border color
+                  color: Colors.grey.shade300), // Normal border color
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(6),

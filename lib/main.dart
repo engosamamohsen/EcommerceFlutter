@@ -1,9 +1,13 @@
+import 'package:auth/cubit/address/address_cubit.dart';
 import 'package:auth/cubit/home/home_cubit.dart';
 import 'package:auth/generated/l10n.dart';
-import 'package:auth/views/splash/splash.view.dart';
+import 'package:auth/views/address/add/add_address.dart';
+import 'package:auth/views/address/list/address_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'cubit/product/product_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,8 +18,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => HomeCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => HomeCubit()),
+        BlocProvider(create: (context) => ProductCubit()),
+        BlocProvider(
+            create: (context) =>
+                AddressCubit()), // Provide your ProductCubit here
+      ],
       child: MaterialApp(
         localizationsDelegates: const [
           S.delegate,
@@ -27,7 +37,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         debugShowMaterialGrid: false,
         theme: ThemeData(useMaterial3: true),
-        home: SplashView(),
+        home: AddressList(),
       ),
     );
   }

@@ -499,6 +499,196 @@ class S {
       args: [],
     );
   }
+
+  /// `My Orders`
+  String get my_orders {
+    return Intl.message(
+      'My Orders',
+      name: 'my_orders',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Manage Address`
+  String get manage_address {
+    return Intl.message(
+      'Manage Address',
+      name: 'manage_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact Us`
+  String get contact_us {
+    return Intl.message(
+      'Contact Us',
+      name: 'contact_us',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Guest`
+  String get guest {
+    return Intl.message(
+      'Guest',
+      name: 'guest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search in`
+  String get search_in {
+    return Intl.message(
+      'Search in',
+      name: 'search_in',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add To Cart`
+  String get add_to_cart {
+    return Intl.message(
+      'Add To Cart',
+      name: 'add_to_cart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Price`
+  String get total_price {
+    return Intl.message(
+      'Total Price',
+      name: 'total_price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading Please Wait ....`
+  String get loading_please_wait {
+    return Intl.message(
+      'Loading Please Wait ....',
+      name: 'loading_please_wait',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Adress`
+  String get add_address {
+    return Intl.message(
+      'Add Adress',
+      name: 'add_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Governate`
+  String get governate {
+    return Intl.message(
+      'Governate',
+      name: 'governate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City`
+  String get city {
+    return Intl.message(
+      'City',
+      name: 'city',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Street`
+  String get street {
+    return Intl.message(
+      'Street',
+      name: 'street',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Building`
+  String get building {
+    return Intl.message(
+      'Building',
+      name: 'building',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Floor`
+  String get floor {
+    return Intl.message(
+      'Floor',
+      name: 'floor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Flat`
+  String get flat {
+    return Intl.message(
+      'Flat',
+      name: 'flat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `area`
+  String get area {
+    return Intl.message(
+      'area',
+      name: 'area',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Special Sign`
+  String get special_sign {
+    return Intl.message(
+      'Special Sign',
+      name: 'special_sign',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter`
+  String get please_enter {
+    return Intl.message(
+      'Please Enter',
+      name: 'please_enter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Addresses`
+  String get my_address {
+    return Intl.message(
+      'My Addresses',
+      name: 'my_address',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

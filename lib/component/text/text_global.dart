@@ -27,6 +27,7 @@ class _TextGlobalState extends State<TextGlobal> {
       overflow: TextOverflow.ellipsis,
       textAlign: TextAlign.start,
       style: TextStyle(
+          height: 0.9,
           fontWeight: widget.fontWeight ?? FontWeight.normal,
           fontSize: widget.fontSize,
           color: widget.color ?? GlobalColors.mainColor),

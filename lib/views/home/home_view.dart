@@ -3,7 +3,7 @@ import 'package:auth/component/network/loading_view_full.dart';
 import 'package:auth/component/network/network_error_view.dart';
 import 'package:auth/component/slider/slider_view.dart';
 import 'package:auth/component/text.form.global.dart';
-import 'package:auth/component/text_global.dart';
+import 'package:auth/component/text/text_global.dart';
 import 'package:auth/core/app_color.dart';
 import 'package:auth/cubit/home/home_cubit.dart';
 import 'package:auth/cubit/home/home_state.dart';

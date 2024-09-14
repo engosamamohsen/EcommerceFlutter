@@ -1,4 +1,4 @@
-import 'package:auth/component/app.bar.global.dart';
+import 'package:auth/component/app_bar/app.bar.global.dart';
 import 'package:auth/component/button.global.dart';
 import 'package:auth/component/text.form.global.dart';
 import 'package:auth/cubit/auth/auth_cubit.dart';
@@ -24,7 +24,9 @@ class ForgetPasswordView extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             backgroundColor: Colors.white,
-            appBar: const GlobalAppBar(),
+            appBar: GlobalAppBar(
+              title: S.of(context).forget_password,
+            ),
             body: SafeArea(
                 child: Container(
               width: double.infinity,

@@ -1,4 +1,4 @@
-import 'package:auth/component/app.bar.global.dart';
+import 'package:auth/component/app_bar/app.bar.global.dart';
 import 'package:auth/component/button.global.dart';
 import 'package:auth/cubit/auth/auth_cubit.dart';
 import 'package:auth/cubit/auth/auth_state.dart';
@@ -12,6 +12,7 @@ import 'package:auth/core/app_color.dart';
 import 'package:auth/component/text.form.global.dart';
 import 'package:auth/views/auth/forget.password.view.dart';
 import 'package:auth/views/auth/register.view.dart';
+import 'package:auth/views/home/home_container.dart';
 import 'package:auth/views/home/home_view.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -27,10 +28,21 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
     return BlocProvider(
       create: (context) => AuthCubit(),
       child: BlocConsumer<AuthCubit, AuthStates>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is AuthSuccessState) {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (BuildContext context) {
+                return HomeContainer();
+              }),
+              (Route<dynamic> route) => false,
+            );
+          }
+        },
         builder: (context, state) {
           return Scaffold(
             backgroundColor: Colors.white,
@@ -86,16 +98,6 @@ class LoginView extends StatelessWidget {
                             BlocProvider.of<AuthCubit>(context).login(
                                 email: emailController.text,
                                 password: passwordController.text);
-                          }
-                          if (state is AuthSuccessState) {
-                            Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) {
-                                return HomeView();
-                              }),
-                              (Route<dynamic> route) => false,
-                            );
                           }
                         },
                       ),

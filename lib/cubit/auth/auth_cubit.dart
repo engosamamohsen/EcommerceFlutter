@@ -19,25 +19,30 @@ class AuthCubit extends Cubit<AuthStates> {
   AppStorage appStorage = AppStorage();
 
   void login({required email, required password}) async {
-    LoginRequest model = LoginRequest(email: email, password: password);
-    emit(AuthLoadingState());
-    Response? response = await apiService.post(EndPoint.login, model.toMap());
-    print("start post call cubit");
+    try {
+      LoginRequest model = LoginRequest(email: email, password: password);
+      emit(AuthLoadingState());
+      Response? response = await apiService.post(EndPoint.login, model.toMap());
+      print("start post call cubit");
 
-    if (response != null) {
-      print("start post call cubit not null");
-      if (response.statusCode == 200 && response.data is Map<String, dynamic>) {
-        print("start post call cubit not null dynamic");
-        final Map<String, dynamic> json = response.data as Map<String, dynamic>;
-        UserResponse user = UserResponse.fromJson(json);
-        appStorage.putUser(user);
-        UserResponse userSaved = await appStorage.getUser();
-        emit(AuthSuccessState());
-        // print("start user email ${userSaved.data?.email} ");
+      if (response != null) {
+        print("start post call cubit not null");
+        if (response.statusCode == 200 &&
+            response.data is Map<String, dynamic>) {
+          print("start post call cubit not null dynamic");
+          final Map<String, dynamic> json =
+              response.data as Map<String, dynamic>;
+          UserResponse user = UserResponse.fromJson(json);
+          appStorage.putUser(user);
+          UserResponse userSaved = await appStorage.getUser();
+          emit(AuthSuccessState());
+          // print("start user email ${userSaved.data?.email} ");
+        }
       }
-    }
 
-    print("start post call cubit not init");
+      print("start post call cubit not init");
+    } catch (e) {}
+
     // emit(AuthInitState());
   }
 
@@ -59,7 +64,7 @@ class AuthCubit extends Cubit<AuthStates> {
         emit(AuthSuccessState());
       }
     }
-    emit(AuthInitState());
+    // emit(AuthInitState());
   }
 
   void forgetPassword({required email}) async {
