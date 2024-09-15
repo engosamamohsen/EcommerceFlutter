@@ -39,6 +39,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "currency": MessageLookupByLibrary.simpleMessage("EGP"),
+        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "do_you_want_delete_this_item": MessageLookupByLibrary.simpleMessage(
+            "Do you want delete this item?"),
         "dont_have_account":
             MessageLookupByLibrary.simpleMessage("Dont have an Account? "),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
@@ -68,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Network Error Please Try Again"),
         "newest_products":
             MessageLookupByLibrary.simpleMessage("Newest Products"),
+        "no": MessageLookupByLibrary.simpleMessage("No"),
         "order_details": MessageLookupByLibrary.simpleMessage("Order Details"),
         "orders": MessageLookupByLibrary.simpleMessage("Orders"),
         "otp": MessageLookupByLibrary.simpleMessage("OTP"),
@@ -102,6 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_price": MessageLookupByLibrary.simpleMessage("Total Price"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "welcome_in": MessageLookupByLibrary.simpleMessage("Welcome in"),
-        "wishlist": MessageLookupByLibrary.simpleMessage("Wishlist")
+        "wishlist": MessageLookupByLibrary.simpleMessage("Wishlist"),
+        "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }

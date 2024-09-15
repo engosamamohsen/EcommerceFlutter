@@ -66,6 +66,23 @@ class ApiService {
     ));
   }
 
+  Future<Response?> delete(String endpoint, int id) async {
+    try {
+      Response response = await _dio!.delete("$endpoint/$id");
+      return response;
+    } on DioException catch (e) {
+      // print("start post response DioError catch ${e}");
+      handleStatusCode(e.response?.statusCode ?? 0, e.toString());
+    } catch (e) {
+      // Handle DioError here or rethrow
+      // rethrow;
+
+      // print("start post response catch ${e}");
+      handleStatusCode(0, e.toString());
+    }
+    return null;
+  }
+
   // Generic GET request
   Future<Response?> get(String endpoint,
       {Map<String, dynamic>? queryParameters}) async {

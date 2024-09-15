@@ -6,6 +6,8 @@ class AddressLoadingState extends AddressStates {}
 
 class AddressLoadingButtonState extends AddressStates {}
 
+class AddressLoadingDialogState extends AddressStates {}
+
 class AddressFailedState extends AddressStates {
   String message;
   AddressFailedState({required this.message});

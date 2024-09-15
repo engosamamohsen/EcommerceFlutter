@@ -4,6 +4,7 @@ import 'package:auth/models/address/add_address_request.dart';
 import 'package:auth/models/address/add_address_response.dart';
 import 'package:auth/models/address/address_list_response.dart';
 import 'package:auth/models/address/governates_response.dart';
+import 'package:auth/models/response/base_response.dart';
 import 'package:auth/network/api_service.dart';
 import 'package:auth/network/end_point.dart';
 import 'package:bloc/bloc.dart';
@@ -72,6 +73,31 @@ class AddressCubit extends Cubit<AddressStates> {
             print("error in from json $e");
           }
           print("start get call cubit not null dynamic from json");
+        } else
+          emit(AddressFailedState(message: "Error Loading Please Try Again"));
+      }
+    } catch (e) {
+      emit(AddressFailedState(message: "${e.toString()}"));
+    }
+  }
+
+  void delete(int id) async {
+    try {
+      // queryParameters
+      emit(AddressLoadingState());
+      Response? response = await apiService.delete(EndPoint.deleteAddress, id);
+
+      if (response != null) {
+        print("start get call cubit not null");
+        if (response.statusCode == 200 &&
+            response.data is Map<String, dynamic>) {
+          print("start get call cubit not null dynamic");
+          final Map<String, dynamic> json =
+              response.data as Map<String, dynamic>;
+          print("start get call cubit not null dynamic ${json}");
+
+          BaseResponse ProductResponse = BaseResponse.fromJson(json);
+          emit(AddressSuccessState<BaseResponse>(data: ProductResponse));
         } else
           emit(AddressFailedState(message: "Error Loading Please Try Again"));
       }

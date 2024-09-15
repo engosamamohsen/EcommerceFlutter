@@ -8,4 +8,5 @@ class EndPoint {
   static const addAddress = "customers/create_update_address";
   static const governorates = "governorates";
   static const addressList = "customers/address";
+  static const deleteAddress = "customers/address/delete";
 }

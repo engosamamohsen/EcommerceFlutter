@@ -62,5 +62,9 @@
     "area": "area",
     "special_sign": "Special Sign",
     "please_enter": "Please Enter",
-    "my_address": "My Addresses"
+    "my_address": "My Addresses",
+    "yes": "Yes",
+    "no": "No",
+    "delete": "Delete",
+    "do_you_want_delete_this_item": "Do you want delete this item?"
 }
