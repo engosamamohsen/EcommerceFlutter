@@ -2,9 +2,12 @@ import 'package:auth/component/text/text_global.dart';
 import 'package:flutter/material.dart';
 
 class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
-  GlobalAppBar({super.key, this.title = ""});
+  GlobalAppBar(
+      {super.key, this.title = "", this.suffixIcon, this.onSuffixIconPressed});
 
   String title;
+  IconData? suffixIcon;
+  Function()? onSuffixIconPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +38,17 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
               Icons.arrow_back_ios_new_rounded,
               color: Colors.black,
             )),
+        actions: suffixIcon != null
+            ? [
+                IconButton(
+                  onPressed: onSuffixIconPressed,
+                  icon: Icon(
+                    suffixIcon,
+                    color: Colors.black,
+                  ),
+                ),
+              ]
+            : null,
       ),
     );
   }

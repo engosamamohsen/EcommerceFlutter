@@ -10,6 +10,7 @@ import 'package:auth/generated/l10n.dart';
 import 'package:auth/models/address/add_address_response.dart';
 import 'package:auth/models/address/address_list_response.dart';
 import 'package:auth/models/response/base_response.dart';
+import 'package:auth/views/address/add/add_address.dart';
 import 'package:auth/views/address/list/addtress_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,33 @@ class _AddressListState extends State<AddressList> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<AddressCubit>().getAddressList();
     });
+  }
+
+  @override
+  void activate() {
+    // TODO: implement activate
+    super.activate();
+    print("lifecycle activate");
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+
+    print("lifecycle dispose");
+  }
+
+  @override
+  void reassemble() {
+    // TODO: implement reassemble
+    super.reassemble();
+    print("lifecycle reassem sdble");
+  }
+
+  Future<void> _refreshData() async {
+    // Trigger a refresh of the data
+    context.read<AddressCubit>().getAddressList();
   }
 
   @override
@@ -57,46 +85,58 @@ class _AddressListState extends State<AddressList> {
             backgroundColor: Colors.white,
             appBar: GlobalAppBar(
               title: S.of(context).my_address,
+              suffixIcon: Icons.add_circle_outline,
+              onSuffixIconPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (BuildContext context) {
+                  return AddAddressView();
+                }));
+              },
             ),
             body: state is AddressLoadingState
                 ? const LoadingViewFull()
-                : state is AddressSuccessState<AddressListResponse> ||
-                        state is AddressSuccessState<BaseResponse>
-                    ? Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: ListView.builder(
-                            scrollDirection: Axis.vertical,
-                            itemCount: addressList.length,
-                            itemBuilder: (context, item) {
-                              return AddressItem(
-                                address: addressList[item],
-                                delete: () {
-                                  setState(() {
-                                    postionDeleted = item;
-                                  });
-                                  DialogUtils.showDialogSimple(
-                                      context,
-                                      S.of(context).delete,
-                                      S
-                                          .of(context)
-                                          .do_you_want_delete_this_item,
-                                      S.of(context).yes,
-                                      S.of(context).no, () {
-                                    BlocProvider.of<AddressCubit>(context)
-                                        .delete(addressList[item].id);
-                                    Navigator.pop(context);
-                                  }, () {
-                                    Navigator.pop(context);
-                                  });
-                                },
-                              );
-                            }))
-                    : state is AddressFailedState
-                        ? NetworkError()
-                        : Center(
-                            child: TextGlobal(
-                                text: S.of(context).loading_please_wait),
-                          ));
+                : RefreshIndicator(
+                    onRefresh: _refreshData,
+                    child: state is AddressSuccessState<AddressListResponse> ||
+                            state is AddressSuccessState<BaseResponse>
+                        ? Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                itemCount: addressList.length,
+                                itemBuilder: (context, item) {
+                                  return AddressItem(
+                                    address: addressList[item],
+                                    delete: () {
+                                      setState(() {
+                                        postionDeleted = item;
+                                      });
+                                      DialogUtils.showDialogSimple(
+                                          context,
+                                          S.of(context).delete,
+                                          S
+                                              .of(context)
+                                              .do_you_want_delete_this_item,
+                                          S.of(context).yes,
+                                          S.of(context).no, () {
+                                        BlocProvider.of<AddressCubit>(context)
+                                            .delete(addressList[item].id);
+                                        Navigator.pop(context);
+                                      }, () {
+                                        Navigator.pop(context);
+                                      });
+                                    },
+                                  );
+                                }))
+                        : state is AddressFailedState
+                            ? NetworkError()
+                            : Center(
+                                child: TextGlobal(
+                                  maxLines: 2,
+                                  text:
+                                      "${S.of(context).loading_please_wait} $state",
+                                ),
+                              )));
       },
     );
   }
