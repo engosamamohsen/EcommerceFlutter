@@ -19,9 +19,9 @@ class AddressCubit extends Cubit<AddressStates> {
   void addAddress(AddAddressRequest address) async {
     try {
       emit(AddressLoadingButtonState());
-      Map<String, dynamic> queryParameters = address.toMap();
-      Response? response =
-          await apiService.post(EndPoint.addAddress, queryParameters);
+      // Map<String, dynamic> queryParameters = address.toMap();
+      Response? response = await apiService.post(
+          EndPoint.addAddress, FormData.fromMap(address.toMap()));
 
       if (response != null) {
         print("start get call cubit not null");

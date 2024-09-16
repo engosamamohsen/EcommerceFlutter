@@ -104,6 +104,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "street": MessageLookupByLibrary.simpleMessage("Street"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "total_price": MessageLookupByLibrary.simpleMessage("Total Price"),
+        "update_profile":
+            MessageLookupByLibrary.simpleMessage("Update Profile"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "welcome_in": MessageLookupByLibrary.simpleMessage("Welcome in"),
         "wishlist": MessageLookupByLibrary.simpleMessage("Wishlist"),

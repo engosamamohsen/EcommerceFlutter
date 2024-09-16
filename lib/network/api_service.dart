@@ -104,7 +104,7 @@ class ApiService {
   }
 
   // Generic POST request
-  Future<Response?> post(String endpoint, Map<String, dynamic>? data) async {
+  Future<Response?> post(String endpoint, FormData data) async {
     // print("start post call");
     try {
       Response response = await _dio!.post(endpoint, data: data);
@@ -121,6 +121,24 @@ class ApiService {
     // print("start post null");
     return null;
   }
+
+  // Future<Response?> postMultipart(String endpoint, FormData data) async {
+  //   // print("start post call");
+  //   try {
+  //     Response response = await _dio!.post(endpoint, data: data);
+  //     // print("start post response");
+  //     return response;
+  //   } on DioException catch (e) {
+  //     // print("start post response DioError catch ${e}");
+  //     handleStatusCode(e.response?.statusCode ?? 0, e.toString());
+  //   } catch (e) {
+  //     // print("start post response catch");
+  //     handleStatusCode(0, e.toString());
+  //     // Handle DioError here or rethrow
+  //   }
+  //   // print("start post null");
+  //   return null;
+  // }
 
   // Handle errors globally
   void _handleError(DioException error) {

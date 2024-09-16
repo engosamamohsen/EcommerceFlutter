@@ -729,6 +729,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Update Profile`
+  String get update_profile {
+    return Intl.message(
+      'Update Profile',
+      name: 'update_profile',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

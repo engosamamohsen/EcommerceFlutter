@@ -26,34 +26,13 @@ class AddressList extends StatefulWidget {
 class _AddressListState extends State<AddressList> {
   List<AddressModel> addressList = [];
   int postionDeleted = -1;
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<AddressCubit>().getAddressList();
     });
-  }
-
-  @override
-  void activate() {
-    // TODO: implement activate
-    super.activate();
-    print("lifecycle activate");
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-
-    print("lifecycle dispose");
-  }
-
-  @override
-  void reassemble() {
-    // TODO: implement reassemble
-    super.reassemble();
-    print("lifecycle reassem sdble");
   }
 
   Future<void> _refreshData() async {
@@ -98,7 +77,8 @@ class _AddressListState extends State<AddressList> {
                 : RefreshIndicator(
                     onRefresh: _refreshData,
                     child: state is AddressSuccessState<AddressListResponse> ||
-                            state is AddressSuccessState<BaseResponse>
+                            state is AddressSuccessState<BaseResponse> ||
+                            addressList.isNotEmpty
                         ? Padding(
                             padding: EdgeInsets.all(8.0),
                             child: ListView.builder(
