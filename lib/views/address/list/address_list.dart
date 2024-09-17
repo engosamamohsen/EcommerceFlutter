@@ -3,7 +3,6 @@ import 'package:auth/component/dialog/dialog_utils.dart';
 import 'package:auth/component/network/loading_view_full.dart';
 import 'package:auth/component/network/network_error_view.dart';
 import 'package:auth/component/text/text_global.dart';
-import 'package:auth/core/app_color.dart';
 import 'package:auth/cubit/address/address_cubit.dart';
 import 'package:auth/cubit/address/address_state.dart';
 import 'package:auth/generated/l10n.dart';
@@ -12,7 +11,6 @@ import 'package:auth/models/address/address_list_response.dart';
 import 'package:auth/models/response/base_response.dart';
 import 'package:auth/views/address/add/add_address.dart';
 import 'package:auth/views/address/list/addtress_item.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,7 +22,7 @@ class AddressList extends StatefulWidget {
 }
 
 class _AddressListState extends State<AddressList> {
-  List<AddressModel> addressList = [];
+  List<AddressModel>? addressList;
   int postionDeleted = -1;
 
   @override
@@ -52,9 +50,11 @@ class _AddressListState extends State<AddressList> {
         }
         if (state is AddressSuccessState<BaseResponse>) {
           //delete
-          if (postionDeleted != -1 && postionDeleted < addressList.length) {
+          if (addressList != null &&
+              postionDeleted != -1 &&
+              postionDeleted < addressList!.length) {
             setState(() {
-              addressList.removeAt(postionDeleted);
+              addressList!.removeAt(postionDeleted);
             });
           }
         }
@@ -78,15 +78,15 @@ class _AddressListState extends State<AddressList> {
                     onRefresh: _refreshData,
                     child: state is AddressSuccessState<AddressListResponse> ||
                             state is AddressSuccessState<BaseResponse> ||
-                            addressList.isNotEmpty
+                            addressList != null
                         ? Padding(
                             padding: EdgeInsets.all(8.0),
                             child: ListView.builder(
                                 scrollDirection: Axis.vertical,
-                                itemCount: addressList.length,
+                                itemCount: addressList!.length,
                                 itemBuilder: (context, item) {
                                   return AddressItem(
-                                    address: addressList[item],
+                                    address: addressList![item],
                                     delete: () {
                                       setState(() {
                                         postionDeleted = item;
@@ -100,7 +100,7 @@ class _AddressListState extends State<AddressList> {
                                           S.of(context).yes,
                                           S.of(context).no, () {
                                         BlocProvider.of<AddressCubit>(context)
-                                            .delete(addressList[item].id);
+                                            .delete(addressList![item].id);
                                         Navigator.pop(context);
                                       }, () {
                                         Navigator.pop(context);

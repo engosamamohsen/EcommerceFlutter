@@ -40,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "currency": MessageLookupByLibrary.simpleMessage("EGP"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "description": MessageLookupByLibrary.simpleMessage("Description"),
         "do_you_want_delete_this_item": MessageLookupByLibrary.simpleMessage(
             "Do you want delete this item?"),
         "dont_have_account":
@@ -103,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "special_sign": MessageLookupByLibrary.simpleMessage("Special Sign"),
         "street": MessageLookupByLibrary.simpleMessage("Street"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
+        "tech_info": MessageLookupByLibrary.simpleMessage("Techincal Info"),
         "total_price": MessageLookupByLibrary.simpleMessage("Total Price"),
         "update_profile":
             MessageLookupByLibrary.simpleMessage("Update Profile"),

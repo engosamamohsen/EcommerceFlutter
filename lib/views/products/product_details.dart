@@ -1,19 +1,19 @@
 import 'package:auth/component/app_bar/app_bar_search.dart';
 import 'package:auth/component/button.global.dart';
+import 'package:auth/component/divider/divider.dart';
 import 'package:auth/component/network/loading_view_full.dart';
 import 'package:auth/component/network/network_error_view.dart';
 import 'package:auth/component/rating.dart';
 import 'package:auth/component/slider/slider_view.dart';
-import 'package:auth/component/text/text_big_global.dart';
 import 'package:auth/component/text/text_global.dart';
 import 'package:auth/core/app_color.dart';
-import 'package:auth/cubit/home/home_state.dart';
 import 'package:auth/cubit/product/product_cubit.dart';
 import 'package:auth/cubit/product/product_state.dart';
 import 'package:auth/generated/l10n.dart';
 import 'package:auth/models/product/details/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class ProductDetailsView extends StatefulWidget {
   const ProductDetailsView({super.key});
@@ -74,9 +74,8 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                                   fontWeight: FontWeight.bold,
                                 ),
                                 SizedBox(
-                                  height: 8,
+                                  height: 20,
                                 ),
-                                TabsView(),
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
@@ -106,7 +105,36 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                                       fontWeight: FontWeight.bold,
                                     )
                                   ],
-                                )
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                TextGlobal(
+                                    text: S.of(context).description,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                                SizedBox(
+                                  height: 8,
+                                ),
+                                productDetails(state.data.data.description),
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                DividerGlobal(),
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                TextGlobal(
+                                  text: S.of(context).tech_info,
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                techInfo(state.data.data.technicalInformation),
                               ],
                             ),
                           ),
@@ -182,45 +210,53 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
     );
   }
 
-  TabsView() {
-    return Column(
-      children: [
-        Image.network(
-          "https://i.sstatic.net/45Aaj.png",
-          height: 150,
-        ),
-        Container(
-          height: 70,
-          child: AppBar(
-            centerTitle: true,
-            title: Text("New Titile"),
-            bottom: TabBar(
-              tabs: [
-                Tab(
-                  text: 'State',
-                ),
-                Tab(
-                  text: 'Mission',
-                ),
-                Tab(
-                  text: 'Rocket',
-                )
-              ],
-            ),
-          ),
-        ),
-        Container(
-          child: TabBarView(
+  productDetails(String description) {
+    return SingleChildScrollView(
+        child: Html(
+      data: description,
+    ));
+  }
+
+  techInfo(List<TechnicalInformation> techInfoList) {
+    return SizedBox(
+      height: 200,
+      child: ListView.separated(
+        itemBuilder: (context, index) {
+          var tech = techInfoList[index];
+          return Column(
             children: [
-              Text(
-                'Tab 1',
+              SizedBox(
+                height: 10,
               ),
-              Text('Tab 2'),
-              Text('Tab 3')
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextGlobal(
+                      text: tech.key,
+                      fontSize: 14,
+                      color: Colors.black,
+                    ),
+                    TextGlobal(
+                      text: tech.value,
+                      fontSize: 14,
+                      color: Colors.black,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              )
             ],
-          ),
-        )
-      ],
+          );
+        },
+        itemCount: techInfoList.length,
+        separatorBuilder: (context, index) {
+          return DividerGlobal(thickness: 0.5);
+        },
+      ),
     );
   }
 }
