@@ -63,7 +63,9 @@ class ProductItemView extends StatelessWidget {
           SizedBox(height: 10),
           TextGlobal(
             text: product.name,
+            maxLines: 2,
             fontSize: 14,
+            textAlign: TextAlign.center,
             fontWeight: FontWeight.normal,
             color: Colors.black,
           ),

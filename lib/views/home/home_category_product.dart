@@ -33,6 +33,7 @@ class HomeCategoryProduct extends StatelessWidget {
               ),
               onPressed: () {},
               child: TextGlobal(
+                fontWeight: FontWeight.bold,
                 text: S.of(context).see_all,
                 fontSize: 14,
                 color: GlobalColors.mainColor,

@@ -51,11 +51,29 @@ class _HomeViewState extends State<HomeView> {
                               const SizedBox(height: 30),
                               SliderView(slider: state.data.data!.banners!),
                               const SizedBox(height: 30),
-                              TextGlobal(
-                                text: S.of(context).categories,
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  TextGlobal(
+                                    text: S.of(context).categories,
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  TextButton(
+                                    style: TextButton.styleFrom(
+                                      overlayColor: GlobalColors.mainColor,
+                                    ),
+                                    onPressed: () {},
+                                    child: TextGlobal(
+                                      fontWeight: FontWeight.bold,
+                                      text: S.of(context).see_all,
+                                      fontSize: 14,
+                                      color: GlobalColors.mainColor,
+                                    ),
+                                  ),
+                                ],
                               ),
                               HomeCategories(
                                   categories: state.data.data!.categories!),

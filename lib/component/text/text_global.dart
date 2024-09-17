@@ -8,12 +8,14 @@ class TextGlobal extends StatefulWidget {
       this.fontSize = 16,
       this.color,
       this.maxLines = 1,
-      this.fontWeight});
+      this.fontWeight,
+      this.textAlign = TextAlign.start});
   final String text;
   final double fontSize;
   final int maxLines;
   final Color? color;
   final FontWeight? fontWeight;
+  final TextAlign textAlign;
   @override
   State<TextGlobal> createState() => _TextGlobalState();
 }
@@ -25,7 +27,7 @@ class _TextGlobalState extends State<TextGlobal> {
       widget.text,
       maxLines: widget.maxLines,
       overflow: TextOverflow.ellipsis,
-      textAlign: TextAlign.start,
+      textAlign: widget.textAlign,
       style: TextStyle(
           height: 0.9,
           fontWeight: widget.fontWeight ?? FontWeight.normal,
