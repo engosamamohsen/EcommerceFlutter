@@ -5,6 +5,7 @@ import 'package:auth/views/address/add/add_address.dart';
 import 'package:auth/views/address/list/address_list.dart';
 import 'package:auth/views/products/product_details.dart';
 import 'package:auth/views/profile/edit_profile.dart';
+import 'package:auth/views/splash/splash.view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         debugShowMaterialGrid: false,
         theme: ThemeData(useMaterial3: true),
-        home: ProductDetailsView(),
+        home: SplashView(),
       ),
     );
   }

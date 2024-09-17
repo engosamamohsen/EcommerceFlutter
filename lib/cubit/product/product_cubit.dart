@@ -35,9 +35,9 @@ class ProductCubit extends Cubit<ProductStates> {
           ProductResponse.data.banners.clear();
           print("start slider here");
           ProductResponse.data.gallery.asMap().forEach((index, value) {
-            ProductResponse.data.banners
-                .add(Banners(id: value.id, banner: value.image));
-            print("start slider length ${ProductResponse.data.banners.length}");
+            // ProductResponse.data.banners
+            //     .add(Banners(id: value.id, banner: value.image));
+            print("start slider length ${ProductResponse.data.gallery.length}");
           });
           emit(ProductSuccessState<ProductDetailsResponse>(
               data: ProductResponse));

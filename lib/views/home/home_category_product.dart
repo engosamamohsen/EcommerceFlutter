@@ -15,6 +15,9 @@ class HomeCategoryProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(
+          height: 20,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -24,18 +27,21 @@ class HomeCategoryProduct extends StatelessWidget {
               color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
-            TextGlobal(
-              text: S.of(context).see_all,
-              fontSize: 14,
-              color: GlobalColors.mainColor,
-            )
+            TextButton(
+              style: TextButton.styleFrom(
+                overlayColor: GlobalColors.mainColor,
+              ),
+              onPressed: () {},
+              child: TextGlobal(
+                text: S.of(context).see_all,
+                fontSize: 14,
+                color: GlobalColors.mainColor,
+              ),
+            ),
           ],
         ),
         SizedBox(
-          height: 10,
-        ),
-        SizedBox(
-          height: 250, // Adjust height based on the product item height
+          height: 200, // Adjust height based on the product item height
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount:

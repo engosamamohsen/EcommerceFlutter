@@ -49,7 +49,7 @@ class _HomeViewState extends State<HomeView> {
                             children: [
                               HomeBar(),
                               const SizedBox(height: 30),
-                              SliderView(slider: state.data.data.banners),
+                              SliderView(slider: state.data.data!.banners!),
                               const SizedBox(height: 30),
                               TextGlobal(
                                 text: S.of(context).categories,
@@ -58,19 +58,25 @@ class _HomeViewState extends State<HomeView> {
                                 fontWeight: FontWeight.bold,
                               ),
                               HomeCategories(
-                                  categories: state.data.data.categories),
-                              const SizedBox(height: 30),
+                                  categories: state.data.data!.categories!),
+                              const SizedBox(height: 10),
                               HomeCategoryProduct(
                                   title: S.of(context).flash_sale,
-                                  products: state.data.data.flashSale.products),
-                              const SizedBox(height: 20),
+                                  products: state
+                                              .data.data?.flashSale?.products !=
+                                          null
+                                      ? state.data.data!.flashSale!.products!
+                                      : []),
+                              const SizedBox(height: 10),
                               HomeCategoryProduct(
                                   title: S.of(context).newest_products,
-                                  products: state.data.data.newestProduct),
-                              const SizedBox(height: 20),
+                                  products: state.data.data!.newestProduct!),
+                              const SizedBox(height: 10),
                               HomeCategoryProduct(
                                   title: S.of(context).most_sale,
-                                  products: state.data.data.mostSale),
+                                  products: state.data.data?.mostSale != null
+                                      ? state.data.data!.mostSale!
+                                      : []),
                             ],
                           ),
                         )

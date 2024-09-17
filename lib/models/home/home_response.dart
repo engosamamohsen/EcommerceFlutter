@@ -12,9 +12,13 @@ class HomeResponse {
   late final Data data;
 
   HomeResponse.fromJson(Map<String, dynamic> json) {
-    status = json['status'];
-    message = json['message'];
-    data = Data.fromJson(json['data']);
+    try {
+      status = json['status'];
+      message = json['message'];
+      data = Data.fromJson(json['data']);
+    } catch (e) {
+      print("error $e");
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -43,6 +47,9 @@ class Data {
   late final List<ProductModel> mostSale;
 
   Data.fromJson(Map<String, dynamic> json) {
+    try {} catch (e) {
+      print("error $e");
+    }
     banners =
         List.from(json['banners']).map((e) => Banners.fromJson(e)).toList();
     categories = List.from(json['categories'])
@@ -73,20 +80,20 @@ class Data {
 class Banners {
   Banners({
     required this.id,
-    required this.banner,
+    required this.image,
   });
   late final int id;
-  late final String banner;
+  late final String image;
 
   Banners.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    banner = json['banner'];
+    image = json['image'];
   }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
     _data['id'] = id;
-    _data['banner'] = banner;
+    _data['image'] = image;
     return _data;
   }
 }

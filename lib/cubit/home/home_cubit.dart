@@ -34,6 +34,8 @@ class HomeCubit extends Cubit<HomeStates> {
           // print("start user email ${userSaved.data?.email} ");
         }
       }
-    } catch (e) {}
+    } catch (e) {
+      print("start e ${e}");
+    }
   }
 }

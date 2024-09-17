@@ -19,11 +19,11 @@ class SliderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _pages = List.generate(slider.length,
-        (index) => ImageRound(image: slider[index].banner, round: 50.0));
+        (index) => ImageRound(image: slider[index].image!, round: 50.0));
     _dots = List.generate(
         slider.length,
         (index) => ImageRound(
-              image: slider[index].banner,
+              image: slider[index].image!,
               round: 50.0,
               width: 20,
               height: 20,
