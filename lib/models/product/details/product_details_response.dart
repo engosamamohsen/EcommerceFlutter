@@ -1,7 +1,7 @@
 import 'package:auth/models/home/home_response.dart';
 
-class ProductDetailsAgainResponse {
-  ProductDetailsAgainResponse({
+class ProductDetailsResponse {
+  ProductDetailsResponse({
     required this.status,
     required this.message,
     required this.data,
@@ -11,8 +11,8 @@ class ProductDetailsAgainResponse {
   final String message;
   final Data? data;
 
-  factory ProductDetailsAgainResponse.fromJson(Map<String, dynamic> json) {
-    return ProductDetailsAgainResponse(
+  factory ProductDetailsResponse.fromJson(Map<String, dynamic> json) {
+    return ProductDetailsResponse(
       status: json["status"] ?? 0,
       message: json["message"] ?? "",
       data: json["data"] == null ? null : Data.fromJson(json["data"]),
@@ -78,7 +78,7 @@ class Data {
   final bool isLike;
   final double rate;
   final Category? category;
-  final String cartCount;
+  String cartCount;
   final List<Banners> gallery;
   final List<TechnicalInformation> technicalInformation;
 

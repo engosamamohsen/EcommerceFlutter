@@ -13,5 +13,6 @@ class EndPoint {
   static const logout = "logout";
   static const refreshToken = "refresh-firebase-token";
 
-  static const addToCart = "refresh-firebase-token";
+  static const addToCart = "basket/add";
+  static const addToFavourite = "wishlist/add_or_remove";
 }

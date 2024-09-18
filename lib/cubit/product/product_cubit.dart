@@ -1,9 +1,8 @@
 import 'package:auth/cubit/product/product_state.dart';
 import 'package:auth/db_helper/app_storage.dart';
 import 'package:auth/models/cart/add_to_cart_request.dart';
-import 'package:auth/models/home/home_response.dart';
-import 'package:auth/models/product/details/product_details.dart';
-import 'package:auth/models/product/details/product_details_again.dart';
+import 'package:auth/models/product/add_wishlist_response.dart';
+import 'package:auth/models/product/details/product_details_response.dart';
 import 'package:auth/models/response/base_response.dart';
 import 'package:auth/network/api_service.dart';
 import 'package:auth/network/end_point.dart';
@@ -33,9 +32,9 @@ class ProductCubit extends Cubit<ProductStates> {
           print("start get call cubit not null dynamic ${json}");
 
           try {
-            ProductDetailsAgainResponse ProductResponse =
-                ProductDetailsAgainResponse.fromJson(json);
-            emit(ProductSuccessState<ProductDetailsAgainResponse>(
+            ProductDetailsResponse ProductResponse =
+                ProductDetailsResponse.fromJson(json);
+            emit(ProductSuccessState<ProductDetailsResponse>(
                 data: ProductResponse));
           } catch (e) {
             print("start error ${e.toString()}");
@@ -59,11 +58,13 @@ class ProductCubit extends Cubit<ProductStates> {
 
   void addToCart(int id, String count) async {
     try {
-      emit(ProductLoadingState());
+      print("welcome 22");
+
+      emit(ProductLoadingAddToCartState());
       var request = AddToCartRequest(productId: id, count: count);
       // Map<String, int> queryParameters = {"product_id": id, "count": count};
       Response? response = await apiService.post(
-          EndPoint.productDetails, FormData.fromMap(request.toMap()));
+          EndPoint.addToCart, FormData.fromMap(request.toMap()));
 
       if (response != null) {
         print("start get call cubit not null");
@@ -76,6 +77,36 @@ class ProductCubit extends Cubit<ProductStates> {
 
           BaseResponse productResponse = BaseResponse.fromJson(json);
           emit(ProductSuccessState<BaseResponse>(data: productResponse));
+        } else
+          emit(ProductFailedState(message: "Error Loading Please Try Again"));
+      }
+    } catch (e) {
+      emit(ProductFailedState(message: "${e.toString()}"));
+    }
+  }
+
+  void switchFavourite(int id) async {
+    try {
+      print("welcome 22");
+
+      emit(ProductLoadingWishlistState());
+      var request = AddToCartRequest(productId: id, count: "0");
+      // Map<String, int> queryParameters = {"product_id": id, "count": count};
+      Response? response = await apiService.post(
+          EndPoint.addToFavourite, FormData.fromMap(request.toMap()));
+
+      if (response != null) {
+        print("start get call cubit not null");
+        if (response.statusCode == 200 &&
+            response.data is Map<String, dynamic>) {
+          print("start get call cubit not null dynamic");
+          final Map<String, dynamic> json =
+              response.data as Map<String, dynamic>;
+          print("start get call cubit not null dynamic ${json}");
+
+          AddWishlistResponse productResponse =
+              AddWishlistResponse.fromJson(json);
+          emit(ProductSuccessState<AddWishlistResponse>(data: productResponse));
         } else
           emit(ProductFailedState(message: "Error Loading Please Try Again"));
       }

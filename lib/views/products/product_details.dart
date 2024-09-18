@@ -1,6 +1,7 @@
 import 'package:auth/component/app_bar/app_bar_search.dart';
 import 'package:auth/component/button.global.dart';
 import 'package:auth/component/divider/divider.dart';
+import 'package:auth/component/favourite/favourite.dart';
 import 'package:auth/component/network/loading_view_full.dart';
 import 'package:auth/component/network/network_error_view.dart';
 import 'package:auth/component/rating.dart';
@@ -10,14 +11,12 @@ import 'package:auth/core/app_color.dart';
 import 'package:auth/cubit/product/product_cubit.dart';
 import 'package:auth/cubit/product/product_state.dart';
 import 'package:auth/generated/l10n.dart';
-import 'package:auth/models/product/details/product_details.dart';
-import 'package:auth/models/product/details/product_details_again.dart';
+import 'package:auth/models/product/details/product_details_response.dart';
 import 'package:auth/models/response/base_response.dart';
 import 'package:auth/utils/toast_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:provider/provider.dart';
 
 class ProductDetailsView extends StatefulWidget {
   const ProductDetailsView({super.key});
@@ -27,7 +26,7 @@ class ProductDetailsView extends StatefulWidget {
 }
 
 class _ProductDetailsViewState extends State<ProductDetailsView> {
-  ProductDetailsAgainResponse? productDetailsResponse;
+  ProductDetailsResponse? productDetailsResponse;
   @override
   void initState() {
     super.initState();
@@ -41,15 +40,23 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
   Widget build(BuildContext context) {
     return BlocConsumer<ProductCubit, ProductStates>(
       listener: (context, state) {
-        if (state is ProductSuccessState<ProductDetailsAgainResponse>) {
+        if (state is ProductSuccessState<ProductDetailsResponse>) {
           print("call api here");
           setState(() {
-            print("call api there");
             productDetailsResponse = state.data;
           });
         }
         if (state is ProductSuccessState<BaseResponse>) {
           ToastMessageHelper.showToastMessage(state.data.message);
+          setState(() {
+            String count = productDetailsResponse?.data?.cartCount ?? "";
+            if (count.isEmpty) {
+              productDetailsResponse?.data?.cartCount = "1";
+            } else {
+              productDetailsResponse?.data?.cartCount =
+                  ((int.tryParse(count)! + 1)).toString();
+            }
+          });
         }
       },
       builder: (context, state) {
@@ -67,11 +74,6 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                   ? CartRow(
                       price: productDetailsResponse!.data!.price.toString(),
                       state: state,
-                      addToCart: () {
-                        BlocProvider.of<ProductCubit>(context).addToCart(
-                            productDetailsResponse!.data!.id,
-                            productDetailsResponse!.data!.cartCount);
-                      },
                     )
                   : null,
               body: state is ProductLoadingState
@@ -83,10 +85,30 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SliderView(
-                                    slider:
-                                        productDetailsResponse!.data?.gallery ??
+                                Stack(
+                                  children: [
+                                    SliderView(
+                                        slider: productDetailsResponse!
+                                                .data?.gallery ??
                                             []),
+                                    Positioned(
+                                        top: 10,
+                                        right: 20,
+                                        child: Align(
+                                          alignment: Alignment.topRight,
+                                          child: FavoriteCell(
+                                            size: 30,
+                                            isFavourite: productDetailsResponse
+                                                    ?.data!.isLike ??
+                                                false,
+                                            submit: () {
+                                              print("welcome submit");
+                                            },
+                                          ),
+                                        )),
+                                  ],
+                                ),
+
                                 SizedBox(
                                   height: 8,
                                 ),
@@ -193,10 +215,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
     );
   }
 
-  CartRow(
-      {required String price,
-      required Function() addToCart,
-      required ProductStates state}) {
+  CartRow({required String price, required ProductStates state}) {
     return Container(
       decoration: BoxDecoration(
           color: Colors.white,
@@ -217,11 +236,16 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
               child: Wrap(
                 children: [
                   ButtonGlobal(
-                    showProgress: state is ProductLoadingState ? true : false,
+                    showProgress:
+                        state is ProductLoadingAddToCartState ? true : false,
                     text: S.of(context).add_to_cart,
                     radius: 20,
                     padding: 30,
-                    onTap: () => addToCart,
+                    onTap: () => {
+                      BlocProvider.of<ProductCubit>(context).addToCart(
+                          productDetailsResponse!.data!.id,
+                          productDetailsResponse!.data!.cartCount)
+                    },
                   )
                 ],
               ),
