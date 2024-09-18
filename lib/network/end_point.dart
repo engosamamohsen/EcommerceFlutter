@@ -12,4 +12,6 @@ class EndPoint {
   static const deleteAddress = "customers/address/delete";
   static const logout = "logout";
   static const refreshToken = "refresh-firebase-token";
+
+  static const addToCart = "refresh-firebase-token";
 }

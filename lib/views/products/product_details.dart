@@ -11,9 +11,13 @@ import 'package:auth/cubit/product/product_cubit.dart';
 import 'package:auth/cubit/product/product_state.dart';
 import 'package:auth/generated/l10n.dart';
 import 'package:auth/models/product/details/product_details.dart';
+import 'package:auth/models/product/details/product_details_again.dart';
+import 'package:auth/models/response/base_response.dart';
+import 'package:auth/utils/toast_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:provider/provider.dart';
 
 class ProductDetailsView extends StatefulWidget {
   const ProductDetailsView({super.key});
@@ -23,6 +27,7 @@ class ProductDetailsView extends StatefulWidget {
 }
 
 class _ProductDetailsViewState extends State<ProductDetailsView> {
+  ProductDetailsAgainResponse? productDetailsResponse;
   @override
   void initState() {
     super.initState();
@@ -34,10 +39,19 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget>.generate(5, (counter) => Text("asd"));
-
     return BlocConsumer<ProductCubit, ProductStates>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is ProductSuccessState<ProductDetailsAgainResponse>) {
+          print("call api here");
+          setState(() {
+            print("call api there");
+            productDetailsResponse = state.data;
+          });
+        }
+        if (state is ProductSuccessState<BaseResponse>) {
+          ToastMessageHelper.showToastMessage(state.data.message);
+        }
+      },
       builder: (context, state) {
         return DefaultTabController(
           length: 3,
@@ -49,25 +63,36 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                 },
               ),
               backgroundColor: Colors.white,
-              bottomNavigationBar:
-                  state is ProductSuccessState<ProductDetailsResponse>
-                      ? CartRow(state.data.data.price.toString())
-                      : null,
+              bottomNavigationBar: productDetailsResponse != null
+                  ? CartRow(
+                      price: productDetailsResponse!.data!.price.toString(),
+                      state: state,
+                      addToCart: () {
+                        BlocProvider.of<ProductCubit>(context).addToCart(
+                            productDetailsResponse!.data!.id,
+                            productDetailsResponse!.data!.cartCount);
+                      },
+                    )
+                  : null,
               body: state is ProductLoadingState
                   ? const LoadingViewFull()
-                  : state is ProductSuccessState<ProductDetailsResponse>
+                  : productDetailsResponse != null
                       ? SingleChildScrollView(
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SliderView(slider: state.data.data.banners),
+                                SliderView(
+                                    slider:
+                                        productDetailsResponse!.data?.gallery ??
+                                            []),
                                 SizedBox(
                                   height: 8,
                                 ),
                                 TextGlobal(
-                                  text: state.data.data.name * 100,
+                                  text: productDetailsResponse!.data?.name ??
+                                      "" * 100,
                                   fontSize: 18,
                                   maxLines: 2,
                                   color: Colors.black,
@@ -80,7 +105,12 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     ButtonGlobal(
-                                      text: state.data.data.category.name,
+                                      text: productDetailsResponse!
+                                                  .data!.category !=
+                                              null
+                                          ? productDetailsResponse!
+                                              .data!.category!.name
+                                          : "",
                                       onTap: () {
                                         //call category api (osama)
                                       },
@@ -90,7 +120,9 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                                       width: 8,
                                     ),
                                     StarRating(
-                                      rating: state.data.data.rate,
+                                      rating:
+                                          productDetailsResponse!.data?.rate ??
+                                              0,
                                       starCount: 5,
                                       size: 30,
                                       color: GlobalColors.mainColor,
@@ -100,7 +132,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                                     ),
                                     TextGlobal(
                                       text:
-                                          "(${state.data.data.rate.toString()})",
+                                          "(${productDetailsResponse!.data?.rate.toString()})",
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
                                     )
@@ -117,7 +149,9 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                                 SizedBox(
                                   height: 8,
                                 ),
-                                productDetails(state.data.data.description),
+                                productDetails(
+                                    productDetailsResponse!.data?.description ??
+                                        ""),
                                 SizedBox(
                                   height: 30,
                                 ),
@@ -134,7 +168,16 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                                 SizedBox(
                                   width: 8,
                                 ),
-                                techInfo(state.data.data.technicalInformation),
+                                // techInfo(productDetailsResponse!
+                                //             .data?.technicalInformation !=
+                                //         null
+                                //     ? productDetailsResponse!
+                                //         .data?.technicalInformation
+                                //     : []),
+
+                                techInfo(productDetailsResponse
+                                        ?.data?.technicalInformation ??
+                                    []),
                               ],
                             ),
                           ),
@@ -150,7 +193,10 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
     );
   }
 
-  CartRow(String price) {
+  CartRow(
+      {required String price,
+      required Function() addToCart,
+      required ProductStates state}) {
     return Container(
       decoration: BoxDecoration(
           color: Colors.white,
@@ -171,9 +217,11 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
               child: Wrap(
                 children: [
                   ButtonGlobal(
+                    showProgress: state is ProductLoadingState ? true : false,
                     text: S.of(context).add_to_cart,
                     radius: 20,
                     padding: 30,
+                    onTap: () => addToCart,
                   )
                 ],
               ),
