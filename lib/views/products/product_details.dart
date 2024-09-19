@@ -11,6 +11,7 @@ import 'package:auth/core/app_color.dart';
 import 'package:auth/cubit/product/product_cubit.dart';
 import 'package:auth/cubit/product/product_state.dart';
 import 'package:auth/generated/l10n.dart';
+import 'package:auth/models/product/add_wishlist_response.dart';
 import 'package:auth/models/product/details/product_details_response.dart';
 import 'package:auth/models/response/base_response.dart';
 import 'package:auth/utils/toast_message.dart';
@@ -44,6 +45,15 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
           print("call api here");
           setState(() {
             productDetailsResponse = state.data;
+          });
+        }
+        if (state is ProductSuccessState<AddWishlistResponse>) {
+          print("call api here");
+          setState(() {
+            if (productDetailsResponse != null) {
+              productDetailsResponse?.data?.isLike =
+                  (state.data.data?.isFavorite == 0 ? false : true);
+            }
           });
         }
         if (state is ProductSuccessState<BaseResponse>) {
@@ -101,8 +111,14 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                                             isFavourite: productDetailsResponse
                                                     ?.data!.isLike ??
                                                 false,
+                                            showProgress: state
+                                                is ProductLoadingWishlistState,
                                             submit: () {
-                                              print("welcome submit");
+                                              BlocProvider.of<ProductCubit>(
+                                                      context)
+                                                  .addToFavourite(
+                                                      productDetailsResponse!
+                                                          .data!.id);
                                             },
                                           ),
                                         )),

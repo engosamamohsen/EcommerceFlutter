@@ -6,9 +6,11 @@ class FavoriteCell extends StatelessWidget {
       {super.key,
       this.isFavourite = false,
       this.size = 60,
+      this.showProgress = false,
       required this.submit});
 
   bool isFavourite;
+  bool showProgress;
   double size;
   Function submit;
 
@@ -17,18 +19,23 @@ class FavoriteCell extends StatelessWidget {
     return CircleAvatar(
       backgroundColor: Colors.grey.shade300,
       radius: 20,
-      child: IconButton(
-        padding: EdgeInsets.zero,
-        icon: Icon(
-          isFavourite ? Icons.favorite : Icons.favorite_border,
-          color: isFavourite ? GlobalColors.mainColor : Colors.grey,
-          size: size,
-        ),
-        color: Colors.grey.shade300,
-        onPressed: () {
-          submit();
-        },
-      ),
+      child: showProgress
+          ? CircularProgressIndicator(
+              color: GlobalColors.mainColor,
+              strokeWidth: 1,
+            )
+          : IconButton(
+              padding: EdgeInsets.zero,
+              icon: Icon(
+                isFavourite ? Icons.favorite : Icons.favorite_border,
+                color: isFavourite ? GlobalColors.mainColor : Colors.grey,
+                size: size,
+              ),
+              color: Colors.grey.shade300,
+              onPressed: () {
+                submit();
+              },
+            ),
     );
   }
 }

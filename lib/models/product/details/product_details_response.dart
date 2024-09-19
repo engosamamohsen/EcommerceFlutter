@@ -75,7 +75,7 @@ class Data {
   final DateTime? createdAt;
   final DateTime? updatedAt;
   final int likes;
-  final bool isLike;
+  bool isLike;
   final double rate;
   final Category? category;
   String cartCount;

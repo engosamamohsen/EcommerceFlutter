@@ -85,7 +85,7 @@ class ProductCubit extends Cubit<ProductStates> {
     }
   }
 
-  void switchFavourite(int id) async {
+  void addToFavourite(int id) async {
     try {
       print("welcome 22");
 
