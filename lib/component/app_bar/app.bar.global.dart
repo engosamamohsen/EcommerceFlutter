@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 
 class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
   GlobalAppBar(
-      {super.key, this.title = "", this.suffixIcon, this.onSuffixIconPressed});
+      {super.key,
+      this.title = "",
+      this.showBackBtn = true,
+      this.suffixIcon,
+      this.onSuffixIconPressed});
 
   String title;
   IconData? suffixIcon;
+  bool showBackBtn;
   Function()? onSuffixIconPressed;
 
   @override
@@ -30,14 +35,16 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
                 fontWeight: FontWeight.bold,
               )
             : null,
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios_new_rounded,
-              color: Colors.black,
-            )),
+        leading: (showBackBtn
+            ? IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  color: Colors.black,
+                ))
+            : null),
         actions: suffixIcon != null
             ? [
                 IconButton(

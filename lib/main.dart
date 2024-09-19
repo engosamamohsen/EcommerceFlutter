@@ -1,6 +1,8 @@
 import 'package:auth/cubit/address/address_cubit.dart';
 import 'package:auth/cubit/home/home_cubit.dart';
 import 'package:auth/generated/l10n.dart';
+import 'package:auth/views/cart/cart_item.dart';
+import 'package:auth/views/cart/cart_view.dart';
 import 'package:auth/views/products/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         debugShowMaterialGrid: false,
         theme: ThemeData(useMaterial3: true),
-        home: ProductDetailsView(),
+        home: CartView(),
       ),
     );
   }
