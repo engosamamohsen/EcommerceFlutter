@@ -769,6 +769,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Your cart is empty`
+  String get your_cart_is_empty {
+    return Intl.message(
+      'Your cart is empty',
+      name: 'your_cart_is_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Products`
+  String get products {
+    return Intl.message(
+      'Products',
+      name: 'products',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shipping within a week, excluding holidays.`
+  String get shipping_within_a_week_excluding_holidays {
+    return Intl.message(
+      'Shipping within a week, excluding holidays.',
+      name: 'shipping_within_a_week_excluding_holidays',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

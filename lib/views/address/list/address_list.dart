@@ -3,6 +3,7 @@ import 'package:auth/component/dialog/dialog_utils.dart';
 import 'package:auth/component/network/loading_view_full.dart';
 import 'package:auth/component/network/network_error_view.dart';
 import 'package:auth/component/text/text_global.dart';
+import 'package:auth/core/app_color.dart';
 import 'package:auth/cubit/address/address_cubit.dart';
 import 'package:auth/cubit/address/address_state.dart';
 import 'package:auth/generated/l10n.dart';
@@ -61,7 +62,7 @@ class _AddressListState extends State<AddressList> {
       },
       builder: (context, state) {
         return Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: GlobalColors.backGroundColor,
             appBar: GlobalAppBar(
               title: S.of(context).my_address,
               suffixIcon: Icons.add_circle_outline,

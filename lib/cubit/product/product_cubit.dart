@@ -1,6 +1,6 @@
 import 'package:auth/cubit/product/product_state.dart';
 import 'package:auth/db_helper/app_storage.dart';
-import 'package:auth/models/cart/add_to_cart_request.dart';
+import 'package:auth/models/cart/request/add_to_cart_request.dart';
 import 'package:auth/models/product/add_wishlist_response.dart';
 import 'package:auth/models/product/details/product_details_response.dart';
 import 'package:auth/models/response/base_response.dart';

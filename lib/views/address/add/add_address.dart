@@ -4,6 +4,7 @@ import 'package:auth/component/network/loading_view_full.dart';
 import 'package:auth/component/network/network_error_view.dart';
 import 'package:auth/component/text.form.global.dart';
 import 'package:auth/component/text/text_global.dart';
+import 'package:auth/core/app_color.dart';
 import 'package:auth/cubit/address/address_cubit.dart';
 import 'package:auth/cubit/address/address_state.dart';
 import 'package:auth/db_helper/app_storage.dart';
@@ -88,7 +89,7 @@ class _AddAddressView extends State<AddAddressView> {
       },
       builder: (context, state) {
         return Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: GlobalColors.backGroundColor,
             appBar: GlobalAppBar(
               title: S.of(context).add_address,
             ),

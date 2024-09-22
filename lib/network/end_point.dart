@@ -15,4 +15,12 @@ class EndPoint {
 
   static const addToCart = "basket/add";
   static const addToFavourite = "wishlist/add_or_remove";
+
+  static const cartAddItem = "basket/add";
+  static const cartList = "basket";
+  static const cartRemove = "basket/delete";
+
+  static const orderList = "orders";
+  static const orderDetails = "orders/details";
+  static const createOrder = "basket/buy";
 }

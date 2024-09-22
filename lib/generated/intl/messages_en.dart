@@ -94,12 +94,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Privacy And Policy"),
         "product_details":
             MessageLookupByLibrary.simpleMessage("Product Details"),
+        "products": MessageLookupByLibrary.simpleMessage("Products"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "search_in": MessageLookupByLibrary.simpleMessage("Search in"),
         "see_all": MessageLookupByLibrary.simpleMessage("See All"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "shipping_within_a_week_excluding_holidays":
+            MessageLookupByLibrary.simpleMessage(
+                "Shipping within a week, excluding holidays."),
         "sign_in": MessageLookupByLibrary.simpleMessage("Sign In"),
         "sign_up": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "special_sign": MessageLookupByLibrary.simpleMessage("Special Sign"),
@@ -112,6 +116,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "welcome_in": MessageLookupByLibrary.simpleMessage("Welcome in"),
         "wishlist": MessageLookupByLibrary.simpleMessage("Wishlist"),
-        "yes": MessageLookupByLibrary.simpleMessage("Yes")
+        "yes": MessageLookupByLibrary.simpleMessage("Yes"),
+        "your_cart_is_empty":
+            MessageLookupByLibrary.simpleMessage("Your cart is empty")
       };
 }
