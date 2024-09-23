@@ -780,6 +780,16 @@ class S {
     );
   }
 
+  /// `Your Favorite is empty`
+  String get your_favorite_is_empty {
+    return Intl.message(
+      'Your Favorite is empty',
+      name: 'your_favorite_is_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Products`
   String get products {
     return Intl.message(

@@ -6,3 +6,6 @@ extension PriceParsing on String {
     return "${double.parse(this).toStringAsFixed(2)} ${S.of(context).currency}";
   }
 }
+
+// price: 3
+// 3.00 EGP

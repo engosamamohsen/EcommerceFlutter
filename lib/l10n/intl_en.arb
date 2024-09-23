@@ -72,6 +72,7 @@
     "tech_info": "Techincal Info",
     "checkout": "Checkout",
     "your_cart_is_empty" : "Your cart is empty",
+    "your_favorite_is_empty" : "Your Favorite is empty",
     "products": "Products",
     "shipping_within_a_week_excluding_holidays":"Shipping within a week, excluding holidays."
 }

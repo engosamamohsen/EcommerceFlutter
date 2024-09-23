@@ -1,3 +1,4 @@
+import 'package:auth/component/favourite/favourite.dart';
 import 'package:auth/component/text/text_global.dart';
 import 'package:auth/core/app_color.dart';
 import 'package:auth/generated/l10n.dart';
@@ -7,10 +8,17 @@ import 'package:flutter/material.dart';
 
 class ProductItemView extends StatelessWidget {
   ProductItemView(
-      {super.key, required this.product, this.width = 120, this.height = 120});
+      {super.key,
+      required this.product,
+      this.width = 120,
+      this.height = 120,
+      this.showProgres,
+      this.submitFavourite});
   final ProductModel product;
   final double width;
   final double height;
+  Function? submitFavourite;
+  bool? showProgres;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +65,20 @@ class ProductItemView extends StatelessWidget {
                   fit: BoxFit
                       .cover, // Optional: Adjust the image to fit within its container
                 ),
-              )
+              ),
+              Positioned(
+                  top: 10,
+                  right: 20,
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: FavoriteCell(
+                      size: 30,
+                      isFavourite: product.isLike,
+                      submit: () {
+                        if (submitFavourite != null) submitFavourite;
+                      },
+                    ),
+                  )),
             ],
           ),
           SizedBox(height: 10),

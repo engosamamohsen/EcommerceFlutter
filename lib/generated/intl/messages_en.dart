@@ -118,6 +118,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "wishlist": MessageLookupByLibrary.simpleMessage("Wishlist"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes"),
         "your_cart_is_empty":
-            MessageLookupByLibrary.simpleMessage("Your cart is empty")
+            MessageLookupByLibrary.simpleMessage("Your cart is empty"),
+        "your_favorite_is_empty":
+            MessageLookupByLibrary.simpleMessage("Your Favorite is empty")
       };
 }
