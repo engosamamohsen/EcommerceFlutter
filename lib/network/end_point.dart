@@ -25,4 +25,6 @@ class EndPoint {
   static const orderList = "orders";
   static const orderDetails = "orders/details";
   static const createOrder = "basket/buy";
+
+  static const checkout = "checkout";
 }

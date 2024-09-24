@@ -9,13 +9,13 @@ class HomeResponse {
   });
   late final int status;
   late final String message;
-  late final Data data;
+  late final HomeModel data;
 
   HomeResponse.fromJson(Map<String, dynamic> json) {
     try {
       status = json['status'];
       message = json['message'];
-      data = Data.fromJson(json['data']);
+      data = HomeModel.fromJson(json['data']);
     } catch (e) {
       print("error $e");
     }
@@ -30,8 +30,8 @@ class HomeResponse {
   }
 }
 
-class Data {
-  Data({
+class HomeModel {
+  HomeModel({
     required this.banners,
     required this.categories,
     required this.newestProduct,
@@ -46,7 +46,7 @@ class Data {
   late final FlashSale flashSale;
   late final List<ProductModel> mostSale;
 
-  Data.fromJson(Map<String, dynamic> json) {
+  HomeModel.fromJson(Map<String, dynamic> json) {
     try {} catch (e) {
       print("error $e");
     }

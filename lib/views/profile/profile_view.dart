@@ -5,6 +5,7 @@ import 'package:auth/db_helper/app_storage.dart';
 import 'package:auth/generated/l10n.dart';
 import 'package:auth/models/login/login_response.dart';
 import 'package:auth/views/auth/login.view.dart';
+import 'package:auth/views/wishlist/wishlist_list_view.dart';
 import 'package:flutter/material.dart';
 
 class ProfileView extends StatefulWidget {
@@ -94,6 +95,19 @@ class _ProfileViewState extends State<ProfileView> {
               text: S.of(context).my_orders,
               icon: Icons.list_alt_outlined,
               submit: () {},
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            ItemSetting(
+              text: S.of(context).wishlist,
+              icon: Icons.favorite_outline,
+              submit: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (BuildContext context) {
+                  return const WishListView();
+                }));
+              },
             ),
             SizedBox(
               height: 5,

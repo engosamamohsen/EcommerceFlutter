@@ -1,5 +1,3 @@
-import 'package:auth/models/home/home_response.dart';
-
 abstract class HomeStates {}
 
 class HomeInitState extends HomeStates {}

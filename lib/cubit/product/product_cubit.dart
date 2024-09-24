@@ -107,6 +107,7 @@ class ProductCubit extends Cubit<ProductStates> {
 
           AddWishlistResponse productResponse =
               AddWishlistResponse.fromJson(json);
+          print("Done WishList");
           emit(ProductSuccessState<AddWishlistResponse>(data: productResponse));
         } else
           emit(ProductFailedState(message: "Error Loading Please Try Again"));

@@ -15,7 +15,7 @@ class ProductModel {
   late final String price;
   late final String image;
   late final int likes;
-  late final bool isLike;
+  late bool isLike;
   late final double rate;
 
   ProductModel.fromJson(Map<String, dynamic> json) {

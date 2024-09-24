@@ -1,18 +1,31 @@
 import 'package:auth/component/text/text_global.dart';
 import 'package:auth/core/app_color.dart';
+import 'package:auth/cubit/product/product_cubit.dart';
+import 'package:auth/cubit/product/product_state.dart';
 import 'package:auth/generated/l10n.dart';
 import 'package:auth/models/product/product_model.dart';
 import 'package:auth/views/products/product_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeCategoryProduct extends StatelessWidget {
-  HomeCategoryProduct({super.key, required this.title, required this.products});
+  HomeCategoryProduct(
+      {super.key,
+      required this.title,
+      required this.products,
+      required this.productStates,
+      required this.productIdFav,
+      required this.submitFavourite});
 
   final String title;
+  int productIdFav;
   List<ProductModel> products = [];
+  ProductStates productStates;
+  final Function(int productId) submitFavourite;
 
   @override
   Widget build(BuildContext context) {
+    print("state category product $productStates , $productIdFav");
     return Column(
       children: [
         SizedBox(
@@ -52,6 +65,11 @@ class HomeCategoryProduct extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: ProductItemView(
                   product: products[index],
+                  showProgres: productStates is ProductLoadingWishlistState &&
+                      productIdFav == products[index].id,
+                  submitFavourite: (productId) {
+                    submitFavourite(productId);
+                  },
                 ),
               );
             },

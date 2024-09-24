@@ -55,12 +55,16 @@ class _WishListViewState extends State<WishListView> {
               positionFav != -1 &&
               positionFav < wishlist!.length) {
             setState(() {
+              // print("isFav ${wishlist![positionFav].isLike}");
+              // wishlist![positionFav].isLike =
+              //     state.data.data?.isFavorite == 1 ? true : false;
               wishlist![positionFav].isLike = !wishlist![positionFav].isLike;
             });
           }
         }
       },
       builder: (context, state) {
+        print("state is here $state");
         return Scaffold(
             backgroundColor: GlobalColors.backGroundColor,
             appBar: GlobalAppBar(
@@ -77,19 +81,22 @@ class _WishListViewState extends State<WishListView> {
                               )
                             : Padding(
                                 padding: EdgeInsets.all(8.0),
-                                child: ListView.builder(
+                                child: GridView.builder(
                                     scrollDirection: Axis.vertical,
+                                    gridDelegate:
+                                        const SliverGridDelegateWithFixedCrossAxisCount(
+                                            crossAxisCount: 2),
                                     itemCount: wishlist!.length,
                                     itemBuilder: (context, item) {
                                       return ProductItemView(
                                         product: wishlist![item],
                                         showProgres: state
-                                            is ProductLoadingWishlistState,
-                                        submitFavourite: () {
+                                                is ProductLoadingWishlistState &&
+                                            positionFav == item,
+                                        submitFavourite: (int productId) {
                                           positionFav = item;
                                           BlocProvider.of<ProductCubit>(context)
-                                              .addToFavourite(
-                                                  wishlist![item].id);
+                                              .addToFavourite(productId);
                                         },
                                       );
                                     }))

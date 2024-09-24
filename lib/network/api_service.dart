@@ -31,7 +31,6 @@ class ApiService {
         // Show progress or loader here
         print(options.path);
         // _progressProvider.showProgress();
-        print("request:" + required.toString());
         appStorage.readToken().then((onValue) => {
               if (onValue != null && onValue.isNotEmpty)
                 options.headers['Authorization'] = "Bearer $onValue"

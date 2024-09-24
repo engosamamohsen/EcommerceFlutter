@@ -12,13 +12,13 @@ class ProductItemView extends StatelessWidget {
       required this.product,
       this.width = 120,
       this.height = 120,
-      this.showProgres,
-      this.submitFavourite});
+      required this.showProgres,
+      required this.submitFavourite});
   final ProductModel product;
   final double width;
   final double height;
-  Function? submitFavourite;
-  bool? showProgres;
+  Function(int productId) submitFavourite;
+  bool showProgres;
 
   @override
   Widget build(BuildContext context) {
@@ -73,9 +73,10 @@ class ProductItemView extends StatelessWidget {
                     alignment: Alignment.topRight,
                     child: FavoriteCell(
                       size: 30,
+                      showProgress: showProgres,
                       isFavourite: product.isLike,
                       submit: () {
-                        if (submitFavourite != null) submitFavourite;
+                        submitFavourite(product.id);
                       },
                     ),
                   )),
