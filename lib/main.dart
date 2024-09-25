@@ -1,6 +1,7 @@
 import 'package:auth/cubit/address/address_cubit.dart';
 import 'package:auth/cubit/cart/cart_cubit.dart';
 import 'package:auth/cubit/home/home_cubit.dart';
+import 'package:auth/cubit/settings/settings_cubit.dart';
 import 'package:auth/generated/l10n.dart';
 import 'package:auth/views/splash/splash.view.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => HomeCubit()),
         BlocProvider(create: (context) => ProductCubit()),
         BlocProvider(create: (context) => CartCubit()),
+        BlocProvider(create: (context) => SettingsCubit()),
         BlocProvider(
             create: (context) =>
                 AddressCubit()), // Provide your ProductCubit here

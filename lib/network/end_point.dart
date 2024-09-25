@@ -27,4 +27,6 @@ class EndPoint {
   static const createOrder = "basket/buy";
 
   static const checkout = "checkout";
+  static const terms = "terms";
+  static const contactUs = "contactUs";
 }

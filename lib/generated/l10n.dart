@@ -180,11 +180,31 @@ class S {
     );
   }
 
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Password`
   String get password {
     return Intl.message(
       'Password',
       name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Message`
+  String get message {
+    return Intl.message(
+      'Message',
+      name: 'message',
       desc: '',
       args: [],
     );
@@ -795,6 +815,26 @@ class S {
     return Intl.message(
       'Products',
       name: 'products',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If you have any inquries get in touch with us.`
+  String get contact_us_msg {
+    return Intl.message(
+      'If you have any inquries get in touch with us.',
+      name: 'contact_us_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `we'll be happy to help you.`
+  String get we_will_help_you {
+    return Intl.message(
+      'we\'ll be happy to help you.',
+      name: 'we_will_help_you',
       desc: '',
       args: [],
     );

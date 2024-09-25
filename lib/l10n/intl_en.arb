@@ -12,7 +12,9 @@
     "change_password": "Change Password",
     "confirm_code": "Confirm Code",
     "username": "Username",
+    "name" : "Name",
     "password": "Password",
+    "message" : "Message",
     "confirm_password": "Confirm Password",
     "email": "Email Address",
     "login_to_your_account": "Login To Your Account",
@@ -74,5 +76,7 @@
     "your_cart_is_empty" : "Your cart is empty",
     "your_favorite_is_empty" : "Your Favorite is empty",
     "products": "Products",
+    "contact_us_msg" : "If you have any inquries get in touch with us.",
+    "we_will_help_you" : "we'll be happy to help you.",
     "shipping_within_a_week_excluding_holidays":"Shipping within a week, excluding holidays."
 }

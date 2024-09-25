@@ -4,7 +4,10 @@ import 'package:auth/core/app_color.dart';
 import 'package:auth/db_helper/app_storage.dart';
 import 'package:auth/generated/l10n.dart';
 import 'package:auth/models/login/login_response.dart';
+import 'package:auth/views/address/list/address_list.dart';
 import 'package:auth/views/auth/login.view.dart';
+import 'package:auth/views/contactus/contact_us_view.dart';
+import 'package:auth/views/profile/edit_profile.dart';
 import 'package:auth/views/wishlist/wishlist_list_view.dart';
 import 'package:flutter/material.dart';
 
@@ -78,7 +81,12 @@ class _ProfileViewState extends State<ProfileView> {
             ItemSetting(
               text: S.of(context).edit_profile,
               icon: Icons.person,
-              submit: () {},
+              submit: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (BuildContext context) {
+                  return const EditProfileView();
+                }));
+              },
             ),
             SizedBox(
               height: 5,
@@ -86,7 +94,12 @@ class _ProfileViewState extends State<ProfileView> {
             ItemSetting(
               text: S.of(context).manage_address,
               icon: Icons.location_pin,
-              submit: () {},
+              submit: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (BuildContext context) {
+                  return const AddressList();
+                }));
+              },
             ),
             SizedBox(
               height: 5,
@@ -123,7 +136,12 @@ class _ProfileViewState extends State<ProfileView> {
             ItemSetting(
               text: S.of(context).contact_us,
               icon: Icons.contact_support_outlined,
-              submit: () {},
+              submit: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (BuildContext context) {
+                  return const ContactUsView();
+                }));
+              },
             ),
             SizedBox(
               height: 5,
