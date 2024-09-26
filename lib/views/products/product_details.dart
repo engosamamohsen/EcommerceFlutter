@@ -20,7 +20,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
 
 class ProductDetailsView extends StatefulWidget {
-  const ProductDetailsView({super.key});
+  ProductDetailsView({super.key, required this.productId});
+
+  int productId = 0;
 
   @override
   State<ProductDetailsView> createState() => _ProductDetailsViewState();
@@ -33,7 +35,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<ProductCubit>().productDetails(1);
+      context.read<ProductCubit>().productDetails(widget.productId);
     });
   }
 
