@@ -29,12 +29,16 @@ class ImageCircle extends StatelessWidget {
               return child; // Return the fully loaded image
             } else {
               // Show a progress indicator while the image is loading
-              return Center(
-                child: CircularProgressIndicator(
-                  value: loadingProgress.expectedTotalBytes != null
-                      ? loadingProgress.cumulativeBytesLoaded /
-                          (loadingProgress.expectedTotalBytes ?? 1)
-                      : null,
+              return SizedBox(
+                width: width,
+                height: height,
+                child: Center(
+                  child: CircularProgressIndicator(
+                    value: loadingProgress.expectedTotalBytes != null
+                        ? loadingProgress.cumulativeBytesLoaded /
+                            (loadingProgress.expectedTotalBytes ?? 1)
+                        : null,
+                  ),
                 ),
               );
             }
@@ -42,7 +46,8 @@ class ImageCircle extends StatelessWidget {
           errorBuilder:
               (BuildContext context, Object exception, StackTrace? stackTrace) {
             // Handle error scenarios, like displaying a placeholder or error message
-            return const Icon(Icons.error, size: 50); // Placeholder for errors
+            return Icon(Icons.error,
+                size: (width + height) / 2); // Placeholder for errors
           },
         ),
       ),

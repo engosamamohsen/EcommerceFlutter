@@ -17,20 +17,20 @@ class ButtonGlobal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Wrap(
-      children: [
-        Container(
-          alignment: Alignment.center,
-          height: 50,
-          decoration: BoxDecoration(
-              color: GlobalColors.mainColor,
-              borderRadius: BorderRadius.all(Radius.circular(radius)),
-              boxShadow: [
-                BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 6)
-              ]),
-          child: InkWell(
-            onTap: onTap,
+    return InkWell(
+      onTap: onTap,
+      child: Center(
+          child: Wrap(
+        children: [
+          Container(
+            alignment: Alignment.center,
+            height: 50,
+            decoration: BoxDecoration(
+                color: GlobalColors.mainColor,
+                borderRadius: BorderRadius.all(Radius.circular(radius)),
+                boxShadow: [
+                  BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 6)
+                ]),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -56,8 +56,8 @@ class ButtonGlobal extends StatelessWidget {
               ],
             ),
           ),
-        ),
-      ],
-    ));
+        ],
+      )),
+    );
   }
 }

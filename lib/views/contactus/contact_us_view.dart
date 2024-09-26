@@ -124,9 +124,9 @@ class _ContactUsView extends State<ContactUsView> {
                               text: S.of(context).submit,
                               onTap: () {
                                 if (formKey.currentState?.validate() ?? false) {
-                                  // BlocProvider.of<SettingsCubit>(context)
-                                  //     .contactUs(name.text, phone.text,
-                                  //         email.text, message.text);
+                                  BlocProvider.of<SettingsCubit>(context)
+                                      .contactUs(name.text, phone.text,
+                                          email.text, message.text);
                                 }
                               },
                             ),

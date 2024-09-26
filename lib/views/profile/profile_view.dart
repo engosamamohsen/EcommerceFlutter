@@ -48,6 +48,9 @@ class _ProfileViewState extends State<ProfileView> {
     }
   }
 
+  double imageWidth = 120;
+  double imageHeight = 120;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -59,14 +62,20 @@ class _ProfileViewState extends State<ProfileView> {
             SizedBox(
               height: 20,
             ),
-            ImageCircle(
-                width: 120,
-                height: 120,
-                image: user != null &&
-                        user!.data != null &&
-                        user!.data!.image != null
-                    ? user!.data!.image.toString()
-                    : ""),
+            if (user != null)
+              ImageCircle(
+                  width: imageWidth,
+                  height: imageHeight,
+                  image: user != null &&
+                          user!.data != null &&
+                          user!.data!.image != null
+                      ? user!.data!.image.toString()
+                      : "")
+            else
+              SizedBox(
+                width: imageWidth,
+                height: imageHeight,
+              ),
             TextGlobal(
               text:
                   user != null && user!.data != null && user!.data!.name != null
