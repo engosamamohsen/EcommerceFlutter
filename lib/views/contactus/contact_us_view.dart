@@ -53,105 +53,88 @@ class _ContactUsView extends State<ContactUsView> {
             ),
             body: state is SettingsLoadingState
                 ? const LoadingViewFull()
-                : state is SettingsSuccessState<GovernoratesResponse> ||
-                        state is SettingsLoadingButtonState ||
-                        state is SettingsInitState
-                    ? Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: SingleChildScrollView(
-                          child: Form(
-                            key: formKey,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                TextGlobal(
-                                  text: S.of(context).contact_us_msg,
-                                  fontSize: 16,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                TextGlobal(
-                                  text: S.of(context).we_will_help_you,
-                                  fontSize: 14,
-                                  textAlign: TextAlign.start,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                TextFormGlobal(
-                                    hint: S.of(context).name,
-                                    textInputType: TextInputType.text,
-                                    obscureText: false,
-                                    controller: name),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                TextFormGlobal(
-                                    hint: S.of(context).phone,
-                                    textInputType: TextInputType.phone,
-                                    obscureText: false,
-                                    controller: phone),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                TextFormGlobal(
-                                    hint: S.of(context).email,
-                                    textInputType: TextInputType.emailAddress,
-                                    obscureText: false,
-                                    controller: email),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                TextFormGlobal(
-                                    hint: S.of(context).message,
-                                    minLines: 6,
-                                    textInputType: TextInputType.number,
-                                    obscureText: false,
-                                    controller: message),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                ButtonGlobal(
-                                  showProgress:
-                                      state is SettingsLoadingButtonState
-                                          ? true
-                                          : false,
-                                  text: S.of(context).submit,
-                                  onTap: () {
-                                    if (formKey.currentState?.validate() ??
-                                        false) {
-                                      // if (selectedCityId == 0) {
-                                      //   ToastMessageHelper.showErrorMessage(
-                                      //       "${S.of(context).please_enter} ${S.of(context).city}");
-                                      // }
-                                      // Form is valid, proceed with sign in
-                                      //call api
-                                      BlocProvider.of<SettingsCubit>(context)
-                                          .contactUs(name.text, phone.text,
-                                              email.text, message.text);
-                                    }
-                                  },
-                                ),
-                              ],
+                : Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: SingleChildScrollView(
+                      child: Form(
+                        key: formKey,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            SizedBox(
+                              height: 10,
                             ),
-                          ),
+                            TextGlobal(
+                              text: S.of(context).contact_us_msg,
+                              fontSize: 16,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            TextGlobal(
+                              text: S.of(context).we_will_help_you,
+                              fontSize: 14,
+                              textAlign: TextAlign.start,
+                              color: Colors.black,
+                              fontWeight: FontWeight.normal,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            TextFormGlobal(
+                                hint: S.of(context).name,
+                                textInputType: TextInputType.text,
+                                obscureText: false,
+                                controller: name),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            TextFormGlobal(
+                                hint: S.of(context).phone,
+                                textInputType: TextInputType.phone,
+                                obscureText: false,
+                                controller: phone),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            TextFormGlobal(
+                                hint: S.of(context).email,
+                                textInputType: TextInputType.emailAddress,
+                                obscureText: false,
+                                controller: email),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            TextFormGlobal(
+                                hint: S.of(context).message,
+                                minLines: 6,
+                                textInputType: TextInputType.number,
+                                obscureText: false,
+                                controller: message),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            ButtonGlobal(
+                              showProgress: state is SettingsLoadingButtonState
+                                  ? true
+                                  : false,
+                              text: S.of(context).submit,
+                              onTap: () {
+                                if (formKey.currentState?.validate() ?? false) {
+                                  // BlocProvider.of<SettingsCubit>(context)
+                                  //     .contactUs(name.text, phone.text,
+                                  //         email.text, message.text);
+                                }
+                              },
+                            ),
+                          ],
                         ),
-                      )
-                    : state is SettingsFailedState
-                        ? NetworkError()
-                        : Center(
-                            child: TextGlobal(
-                                text: S.of(context).loading_please_wait),
-                          ));
+                      ),
+                    ),
+                  ));
       },
     );
   }

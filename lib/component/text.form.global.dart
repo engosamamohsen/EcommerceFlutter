@@ -26,7 +26,7 @@ class TextFormGlobal extends StatefulWidget {
 
   final Icon? suffixIcon;
   final Icon? prefixIcon;
-  String errorMsg = "";
+  String? errorMsg;
 
   @override
   State<TextFormGlobal> createState() => _TextFormGlobalState();
@@ -38,13 +38,74 @@ class _TextFormGlobalState extends State<TextFormGlobal> {
     // TODO: implement initState
     super.initState();
     widget.controller.addListener(() {
-      setState(() {});
+      setState(() {
+        widget.errorMsg = _defaultValidator(context, widget.controller.text);
+      });
     });
+  }
+
+  String? _defaultValidator(BuildContext context, String? value) {
+    if (value == null || value.isEmpty) {
+      // ToastMessageHelper.showToastMessage(
+      //     '${widget.hint} ${S.of(context).is_required}');
+      return '${widget.hint} ${S.of(context).is_required}';
+    }
+    if (widget.textInputType == TextInputType.emailAddress) {
+      if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+        // ToastMessageHelper.showToastMessage(
+        //     S.of(context).please_enter_valid_email);
+        return S.of(context).please_enter_valid_email;
+      }
+    }
+    return "";
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    print("msg Controller ===> ${widget.errorMsg}");
+    if (widget.validateOnChange) {}
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(6),
+          boxShadow: [
+            BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 7),
+          ]),
+      child: TextFormField(
+        controller: widget.controller,
+        obscureText: widget.obscureText,
+        keyboardType: widget.textInputType,
+        validator: (String? value) {
+          if (widget.errorMsg == null) {
+            return "${widget.hint} ${S.of(context).is_required}";
+          } else {
+            return null;
+          }
+        },
+        minLines: widget.minLines,
+        maxLines: null,
+        // validator: validator ?? (value) => _defaultValidator(context, value),
+        decoration: InputDecoration(
+            hintText: widget.hint,
+            errorText: widget.errorMsg?.isEmpty == true
+                ? null
+                : widget.errorMsg, // Show dynamic error message
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(6),
+              borderSide: BorderSide(
+                  color: Colors.grey.shade300), // Normal border color
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(6),
+              borderSide: BorderSide(
+                  color: GlobalColors.mainColor), // Focused border color
+            ),
+            labelStyle: const TextStyle(
+                color: Color.fromARGB(255, 190, 183, 183), height: 1),
+            suffixIcon: widget.suffixIcon,
+            prefixIcon: widget.prefixIcon),
+      ),
+    );
   }
 }
 
@@ -137,20 +198,20 @@ class _TextFormGlobalState extends State<TextFormGlobal> {
 //     );
 //   }
 
-//   String? _defaultValidator(BuildContext context, String? value) {
-//     if (value == null || value.isEmpty) {
-//       ToastMessageHelper.showToastMessage(
-//           '${widget.hint} ${S.of(context).is_required}');
-//       return '${widget.hint} ${S.of(context).is_required}';
-//     }
-//     if (widget.textInputType == TextInputType.emailAddress) {
-//       if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-//         ToastMessageHelper.showToastMessage(
-//             S.of(context).please_enter_valid_email);
-//         return S.of(context).please_enter_valid_email;
-//       }
-//     }
-//     return "";
-//   }
+  // String? _defaultValidator(BuildContext context, String? value) {
+  //   if (value == null || value.isEmpty) {
+  //     ToastMessageHelper.showToastMessage(
+  //         '${widget.hint} ${S.of(context).is_required}');
+  //     return '${widget.hint} ${S.of(context).is_required}';
+  //   }
+  //   if (widget.textInputType == TextInputType.emailAddress) {
+  //     if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+  //       ToastMessageHelper.showToastMessage(
+  //           S.of(context).please_enter_valid_email);
+  //       return S.of(context).please_enter_valid_email;
+  //     }
+  //   }
+  //   return "";
+  // }
 // }
 
