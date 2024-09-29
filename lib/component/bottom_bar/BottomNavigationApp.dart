@@ -18,7 +18,16 @@ class BottomNavigationApp extends StatefulWidget {
 class _BottomNavigationAppState extends State<BottomNavigationApp> {
   int _selectedIndex = 0;
 
-  final list = [HomeView(), CategoriesView(), CartView(), ProfileView()];
+  final list = [
+    HomeView(
+      seeAllCategories: () {
+        print("welcome in SeeAllCategories");
+      },
+    ),
+    CategoriesView(),
+    CartView(),
+    ProfileView()
+  ];
 
   void _onItemTapped(int index) {
     setState(() {

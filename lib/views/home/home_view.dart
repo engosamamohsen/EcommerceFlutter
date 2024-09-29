@@ -18,8 +18,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+  HomeView({super.key, required this.seeAllCategories});
 
+  Function() seeAllCategories;
   @override
   State<HomeView> createState() => _HomeViewState();
 }
@@ -117,7 +118,9 @@ class _HomeViewState extends State<HomeView> {
                                       style: TextButton.styleFrom(
                                         overlayColor: GlobalColors.mainColor,
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        print("welcome here");
+                                      },
                                       child: TextGlobal(
                                         fontWeight: FontWeight.bold,
                                         text: S.of(context).see_all,

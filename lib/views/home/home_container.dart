@@ -5,6 +5,7 @@ import 'package:auth/core/app_color.dart';
 import 'package:auth/cubit/home/home_cubit.dart';
 import 'package:auth/cubit/home/home_state.dart';
 import 'package:auth/generated/l10n.dart';
+import 'package:auth/views/category/categories_view.dart';
 import 'package:auth/views/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,13 +19,20 @@ class HomeContainer extends StatefulWidget {
 
 class _HomeViewState extends State<HomeContainer> {
   final TextEditingController searchController = TextEditingController();
-  Widget _current_page = HomeView();
+  Widget? _current_page;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-
+    _current_page = HomeView(
+      seeAllCategories: () {
+        setState(() {
+          print("welcome in SeeAllCategories22");
+          _current_page = CategoriesView();
+        });
+      },
+    );
     WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<HomeCubit>(context).home();
     });
