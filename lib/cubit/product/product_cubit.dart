@@ -59,10 +59,11 @@ class ProductCubit extends Cubit<ProductStates> {
 
   void addToCart(int id, String count) async {
     try {
-      print("welcome 22");
+      print("welcome 22 id: $id , count: $count");
 
       emit(ProductLoadingAddToCartState());
-      var request = AddToCartRequest(productId: id, count: count);
+      var request = AddToCartRequest(
+          productId: id, count: (int.parse(count) + 1).toString());
       // Map<String, int> queryParameters = {"product_id": id, "count": count};
       Response? response = await apiService.post(
           EndPoint.addToCart, FormData.fromMap(request.toMap()));

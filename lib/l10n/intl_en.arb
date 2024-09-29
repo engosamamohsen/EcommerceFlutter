@@ -75,6 +75,7 @@
     "checkout": "Checkout",
     "your_cart_is_empty" : "Your cart is empty",
     "your_favorite_is_empty" : "Your Favorite is empty",
+    "your_categories_is_empty" : "Your categories is empty",
     "products": "Products",
     "contact_us_msg" : "If you have any inquries get in touch with us.",
     "we_will_help_you" : "we'll be happy to help you.",

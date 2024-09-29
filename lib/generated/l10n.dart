@@ -810,6 +810,16 @@ class S {
     );
   }
 
+  /// `Your categories is empty`
+  String get your_categories_is_empty {
+    return Intl.message(
+      'Your categories is empty',
+      name: 'your_categories_is_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Products`
   String get products {
     return Intl.message(

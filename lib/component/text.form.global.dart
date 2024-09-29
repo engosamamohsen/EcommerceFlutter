@@ -1,5 +1,4 @@
 import 'package:auth/core/app_color.dart';
-import 'package:auth/utils/toast_message.dart';
 import 'package:auth/generated/l10n.dart';
 import 'package:flutter/material.dart';
 

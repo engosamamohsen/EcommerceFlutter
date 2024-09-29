@@ -15,10 +15,10 @@ class EndPoint {
 
   static const addToCart = "basket/add";
   static const wishList = "wishlist";
+  static const categories = "categories";
 
   static const addToFavourite = "wishlist/add_or_remove";
 
-  static const cartAddItem = "basket/add";
   static const cartList = "basket";
   static const cartRemove = "basket/delete";
 

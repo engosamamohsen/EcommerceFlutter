@@ -1,6 +1,7 @@
 import 'package:auth/core/app_color.dart';
+import 'package:auth/generated/l10n.dart';
 import 'package:auth/views/cart/cart_view.dart';
-import 'package:auth/views/department/departments_view.dart';
+import 'package:auth/views/category/categories_view.dart';
 import 'package:auth/views/home/home_view.dart';
 import 'package:auth/views/profile/profile_view.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class BottomNavigationApp extends StatefulWidget {
 class _BottomNavigationAppState extends State<BottomNavigationApp> {
   int _selectedIndex = 0;
 
-  final list = [HomeView(), DepartmentsView(), CartView(), ProfileView()];
+  final list = [HomeView(), CategoriesView(), CartView(), ProfileView()];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -34,22 +35,22 @@ class _BottomNavigationAppState extends State<BottomNavigationApp> {
       selectedItemColor: GlobalColors.mainColor,
       unselectedItemColor: GlobalColors.secondaryColor,
       onTap: _onItemTapped,
-      items: const <BottomNavigationBarItem>[
+      items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
-          label: 'Home',
+          label: S.of(context).home,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.grid_view),
-          label: 'Departements',
+          label: S.of(context).categories,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.shopping_cart_checkout_outlined),
-          label: 'Cart',
+          label: S.of(context).cart,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.account_circle),
-          label: 'Profile',
+          label: S.of(context).profile,
         ),
       ],
     );
