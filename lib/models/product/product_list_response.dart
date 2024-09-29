@@ -1,7 +1,7 @@
 import 'package:auth/models/product/product_model.dart';
 
-class WishListResponse {
-  WishListResponse({
+class ProductListResponse {
+  ProductListResponse({
     required this.status,
     required this.message,
     required this.data,
@@ -11,8 +11,8 @@ class WishListResponse {
   final String message;
   final Data? data;
 
-  factory WishListResponse.fromJson(Map<String, dynamic> json) {
-    return WishListResponse(
+  factory ProductListResponse.fromJson(Map<String, dynamic> json) {
+    return ProductListResponse(
       status: json["status"] ?? 0,
       message: json["message"] ?? "",
       data: json["data"] == null ? null : Data.fromJson(json["data"]),

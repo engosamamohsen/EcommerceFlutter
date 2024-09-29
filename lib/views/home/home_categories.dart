@@ -18,7 +18,10 @@ class HomeCategories extends StatelessWidget {
             final category = categories[index];
             return Padding(
               padding: const EdgeInsets.all(2.0),
-              child: CategoryItem(name: category.name, image: category.icon),
+              child: CategoryItem(
+                  categoryId: category.id,
+                  name: category.name,
+                  image: category.icon),
             );
           }),
     );

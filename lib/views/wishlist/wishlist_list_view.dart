@@ -10,7 +10,7 @@ import 'package:auth/cubit/product/product_state.dart';
 import 'package:auth/generated/l10n.dart';
 import 'package:auth/models/product/add_wishlist_response.dart';
 import 'package:auth/models/product/product_model.dart';
-import 'package:auth/models/product/wishlist_response.dart';
+import 'package:auth/models/product/product_list_response.dart';
 import 'package:auth/views/products/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,7 +43,7 @@ class _WishListViewState extends State<WishListView> {
   Widget build(BuildContext context) {
     return BlocConsumer<ProductCubit, ProductStates>(
       listener: (context, state) {
-        if (state is ProductSuccessState<WishListResponse>) {
+        if (state is ProductSuccessState<ProductListResponse>) {
           //list
           setState(() {
             wishlist = state.data.data!.data;

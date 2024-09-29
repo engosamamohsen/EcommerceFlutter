@@ -2,7 +2,7 @@ import 'package:auth/cubit/settings/settings_state.dart';
 import 'package:auth/db_helper/app_storage.dart';
 import 'package:auth/models/cart/request/add_to_cart_request.dart';
 import 'package:auth/models/product/add_wishlist_response.dart';
-import 'package:auth/models/product/wishlist_response.dart';
+import 'package:auth/models/product/product_list_response.dart';
 import 'package:auth/models/response/base_response.dart';
 import 'package:auth/models/settings/contact_us_request.dart';
 import 'package:auth/network/api_service.dart';

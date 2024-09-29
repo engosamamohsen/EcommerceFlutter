@@ -66,6 +66,7 @@ class _DepartmentViewState extends State<CategoriesView> {
                           itemCount: categories.length,
                           itemBuilder: (context, item) {
                             return CategoryItem(
+                                categoryId: categories[item].id,
                                 name: categories[item].name,
                                 image: categories[item].icon);
                           })

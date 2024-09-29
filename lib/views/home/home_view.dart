@@ -11,7 +11,7 @@ import 'package:auth/cubit/product/product_state.dart';
 import 'package:auth/generated/l10n.dart';
 import 'package:auth/models/home/home_response.dart';
 import 'package:auth/models/product/add_wishlist_response.dart';
-import 'package:auth/models/product/wishlist_response.dart';
+import 'package:auth/models/product/product_list_response.dart';
 import 'package:auth/views/home/home_categories.dart';
 import 'package:auth/views/home/home_category_product.dart';
 import 'package:flutter/material.dart';
