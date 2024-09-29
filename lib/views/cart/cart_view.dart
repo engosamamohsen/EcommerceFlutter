@@ -1,3 +1,4 @@
+import 'package:auth/app/navigate_app.dart';
 import 'package:auth/app/price_apis.dart';
 import 'package:auth/component/app_bar/app.bar.global.dart';
 import 'package:auth/component/button.global.dart';
@@ -11,7 +12,9 @@ import 'package:auth/cubit/cart/cart_state.dart';
 import 'package:auth/cubit/product/product_cubit.dart';
 import 'package:auth/generated/l10n.dart';
 import 'package:auth/models/cart/cart_list_response.dart';
+import 'package:auth/views/cart/cart_bottom.dart';
 import 'package:auth/views/cart/cart_item.dart';
+import 'package:auth/views/checkout/checkout_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -132,64 +135,80 @@ class _CartViewState extends State<CartView> {
                               text: S.of(context).loading_please_wait),
                         ),
           bottomNavigationBar: carts.isNotEmpty
-              ? cartBottom(carts.length, totalAfterDiscount)
+              ? CartBottom(
+                  prodcutsCount: carts.length,
+                  price: totalAfterDiscount,
+                  btnText: S.of(context).checkout,
+                  checkout: () {
+                    NavigateApp.navigate(
+                        context,
+                        CheckoutView(
+                            carts: carts,
+                            totalAfterDiscount: totalAfterDiscount));
+                  },
+                )
               : null,
         );
       },
     );
   }
 
-  Widget cartBottom(count, double price) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 8, right: 8),
-      child: Container(
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10), topRight: Radius.circular(10))),
-        padding: const EdgeInsets.symmetric(
-            horizontal: 16.0, vertical: 10.0), // Padding around content
-        constraints: BoxConstraints(
-            minHeight: 0), // Adjusts according to the content height
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextGlobal(
-              text: "($count) ${S.of(context).products}",
-              fontSize: 14,
-              fontWeight: FontWeight.normal,
-              color: Colors.black,
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            TextGlobal(
-                text: price.toString().parsePrice(context),
-                fontSize: 16,
-                fontWeight: FontWeight.normal,
-                color: Colors.black),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  color: GlobalColors.mainColor,
-                  borderRadius: BorderRadius.all(Radius.circular(30))),
-              height: 50,
-              child: Center(
-                child: TextGlobal(
-                  text: S.of(context).checkout,
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  // Widget cartBottom(count, double price, Function() checkout) {
+  //   return Padding(
+  //     padding: const EdgeInsets.only(left: 8, right: 8),
+  //     child: Container(
+  //       decoration: BoxDecoration(
+  //           color: Colors.white,
+  //           borderRadius: BorderRadius.only(
+  //               topLeft: Radius.circular(10), topRight: Radius.circular(10))),
+  //       padding: const EdgeInsets.symmetric(
+  //           horizontal: 16.0, vertical: 10.0), // Padding around content
+  //       constraints: BoxConstraints(
+  //           minHeight: 0), // Adjusts according to the content height
+  //       child: Column(
+  //         mainAxisAlignment: MainAxisAlignment.start,
+  //         mainAxisSize: MainAxisSize.min,
+  //         crossAxisAlignment: CrossAxisAlignment.start,
+  //         children: [
+  //           TextGlobal(
+  //             text: "($count) ${S.of(context).products}",
+  //             fontSize: 14,
+  //             fontWeight: FontWeight.normal,
+  //             color: Colors.black,
+  //           ),
+  //           SizedBox(
+  //             height: 5,
+  //           ),
+  //           TextGlobal(
+  //               text: price.toString().parsePrice(context),
+  //               fontSize: 16,
+  //               fontWeight: FontWeight.normal,
+  //               color: Colors.black),
+  //           SizedBox(
+  //             height: 20,
+  //           ),
+  //           InkWell(
+  //             onTap: () {
+  //               checkout();
+  //             },
+  //             child: Container(
+  //               decoration: BoxDecoration(
+  //                   color: GlobalColors.mainColor,
+  //                   borderRadius: BorderRadius.all(Radius.circular(30))),
+  //               height: 50,
+  //               child: Center(
+  //                 child: TextGlobal(
+  //                   text: S.of(context).checkout,
+  //                   color: Colors.white,
+  //                   fontSize: 18,
+  //                   fontWeight: FontWeight.bold,
+  //                 ),
+  //               ),
+  //             ),
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 }

@@ -830,6 +830,16 @@ class S {
     );
   }
 
+  /// `Please select your address`
+  String get please_select_your_address {
+    return Intl.message(
+      'Please select your address',
+      name: 'please_select_your_address',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `If you have any inquries get in touch with us.`
   String get contact_us_msg {
     return Intl.message(
@@ -845,6 +855,16 @@ class S {
     return Intl.message(
       'we\'ll be happy to help you.',
       name: 'we_will_help_you',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Make Order`
+  String get make_order {
+    return Intl.message(
+      'Make Order',
+      name: 'make_order',
       desc: '',
       args: [],
     );

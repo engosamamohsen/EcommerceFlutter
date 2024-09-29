@@ -8,6 +8,7 @@ import 'package:auth/views/address/list/address_list.dart';
 import 'package:auth/views/auth/login.view.dart';
 import 'package:auth/views/contactus/contact_us_view.dart';
 import 'package:auth/views/profile/edit_profile.dart';
+import 'package:auth/views/profile/item_settings.dart';
 import 'package:auth/views/wishlist/wishlist_list_view.dart';
 import 'package:flutter/material.dart';
 
@@ -171,43 +172,6 @@ class _ProfileViewState extends State<ProfileView> {
             )
           ],
         ),
-      ),
-    );
-  }
-}
-
-class ItemSetting extends StatelessWidget {
-  const ItemSetting(
-      {super.key,
-      required this.text,
-      required this.icon,
-      required this.submit});
-  final String text;
-  final IconData icon;
-  final VoidCallback submit;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ListTile(
-        leading: Icon(
-          icon,
-          color: GlobalColors.mainColor,
-        ),
-        title: TextGlobal(
-          text: text,
-          color: Colors.black,
-        ),
-        trailing: Icon(
-          Icons.arrow_forward_ios,
-          color: GlobalColors.mainColor,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-          side: BorderSide(color: GlobalColors.mainColor, width: 1),
-        ),
-        onTap: submit,
       ),
     );
   }

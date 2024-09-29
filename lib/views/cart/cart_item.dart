@@ -12,11 +12,13 @@ class CartItem extends StatelessWidget {
       {super.key,
       required this.cart,
       this.showProgress = false,
+      this.allowActions = true,
       required this.add,
       required this.minus,
       required this.delete});
   CartModel cart;
   bool showProgress;
+  bool allowActions;
   Function() add;
   Function() minus;
   Function() delete;
@@ -91,43 +93,51 @@ class CartItem extends StatelessWidget {
                           ))
                         ],
                       ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          IconButton(
-                            icon: Icon(
-                              Icons.add_circle_outline,
-                              size: 25,
-                              color: GlobalColors.secondaryColor,
+                      if (allowActions)
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                Icons.add_circle_outline,
+                                size: 25,
+                                color: GlobalColors.secondaryColor,
+                              ),
+                              onPressed: add,
                             ),
-                            onPressed: add,
-                          ),
-                          TextGlobal(
-                            text: cart.count,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                          IconButton(
-                            icon: Icon(
-                              Icons.remove_circle_outline,
-                              size: 25,
-                              color: GlobalColors.secondaryColor,
+                            TextGlobal(
+                              text: cart.count,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
                             ),
-                            onPressed: minus,
-                          ),
-                          Spacer(),
-                          IconButton(
-                            icon: Icon(
-                              Icons.delete,
-                              size: 25,
-                              color: GlobalColors.secondaryColor,
+                            IconButton(
+                              icon: Icon(
+                                Icons.remove_circle_outline,
+                                size: 25,
+                                color: GlobalColors.secondaryColor,
+                              ),
+                              onPressed: minus,
                             ),
-                            onPressed: delete,
-                          ),
-                        ],
-                      ),
+                            Spacer(),
+                            IconButton(
+                              icon: Icon(
+                                Icons.delete,
+                                size: 25,
+                                color: GlobalColors.secondaryColor,
+                              ),
+                              onPressed: delete,
+                            ),
+                          ],
+                        ),
+                      if (!allowActions)
+                        TextGlobal(
+                          text: cart.count,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
                     ],
                   ),
                 ))

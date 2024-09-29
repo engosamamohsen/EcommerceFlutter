@@ -66,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_to_your_account":
             MessageLookupByLibrary.simpleMessage("Login To Your Account"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "make_order": MessageLookupByLibrary.simpleMessage("Make Order"),
         "manage_address":
             MessageLookupByLibrary.simpleMessage("Manage Address"),
         "message": MessageLookupByLibrary.simpleMessage("Message"),
@@ -94,6 +95,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Please Enter Your OTP had been sent to you"),
         "please_make_new_account":
             MessageLookupByLibrary.simpleMessage("Please Make A new Account"),
+        "please_select_your_address":
+            MessageLookupByLibrary.simpleMessage("Please select your address"),
         "privacy_and_policy":
             MessageLookupByLibrary.simpleMessage("Privacy And Policy"),
         "product_details":

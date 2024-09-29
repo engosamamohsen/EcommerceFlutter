@@ -81,8 +81,8 @@ class _TextFormGlobalState extends State<TextFormGlobal> {
             return null;
           }
         },
-        minLines: widget.minLines,
-        maxLines: null,
+        minLines: widget.obscureText ? null : widget.minLines,
+        // maxLines: null,
         // validator: validator ?? (value) => _defaultValidator(context, value),
         decoration: InputDecoration(
             hintText: widget.hint,

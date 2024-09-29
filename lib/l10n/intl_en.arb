@@ -77,7 +77,9 @@
     "your_favorite_is_empty" : "Your Favorite is empty",
     "your_categories_is_empty" : "Your categories is empty",
     "products": "Products",
+    "please_select_your_address" : "Please select your address",
     "contact_us_msg" : "If you have any inquries get in touch with us.",
     "we_will_help_you" : "we'll be happy to help you.",
+    "make_order" : "Make Order",
     "shipping_within_a_week_excluding_holidays":"Shipping within a week, excluding holidays."
 }
