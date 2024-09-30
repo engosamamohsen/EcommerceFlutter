@@ -107,7 +107,7 @@ class _ProfileViewState extends State<ProfileView> {
               submit: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (BuildContext context) {
-                  return const AddressList();
+                  return AddressListView();
                 }));
               },
             ),

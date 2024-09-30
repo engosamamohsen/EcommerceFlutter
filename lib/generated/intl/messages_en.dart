@@ -126,6 +126,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "welcome_in": MessageLookupByLibrary.simpleMessage("Welcome in"),
         "wishlist": MessageLookupByLibrary.simpleMessage("Wishlist"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes"),
+        "your_address": MessageLookupByLibrary.simpleMessage("Your Address"),
         "your_cart_is_empty":
             MessageLookupByLibrary.simpleMessage("Your cart is empty"),
         "your_categories_is_empty":

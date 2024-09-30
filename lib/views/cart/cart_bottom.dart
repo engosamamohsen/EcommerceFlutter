@@ -1,4 +1,5 @@
 import 'package:auth/app/price_apis.dart';
+import 'package:auth/component/button.global.dart';
 import 'package:auth/component/text/text_global.dart';
 import 'package:auth/core/app_color.dart';
 import 'package:auth/generated/l10n.dart';
@@ -10,11 +11,13 @@ class CartBottom extends StatefulWidget {
       required this.prodcutsCount,
       required this.price,
       required this.btnText,
+      this.showProgress,
       required this.checkout});
   int prodcutsCount;
+  bool? showProgress;
   double price;
   String btnText;
-  Function() checkout;
+  VoidCallback checkout;
   @override
   State<CartBottom> createState() => _CartBottomState();
 }
@@ -55,25 +58,36 @@ class _CartBottomState extends State<CartBottom> {
             SizedBox(
               height: 20,
             ),
-            InkWell(
+            ButtonGlobal(
+              showProgress: widget.showProgress != null && widget.showProgress!
+                  ? true
+                  : false,
+              text: widget.btnText,
+              radius: 30,
               onTap: () {
+                print("checkpit");
                 widget.checkout();
               },
-              child: Container(
-                decoration: BoxDecoration(
-                    color: GlobalColors.mainColor,
-                    borderRadius: BorderRadius.all(Radius.circular(30))),
-                height: 50,
-                child: Center(
-                  child: TextGlobal(
-                    text: widget.btnText,
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
+            )
+            // InkWell(
+            //   onTap: () {
+            //     widget.checkout();
+            //   },
+            //   child: Container(
+            //     decoration: BoxDecoration(
+            //         color: GlobalColors.mainColor,
+            //         borderRadius: BorderRadius.all(Radius.circular(30))),
+            //     height: 50,
+            //     child: Center(
+            //       child: TextGlobal(
+            //         text: widget.btnText,
+            //         color: Colors.white,
+            //         fontSize: 18,
+            //         fontWeight: FontWeight.bold,
+            //       ),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

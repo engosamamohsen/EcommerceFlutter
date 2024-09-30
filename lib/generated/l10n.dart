@@ -710,6 +710,16 @@ class S {
     );
   }
 
+  /// `Your Address`
+  String get your_address {
+    return Intl.message(
+      'Your Address',
+      name: 'your_address',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Yes`
   String get yes {
     return Intl.message(

@@ -11,27 +11,29 @@ import 'package:auth/models/address/add_address_response.dart';
 import 'package:auth/models/address/address_list_response.dart';
 import 'package:auth/models/response/base_response.dart';
 import 'package:auth/views/address/add/add_address.dart';
-import 'package:auth/views/address/list/addtress_item.dart';
+import 'package:auth/views/address/list/address_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AddressList extends StatefulWidget {
-  const AddressList({super.key});
+class AddressListView extends StatefulWidget {
+  AddressListView({super.key, this.addressList});
+  List<AddressModel>? addressList;
 
   @override
-  State<AddressList> createState() => _AddressListState();
+  State<AddressListView> createState() => _AddressListViewState();
 }
 
-class _AddressListState extends State<AddressList> {
-  List<AddressModel>? addressList;
+class _AddressListViewState extends State<AddressListView> {
   int postionDeleted = -1;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<AddressCubit>().getAddressList();
-    });
+    if (widget.addressList == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        context.read<AddressCubit>().getAddressList();
+      });
+    }
   }
 
   Future<void> _refreshData() async {
@@ -46,16 +48,16 @@ class _AddressListState extends State<AddressList> {
         if (state is AddressSuccessState<AddressListResponse>) {
           //list
           setState(() {
-            addressList = state.data.data!.data!;
+            widget.addressList = state.data.data!.data!;
           });
         }
         if (state is AddressSuccessState<BaseResponse>) {
           //delete
-          if (addressList != null &&
+          if (widget.addressList != null &&
               postionDeleted != -1 &&
-              postionDeleted < addressList!.length) {
+              postionDeleted < widget.addressList!.length) {
             setState(() {
-              addressList!.removeAt(postionDeleted);
+              widget.addressList!.removeAt(postionDeleted);
             });
           }
         }
@@ -72,6 +74,9 @@ class _AddressListState extends State<AddressList> {
                   return AddAddressView();
                 }));
               },
+              onBackIconPressed: () {
+                Navigator.pop(context, widget.addressList);
+              },
             ),
             body: state is AddressLoadingState
                 ? const LoadingViewFull()
@@ -79,15 +84,15 @@ class _AddressListState extends State<AddressList> {
                     onRefresh: _refreshData,
                     child: state is AddressSuccessState<AddressListResponse> ||
                             state is AddressSuccessState<BaseResponse> ||
-                            addressList != null
+                            widget.addressList != null
                         ? Padding(
                             padding: EdgeInsets.all(8.0),
                             child: ListView.builder(
                                 scrollDirection: Axis.vertical,
-                                itemCount: addressList!.length,
+                                itemCount: widget.addressList!.length,
                                 itemBuilder: (context, item) {
                                   return AddressItem(
-                                    address: addressList![item],
+                                    address: widget.addressList![item],
                                     delete: () {
                                       setState(() {
                                         postionDeleted = item;
@@ -101,7 +106,8 @@ class _AddressListState extends State<AddressList> {
                                           S.of(context).yes,
                                           S.of(context).no, () {
                                         BlocProvider.of<AddressCubit>(context)
-                                            .delete(addressList![item].id);
+                                            .delete(
+                                                widget.addressList![item].id);
                                         Navigator.pop(context);
                                       }, () {
                                         Navigator.pop(context);

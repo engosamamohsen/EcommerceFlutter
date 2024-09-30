@@ -7,12 +7,14 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.title = "",
       this.showBackBtn = true,
       this.suffixIcon,
-      this.onSuffixIconPressed});
+      this.onSuffixIconPressed,
+      this.onBackIconPressed});
 
   String title;
   IconData? suffixIcon;
   bool showBackBtn;
   Function()? onSuffixIconPressed;
+  Function()? onBackIconPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,9 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
         leading: (showBackBtn
             ? IconButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  onBackIconPressed == null
+                      ? Navigator.pop(context)
+                      : onBackIconPressed!();
                 },
                 icon: const Icon(
                   Icons.arrow_back_ios_new_rounded,

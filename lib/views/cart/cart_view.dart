@@ -140,6 +140,7 @@ class _CartViewState extends State<CartView> {
                   price: totalAfterDiscount,
                   btnText: S.of(context).checkout,
                   checkout: () {
+                    print("welcome here");
                     NavigateApp.navigate(
                         context,
                         CheckoutView(
