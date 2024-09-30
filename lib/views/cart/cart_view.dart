@@ -15,6 +15,7 @@ import 'package:auth/models/cart/cart_list_response.dart';
 import 'package:auth/views/cart/cart_bottom.dart';
 import 'package:auth/views/cart/cart_item.dart';
 import 'package:auth/views/checkout/checkout_view.dart';
+import 'package:auth/views/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -41,6 +42,19 @@ class _CartViewState extends State<CartView> {
     });
   }
 
+  void recalculate() {
+    setState(() {
+      totalBeforeDiscount = 0;
+      totalAfterDiscount = 0;
+      for (var cartItem in carts) {
+        totalBeforeDiscount +=
+            (int.parse(cartItem.count) * double.parse(cartItem.price));
+        totalAfterDiscount +=
+            (int.parse(cartItem.count) * double.parse(cartItem.priceAfter));
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CartCubit, CartStates>(
@@ -52,12 +66,7 @@ class _CartViewState extends State<CartView> {
               totalAfterDiscount = 0;
               totalBeforeDiscount = 0;
               carts.addAll(state.data!.data!.data);
-              for (var cartItem in carts) {
-                totalBeforeDiscount +=
-                    (int.parse(cartItem.count) * double.parse(cartItem.price));
-                totalAfterDiscount += (int.parse(cartItem.count) *
-                    double.parse(cartItem.priceAfter));
-              }
+              recalculate();
             }
           });
         }
@@ -65,12 +74,14 @@ class _CartViewState extends State<CartView> {
           setState(() {
             carts[position].count = productCount.toString();
             position = -1;
+            recalculate();
           });
         }
         if (state is CartDeteteState && position < carts.length) {
           setState(() {
             carts.removeAt(position);
             position = -1;
+            recalculate();
           });
         }
       },

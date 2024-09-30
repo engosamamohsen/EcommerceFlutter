@@ -1,3 +1,4 @@
+import 'package:auth/component/bottom_bar/bottom_navigation_cubit.dart';
 import 'package:auth/cubit/address/address_cubit.dart';
 import 'package:auth/cubit/cart/cart_cubit.dart';
 import 'package:auth/cubit/home/home_cubit.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => BottomNavigationCubit()),
         BlocProvider(create: (context) => HomeCubit()),
         BlocProvider(create: (context) => ProductCubit()),
         BlocProvider(create: (context) => CartCubit()),

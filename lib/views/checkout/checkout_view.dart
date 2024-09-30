@@ -1,5 +1,6 @@
 import 'package:auth/app/navigate_app.dart';
 import 'package:auth/component/app_bar/app.bar.global.dart';
+import 'package:auth/component/bottom_bar/bottom_navigation_cubit.dart';
 import 'package:auth/component/network/loading_view_full.dart';
 import 'package:auth/component/text/text_global.dart';
 import 'package:auth/core/app_color.dart';
@@ -7,6 +8,7 @@ import 'package:auth/cubit/address/address_cubit.dart';
 import 'package:auth/cubit/address/address_state.dart';
 import 'package:auth/cubit/cart/cart_cubit.dart';
 import 'package:auth/cubit/cart/cart_state.dart';
+import 'package:auth/cubit/home/home_cubit.dart';
 import 'package:auth/cubit/order/order_cubit.dart';
 import 'package:auth/cubit/order/order_state.dart';
 import 'package:auth/generated/l10n.dart';
@@ -19,6 +21,7 @@ import 'package:auth/views/address/list/address_list.dart';
 import 'package:auth/views/address/list/address_item.dart';
 import 'package:auth/views/cart/cart_bottom.dart';
 import 'package:auth/views/cart/cart_item.dart';
+import 'package:auth/views/home/home_view.dart';
 import 'package:auth/views/profile/item_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,6 +31,7 @@ class CheckoutView extends StatefulWidget {
       {super.key, required this.carts, required this.totalAfterDiscount});
   List<CartModel> carts = [];
   double totalAfterDiscount = 0;
+
   @override
   State<CheckoutView> createState() => _CheckoutViewState();
 }
@@ -60,7 +64,14 @@ class _CheckoutViewState extends State<CheckoutView> {
           }
         }),
         BlocListener<OrderCubit, OrderStates>(listener: (context, state) {
-          if (state is OrderSuccessState<OrderResponse>) {}
+          if (state is OrderSuccessState<OrderResponse>) {
+            ToastMessageHelper.showToastMessage(state.data!.message);
+            // i want to navigate here to Home Screen
+            // Navigate back to HomeView and ensure the Home tab is selected
+            Navigator.pop(context);
+            BlocProvider.of<BottomNavigationCubit>(context)
+                .updateTabIndex(HomeView());
+          }
         })
       ],
       child: BlocConsumer<OrderCubit, OrderStates>(

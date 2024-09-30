@@ -1,3 +1,4 @@
+import 'package:auth/component/bottom_bar/bottom_navigation_cubit.dart';
 import 'package:auth/component/network/loading_view_full.dart';
 import 'package:auth/component/network/network_error_view.dart';
 import 'package:auth/component/slider/slider_view.dart';
@@ -12,15 +13,16 @@ import 'package:auth/generated/l10n.dart';
 import 'package:auth/models/home/home_response.dart';
 import 'package:auth/models/product/add_wishlist_response.dart';
 import 'package:auth/models/product/product_list_response.dart';
+import 'package:auth/views/category/categories_view.dart';
 import 'package:auth/views/home/home_categories.dart';
 import 'package:auth/views/home/home_category_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeView extends StatefulWidget {
-  HomeView({super.key, required this.seeAllCategories});
+  HomeView({super.key});
 
-  Function() seeAllCategories;
+  // Function() seeAllCategories;
   @override
   State<HomeView> createState() => _HomeViewState();
 }
@@ -119,7 +121,9 @@ class _HomeViewState extends State<HomeView> {
                                         overlayColor: GlobalColors.mainColor,
                                       ),
                                       onPressed: () {
-                                        print("welcome here");
+                                        BlocProvider.of<BottomNavigationCubit>(
+                                                context)
+                                            .updateTabIndex(CategoriesView());
                                       },
                                       child: TextGlobal(
                                         fontWeight: FontWeight.bold,

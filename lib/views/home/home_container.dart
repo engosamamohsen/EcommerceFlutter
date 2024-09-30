@@ -1,4 +1,5 @@
 import 'package:auth/component/bottom_bar/BottomNavigationApp.dart';
+import 'package:auth/component/bottom_bar/bottom_navigation_cubit.dart';
 import 'package:auth/component/text.form.global.dart';
 import 'package:auth/component/text/text_global.dart';
 import 'package:auth/core/app_color.dart';
@@ -21,18 +22,17 @@ class _HomeViewState extends State<HomeContainer> {
   final TextEditingController searchController = TextEditingController();
   Widget? _current_page;
 
+  void _navigateToPage(Widget page) {
+    setState(() {
+      _current_page = page;
+    });
+  }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _current_page = HomeView(
-      seeAllCategories: () {
-        setState(() {
-          print("welcome in SeeAllCategories22");
-          _current_page = CategoriesView();
-        });
-      },
-    );
+    _current_page = HomeView();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<HomeCubit>(context).home();
     });
