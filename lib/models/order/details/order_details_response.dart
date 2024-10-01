@@ -1,5 +1,8 @@
-class OrderResponse {
-  OrderResponse({
+import 'package:Emend/models/address/add_address_response.dart';
+import 'package:Emend/models/address/address_model.dart';
+
+class OrderDetailsResponse {
+  OrderDetailsResponse({
     required this.status,
     required this.message,
     required this.data,
@@ -7,13 +10,13 @@ class OrderResponse {
 
   final int status;
   final String message;
-  final OrderModel? data;
+  final Data? data;
 
-  factory OrderResponse.fromJson(Map<String, dynamic> json) {
-    return OrderResponse(
+  factory OrderDetailsResponse.fromJson(Map<String, dynamic> json) {
+    return OrderDetailsResponse(
       status: json["status"] ?? 0,
       message: json["message"] ?? "",
-      data: json["data"] == null ? null : OrderModel.fromJson(json["data"]),
+      data: json["data"] == null ? null : Data.fromJson(json["data"]),
     );
   }
 
@@ -29,8 +32,8 @@ class OrderResponse {
   }
 }
 
-class OrderModel {
-  OrderModel({
+class Data {
+  Data({
     required this.id,
     required this.cashier,
     required this.orderType,
@@ -60,14 +63,14 @@ class OrderModel {
   final int customerId;
   final dynamic customerPhone;
   final dynamic customerName;
-  final Address? address;
+  final AddressModel? address;
   final String date;
   final List<OrderProduct> orderProducts;
   final int deliveryId;
   final int delivery;
 
-  factory OrderModel.fromJson(Map<String, dynamic> json) {
-    return OrderModel(
+  factory Data.fromJson(Map<String, dynamic> json) {
+    return Data(
       id: json["id"] ?? 0,
       cashier: json["cashier"] ?? "",
       orderType: json["order_type"] ?? 0,
@@ -79,8 +82,9 @@ class OrderModel {
       customerId: json["customer_id"] ?? 0,
       customerPhone: json["customer_phone"],
       customerName: json["customer_name"],
-      address:
-          json["address"] == null ? null : Address.fromJson(json["address"]),
+      address: json["address"] == null
+          ? null
+          : AddressModel.fromJson(json["address"]),
       date: json["date"] ?? "",
       orderProducts: json["order_products"] == null
           ? []
@@ -113,57 +117,6 @@ class OrderModel {
   @override
   String toString() {
     return "$id, $cashier, $orderType, $orderStatus, $tableId, $subTotal, $shipping, $total, $customerId, $customerPhone, $customerName, $address, $date, $orderProducts, $deliveryId, $delivery, ";
-  }
-}
-
-class Address {
-  Address({
-    required this.id,
-    required this.area,
-    required this.street,
-    required this.building,
-    required this.floor,
-    required this.flat,
-    required this.specialSign,
-    required this.shipping,
-  });
-
-  final int id;
-  final String area;
-  final String street;
-  final String building;
-  final String floor;
-  final String flat;
-  final String specialSign;
-  final String shipping;
-
-  factory Address.fromJson(Map<String, dynamic> json) {
-    return Address(
-      id: json["id"] ?? 0,
-      area: json["area"] ?? "",
-      street: json["street"] ?? "",
-      building: json["building"] ?? "",
-      floor: json["floor"] ?? "",
-      flat: json["flat"] ?? "",
-      specialSign: json["special_sign"] ?? "",
-      shipping: json["shipping"] ?? "",
-    );
-  }
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "area": area,
-        "street": street,
-        "building": building,
-        "floor": floor,
-        "flat": flat,
-        "special_sign": specialSign,
-        "shipping": shipping,
-      };
-
-  @override
-  String toString() {
-    return "$id, $area, $street, $building, $floor, $flat, $specialSign, $shipping, ";
   }
 }
 

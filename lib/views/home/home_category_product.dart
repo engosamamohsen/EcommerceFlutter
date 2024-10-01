@@ -1,10 +1,10 @@
-import 'package:auth/component/text/text_global.dart';
-import 'package:auth/core/app_color.dart';
-import 'package:auth/cubit/product/product_cubit.dart';
-import 'package:auth/cubit/product/product_state.dart';
-import 'package:auth/generated/l10n.dart';
-import 'package:auth/models/product/product_model.dart';
-import 'package:auth/views/products/product_item.dart';
+import 'package:Emend/component/text/text_global.dart';
+import 'package:Emend/app/app_color.dart';
+import 'package:Emend/cubit/product/product_cubit.dart';
+import 'package:Emend/cubit/product/product_state.dart';
+import 'package:Emend/generated/l10n.dart';
+import 'package:Emend/models/product/product_model.dart';
+import 'package:Emend/views/products/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -40,18 +40,18 @@ class HomeCategoryProduct extends StatelessWidget {
               color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
-            TextButton(
-              style: TextButton.styleFrom(
-                overlayColor: GlobalColors.mainColor,
-              ),
-              onPressed: () {},
-              child: TextGlobal(
-                fontWeight: FontWeight.bold,
-                text: S.of(context).see_all,
-                fontSize: 14,
-                color: GlobalColors.mainColor,
-              ),
-            ),
+            // TextButton(
+            //   style: TextButton.styleFrom(
+            //     overlayColor: GlobalColors.mainColor,
+            //   ),
+            //   onPressed: () {},
+            //   child: TextGlobal(
+            //     fontWeight: FontWeight.bold,
+            //     text: S.of(context).see_all,
+            //     fontSize: 14,
+            //     color: GlobalColors.mainColor,
+            //   ),
+            // ),
           ],
         ),
         SizedBox(

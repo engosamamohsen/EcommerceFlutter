@@ -1,19 +1,19 @@
-import 'package:auth/component/app_bar/app.bar.global.dart';
-import 'package:auth/component/button.global.dart';
-import 'package:auth/component/network/loading_view_full.dart';
-import 'package:auth/component/network/network_error_view.dart';
-import 'package:auth/component/text.form.global.dart';
-import 'package:auth/component/text/text_global.dart';
-import 'package:auth/core/app_color.dart';
-import 'package:auth/cubit/address/address_cubit.dart';
-import 'package:auth/cubit/address/address_state.dart';
-import 'package:auth/db_helper/app_storage.dart';
-import 'package:auth/generated/l10n.dart';
-import 'package:auth/models/address/add_address_request.dart';
-import 'package:auth/models/address/add_address_response.dart';
-import 'package:auth/models/address/governates_response.dart';
-import 'package:auth/utils/toast_message.dart';
-import 'package:auth/views/address/add/drop_down_menu.dart';
+import 'package:Emend/component/app_bar/app.bar.global.dart';
+import 'package:Emend/component/button.global.dart';
+import 'package:Emend/component/network/loading_view_full.dart';
+import 'package:Emend/component/network/network_error_view.dart';
+import 'package:Emend/component/text.form.global.dart';
+import 'package:Emend/component/text/text_global.dart';
+import 'package:Emend/app/app_color.dart';
+import 'package:Emend/cubit/address/address_cubit.dart';
+import 'package:Emend/cubit/address/address_state.dart';
+import 'package:Emend/db_helper/app_storage.dart';
+import 'package:Emend/generated/l10n.dart';
+import 'package:Emend/models/address/add_address_request.dart';
+import 'package:Emend/models/address/add_address_response.dart';
+import 'package:Emend/models/address/governates_response.dart';
+import 'package:Emend/utils/toast_message.dart';
+import 'package:Emend/views/address/add/drop_down_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,7 +25,7 @@ class AddAddressView extends StatefulWidget {
 }
 
 class _AddAddressView extends State<AddAddressView> {
-  AppStorage appStorage = AppStorage();
+  AppStorageShared appStorage = AppStorageShared();
   int customer_id = 0;
   int selectedGovenrateId = 0;
   int selectedCityId = 0;

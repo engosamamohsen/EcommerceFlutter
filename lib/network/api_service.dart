@@ -1,11 +1,11 @@
-import 'package:auth/db_helper/app_storage.dart';
-import 'package:auth/utils/toast_message.dart';
+import 'package:Emend/db_helper/app_storage.dart';
+import 'package:Emend/utils/toast_message.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class ApiService {
   Dio? _dio;
-  AppStorage appStorage = AppStorage();
+  AppStorageShared appStorage = AppStorageShared();
   // final ProgressProvider _progressProvider;
   final String base_url = "https://cashierthru.com/admin/public/api/v1/";
   ApiService() {
@@ -27,15 +27,19 @@ class ApiService {
     // };
 
     _dio!.interceptors.add(InterceptorsWrapper(
-      onRequest: (options, handler) {
+      onRequest: (options, handler) async {
         // Show progress or loader here
         print(options.path);
-        // _progressProvider.showProgress();
-        appStorage.readToken().then((onValue) => {
-              if (onValue != null && onValue.isNotEmpty)
-                options.headers['Authorization'] = "Bearer $onValue"
-            });
-
+        options.headers["Access-Control-Allow-Origin"] = "*";
+        options.headers["Access-Control-Allow-Methods"] =
+            "GET,PUT,PATCH,POST,DELETE";
+        options.headers["Access-Control-Allow-Headers"] =
+            "Origin, X-Requested-With, Content-Type, Accept";
+        String? token = await appStorage.readToken();
+        print("token $token");
+        if (token != null && token.isNotEmpty) {
+          options.headers['Authorization'] = "Bearer $token";
+        }
         handler.next(options);
       },
       onResponse: (response, handler) {

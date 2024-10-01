@@ -1,12 +1,12 @@
-import 'package:auth/cubit/settings/settings_state.dart';
-import 'package:auth/db_helper/app_storage.dart';
-import 'package:auth/models/cart/request/add_to_cart_request.dart';
-import 'package:auth/models/product/add_wishlist_response.dart';
-import 'package:auth/models/product/product_list_response.dart';
-import 'package:auth/models/response/base_response.dart';
-import 'package:auth/models/settings/contact_us_request.dart';
-import 'package:auth/network/api_service.dart';
-import 'package:auth/network/end_point.dart';
+import 'package:Emend/cubit/settings/settings_state.dart';
+import 'package:Emend/db_helper/app_storage.dart';
+import 'package:Emend/models/cart/request/add_to_cart_request.dart';
+import 'package:Emend/models/product/add_wishlist_response.dart';
+import 'package:Emend/models/product/product_list_response.dart';
+import 'package:Emend/models/response/base_response.dart';
+import 'package:Emend/models/settings/contact_us_request.dart';
+import 'package:Emend/network/api_service.dart';
+import 'package:Emend/network/end_point.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 
@@ -14,7 +14,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
   SettingsCubit() : super(SettingsInitState());
 
   ApiService apiService = ApiService();
-  AppStorage appStorage = AppStorage();
+  AppStorageShared appStorage = AppStorageShared();
 
   void getTerms(String name) async {
     try {

@@ -1,4 +1,4 @@
-import 'package:auth/models/home/home_response.dart';
+import 'package:Emend/models/home/home_response.dart';
 
 class ProductDetailsResponse {
   ProductDetailsResponse({

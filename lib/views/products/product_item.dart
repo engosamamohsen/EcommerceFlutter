@@ -1,11 +1,11 @@
-import 'package:auth/app/navigate_app.dart';
-import 'package:auth/component/favourite/favourite.dart';
-import 'package:auth/component/text/text_global.dart';
-import 'package:auth/core/app_color.dart';
-import 'package:auth/generated/l10n.dart';
-import 'package:auth/models/product/product_model.dart';
-import 'package:auth/utils/global.assets.dart';
-import 'package:auth/views/products/product_details.dart';
+import 'package:Emend/app/navigate_app.dart';
+import 'package:Emend/component/favourite/favourite.dart';
+import 'package:Emend/component/text/text_global.dart';
+import 'package:Emend/app/app_color.dart';
+import 'package:Emend/generated/l10n.dart';
+import 'package:Emend/models/product/product_model.dart';
+import 'package:Emend/utils/global.assets.dart';
+import 'package:Emend/views/products/product_details.dart';
 import 'package:flutter/material.dart';
 
 class ProductItemView extends StatelessWidget {

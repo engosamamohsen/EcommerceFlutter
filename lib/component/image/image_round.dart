@@ -1,5 +1,6 @@
-import 'package:auth/component/network/loader_view.dart';
-import 'package:auth/component/network/loading_view_full.dart';
+import 'package:Emend/component/network/loader_view.dart';
+import 'package:Emend/component/network/loading_view_full.dart';
+import 'package:Emend/utils/global.assets.dart';
 import 'package:flutter/material.dart';
 
 class ImageRound extends StatefulWidget {
@@ -53,7 +54,12 @@ class _ImageRoundState extends State<ImageRound> {
               },
               errorBuilder: (context, error, stackTrace) {
                 return Center(
-                  child: Icon(Icons.error, color: Colors.red),
+                  child: Image.asset(
+                    width: widget.width,
+                    height: widget.height,
+                    "${GlobalAssets.imagesAssetsPath}no_image.jpg",
+                    fit: BoxFit.cover,
+                  ),
                 );
               },
             ),

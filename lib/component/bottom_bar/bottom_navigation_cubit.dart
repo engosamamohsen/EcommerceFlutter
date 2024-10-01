@@ -1,4 +1,4 @@
-import 'package:auth/views/home/home_view.dart';
+import 'package:Emend/views/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

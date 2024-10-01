@@ -1,6 +1,6 @@
 {
-    "name": "auth",
-    "short_name": "auth",
+    "name": "emend",
+    "short_name": "emend",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

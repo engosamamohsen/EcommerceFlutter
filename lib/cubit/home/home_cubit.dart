@@ -1,9 +1,9 @@
-import 'package:auth/cubit/home/home_state.dart';
-import 'package:auth/db_helper/app_storage.dart';
-import 'package:auth/models/category/categories_response.dart';
-import 'package:auth/models/home/home_response.dart';
-import 'package:auth/network/api_service.dart';
-import 'package:auth/network/end_point.dart';
+import 'package:Emend/cubit/home/home_state.dart';
+import 'package:Emend/db_helper/app_storage.dart';
+import 'package:Emend/models/category/categories_response.dart';
+import 'package:Emend/models/home/home_response.dart';
+import 'package:Emend/network/api_service.dart';
+import 'package:Emend/network/end_point.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 
@@ -11,7 +11,7 @@ class HomeCubit extends Cubit<HomeStates> {
   HomeCubit() : super(HomeInitState());
 
   ApiService apiService = ApiService();
-  AppStorage appStorage = AppStorage();
+  AppStorageShared appStorage = AppStorageShared();
 
   void home() async {
     try {

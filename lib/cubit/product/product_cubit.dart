@@ -1,12 +1,12 @@
-import 'package:auth/cubit/product/product_state.dart';
-import 'package:auth/db_helper/app_storage.dart';
-import 'package:auth/models/cart/request/add_to_cart_request.dart';
-import 'package:auth/models/product/add_wishlist_response.dart';
-import 'package:auth/models/product/details/product_details_response.dart';
-import 'package:auth/models/product/product_list_response.dart';
-import 'package:auth/models/response/base_response.dart';
-import 'package:auth/network/api_service.dart';
-import 'package:auth/network/end_point.dart';
+import 'package:Emend/cubit/product/product_state.dart';
+import 'package:Emend/db_helper/app_storage.dart';
+import 'package:Emend/models/cart/request/add_to_cart_request.dart';
+import 'package:Emend/models/product/add_wishlist_response.dart';
+import 'package:Emend/models/product/details/product_details_response.dart';
+import 'package:Emend/models/product/product_list_response.dart';
+import 'package:Emend/models/response/base_response.dart';
+import 'package:Emend/network/api_service.dart';
+import 'package:Emend/network/end_point.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 
@@ -14,7 +14,7 @@ class ProductCubit extends Cubit<ProductStates> {
   ProductCubit() : super(ProductInitState());
 
   ApiService apiService = ApiService();
-  AppStorage appStorage = AppStorage();
+  AppStorageShared appStorage = AppStorageShared();
 
   void productDetails(int id) async {
     try {

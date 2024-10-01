@@ -1,5 +1,5 @@
-import 'package:auth/component/text/text_global.dart';
-import 'package:auth/generated/l10n.dart';
+import 'package:Emend/component/text/text_global.dart';
+import 'package:Emend/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class EmptyView extends StatelessWidget {

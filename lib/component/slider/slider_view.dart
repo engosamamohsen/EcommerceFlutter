@@ -1,6 +1,6 @@
-import 'package:auth/component/image/image_round.dart';
-import 'package:auth/models/home/home_response.dart';
-import 'package:auth/utils/global.assets.dart';
+import 'package:Emend/component/image/image_round.dart';
+import 'package:Emend/models/home/home_response.dart';
+import 'package:Emend/utils/global.assets.dart';
 import 'package:flutter/material.dart';
 
 final List<String> imagesPath = [

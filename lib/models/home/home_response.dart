@@ -1,5 +1,5 @@
-import 'package:auth/models/category/category_model.dart';
-import 'package:auth/models/product/product_model.dart';
+import 'package:Emend/models/category/category_model.dart';
+import 'package:Emend/models/product/product_model.dart';
 
 class HomeResponse {
   HomeResponse({

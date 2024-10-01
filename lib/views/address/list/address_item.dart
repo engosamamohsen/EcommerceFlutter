@@ -1,7 +1,8 @@
-import 'package:auth/component/text/text_global.dart';
-import 'package:auth/core/app_color.dart';
-import 'package:auth/generated/l10n.dart';
-import 'package:auth/models/address/add_address_response.dart';
+import 'package:Emend/component/text/text_global.dart';
+import 'package:Emend/app/app_color.dart';
+import 'package:Emend/generated/l10n.dart';
+import 'package:Emend/models/address/add_address_response.dart';
+import 'package:Emend/models/address/address_model.dart';
 import 'package:flutter/material.dart';
 
 class AddressItem extends StatelessWidget {

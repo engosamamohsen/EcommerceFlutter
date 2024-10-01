@@ -1,4 +1,4 @@
-import 'package:auth/core/app_color.dart';
+import 'package:Emend/app/app_color.dart';
 import 'package:flutter/material.dart';
 
 class ButtonGlobal extends StatelessWidget {
@@ -8,12 +8,16 @@ class ButtonGlobal extends StatelessWidget {
       this.onTap,
       this.radius = 6,
       this.padding = 10,
+      this.fontSize = 18,
+      this.height = 50,
       this.showProgress = false});
   final String text;
   final bool showProgress;
   final double radius;
   final double padding;
+  final double fontSize;
   final VoidCallback? onTap;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,7 @@ class ButtonGlobal extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.center,
-            height: 50,
+            height: height,
             decoration: BoxDecoration(
                 color: GlobalColors.mainColor,
                 borderRadius: BorderRadius.all(Radius.circular(radius)),
@@ -48,7 +52,7 @@ class ButtonGlobal extends StatelessWidget {
                 if (showProgress) const SizedBox(width: 8),
                 Text(
                   text,
-                  style: const TextStyle(color: Colors.white, fontSize: 18),
+                  style: TextStyle(color: Colors.white, fontSize: fontSize),
                 ),
                 SizedBox(
                   width: padding,

@@ -1,16 +1,15 @@
 import 'dart:io';
 
-import 'package:auth/app/app_utils.dart';
-import 'package:auth/cubit/auth/auth_state.dart';
-import 'package:auth/db_helper/app_storage.dart';
-import 'package:auth/models/confirm_password/confirm_password.dart';
-import 'package:auth/models/forget_password/forget_password.dart';
-import 'package:auth/models/login/login_request.dart';
-import 'package:auth/models/login/login_response.dart';
-import 'package:auth/models/register/register_request.dart';
-import 'package:auth/models/register/update_profile_request.dart';
-import 'package:auth/network/api_service.dart';
-import 'package:auth/network/end_point.dart';
+import 'package:Emend/cubit/auth/auth_state.dart';
+import 'package:Emend/db_helper/app_storage.dart';
+import 'package:Emend/models/confirm_password/confirm_password.dart';
+import 'package:Emend/models/forget_password/forget_password.dart';
+import 'package:Emend/models/login/login_request.dart';
+import 'package:Emend/models/login/login_response.dart';
+import 'package:Emend/models/register/register_request.dart';
+import 'package:Emend/models/register/update_profile_request.dart';
+import 'package:Emend/network/api_service.dart';
+import 'package:Emend/network/end_point.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 
@@ -18,7 +17,7 @@ class AuthCubit extends Cubit<AuthStates> {
   AuthCubit() : super(AuthInitState());
 
   ApiService apiService = ApiService();
-  AppStorage appStorage = AppStorage();
+  AppStorageShared appStorage = AppStorageShared();
 
   void login({required email, required password}) async {
     try {
@@ -37,16 +36,21 @@ class AuthCubit extends Cubit<AuthStates> {
               response.data as Map<String, dynamic>;
           UserResponse user = UserResponse.fromJson(json);
           appStorage.putUser(user);
+          appStorage.putToken(user.data?.jwtToken);
+          String? token = await appStorage.readToken();
+          print("token auth $token");
           UserResponse userSaved = await appStorage.getUser();
           emit(AuthSuccessState());
           // print("start user email ${userSaved.data?.email} ");
-        }
-      }
+        } else
+          emit(AuthTryAgainState());
+      } else
+        emit(AuthTryAgainState());
 
       print("start post call cubit not init");
-    } catch (e) {}
-
-    // emit(AuthInitState());
+    } catch (e) {
+      emit(AuthFailedState(message: e.toString()));
+    }
   }
 
   void register(
@@ -56,7 +60,7 @@ class AuthCubit extends Cubit<AuthStates> {
       required password}) async {
     RegisterRequest model = RegisterRequest(
         name: name, email: email, phone: phone, password: password);
-    emit(AuthInitState());
+    emit(AuthLoadingState());
     Response? response = await apiService.post(
         EndPoint.register, FormData.fromMap(model.toMap()));
     if (response != null) {
@@ -65,10 +69,14 @@ class AuthCubit extends Cubit<AuthStates> {
         UserResponse user = UserResponse.fromJson(json);
         //save user in cache
         appStorage.putUser(user);
+        UserResponse userSaved = await appStorage.getUser();
 
         emit(AuthSuccessState());
+      } else {
+        emit(AuthTryAgainState());
       }
-    }
+    } else
+      emit(AuthTryAgainState());
     // emit(AuthInitState());
   }
 
@@ -105,16 +113,20 @@ class AuthCubit extends Cubit<AuthStates> {
 
           //save user in cache
           emit(AuthSuccessState(data: user));
-        }
-      }
-    } catch (e) {}
+        } else
+          emit(AuthTryAgainState());
+      } else
+        emit(AuthTryAgainState());
+    } catch (e) {
+      emit(AuthFailedState(message: e.toString()));
+    }
     // emit(AuthInitState());
   }
 
   void forgetPassword({required email}) async {
     ForgetPasswordRequest model = ForgetPasswordRequest(email: email);
 
-    emit(AuthInitState());
+    emit(AuthLoadingState());
     Response? response = await apiService.post(
         EndPoint.forgetPassword, FormData.fromMap(model.toMap()));
     if (response != null) {
@@ -123,9 +135,10 @@ class AuthCubit extends Cubit<AuthStates> {
         UserResponse user = UserResponse.fromJson(json);
         //save user in cache
         emit(AuthSuccessState());
-      }
-    }
-    emit(AuthInitState());
+      } else
+        emit(AuthTryAgainState());
+    } else
+      emit(AuthTryAgainState());
   }
 
   void confirmPassword(email, code) async {
@@ -141,8 +154,9 @@ class AuthCubit extends Cubit<AuthStates> {
         UserResponse user = UserResponse.fromJson(json);
         emit(AuthSuccessState());
         //save user in cache
-      }
-    }
-    emit(AuthInitState());
+      } else
+        emit(AuthTryAgainState());
+    } else
+      emit(AuthTryAgainState());
   }
 }

@@ -1,5 +1,5 @@
-import 'package:auth/core/app_color.dart';
-import 'package:auth/generated/l10n.dart';
+import 'package:Emend/app/app_color.dart';
+import 'package:Emend/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class TextFormGlobal extends StatefulWidget {
@@ -75,7 +75,7 @@ class _TextFormGlobalState extends State<TextFormGlobal> {
         obscureText: widget.obscureText,
         keyboardType: widget.textInputType,
         validator: (String? value) {
-          if (widget.errorMsg == null) {
+          if (widget.errorMsg == null && widget.controller.text.isEmpty) {
             return "${widget.hint} ${S.of(context).is_required}";
           } else {
             return null;
@@ -86,7 +86,8 @@ class _TextFormGlobalState extends State<TextFormGlobal> {
         // validator: validator ?? (value) => _defaultValidator(context, value),
         decoration: InputDecoration(
             hintText: widget.hint,
-            errorText: widget.errorMsg?.isEmpty == true
+            errorText: widget.errorMsg?.isEmpty == true ||
+                    widget.controller.text.isNotEmpty
                 ? null
                 : widget.errorMsg, // Show dynamic error message
             enabledBorder: OutlineInputBorder(
@@ -113,9 +114,9 @@ class _TextFormGlobalState extends State<TextFormGlobal> {
 
 
 
-// import 'package:auth/core/app_color.dart';
-// import 'package:auth/utils/toast_message.dart';
-// import 'package:auth/generated/l10n.dart';
+// import 'package:Emend/core/app_color.dart';
+// import 'package:Emend/utils/toast_message.dart';
+// import 'package:Emend/generated/l10n.dart';
 // import 'package:flutter/material.dart';
 
 // class TextFormGlobal extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:auth/models/category/category_model.dart';
+import 'package:Emend/models/category/category_model.dart';
 
 class CategoriesResponse {
   CategoriesResponse({

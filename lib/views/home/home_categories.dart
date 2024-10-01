@@ -1,5 +1,5 @@
-import 'package:auth/models/category/category_model.dart';
-import 'package:auth/views/category/category_item.dart';
+import 'package:Emend/models/category/category_model.dart';
+import 'package:Emend/views/category/category_item.dart';
 import 'package:flutter/material.dart';
 
 class HomeCategories extends StatelessWidget {

@@ -1,15 +1,16 @@
-import 'package:auth/component/image/image_circle.dart';
-import 'package:auth/component/text/text_global.dart';
-import 'package:auth/core/app_color.dart';
-import 'package:auth/db_helper/app_storage.dart';
-import 'package:auth/generated/l10n.dart';
-import 'package:auth/models/login/login_response.dart';
-import 'package:auth/views/address/list/address_list.dart';
-import 'package:auth/views/auth/login.view.dart';
-import 'package:auth/views/contactus/contact_us_view.dart';
-import 'package:auth/views/profile/edit_profile.dart';
-import 'package:auth/views/profile/item_settings.dart';
-import 'package:auth/views/wishlist/wishlist_list_view.dart';
+import 'package:Emend/app/navigate_app.dart';
+import 'package:Emend/component/image/image_circle.dart';
+import 'package:Emend/component/text/text_global.dart';
+import 'package:Emend/db_helper/app_storage.dart';
+import 'package:Emend/generated/l10n.dart';
+import 'package:Emend/models/login/login_response.dart';
+import 'package:Emend/views/address/list/address_list.dart';
+import 'package:Emend/views/auth/login.view.dart';
+import 'package:Emend/views/contactus/contact_us_view.dart';
+import 'package:Emend/views/order/orders_list_view.dart';
+import 'package:Emend/views/profile/edit_profile.dart';
+import 'package:Emend/views/profile/item_settings.dart';
+import 'package:Emend/views/wishlist/wishlist_list_view.dart';
 import 'package:flutter/material.dart';
 
 class ProfileView extends StatefulWidget {
@@ -21,7 +22,7 @@ class ProfileView extends StatefulWidget {
 
 class _ProfileViewState extends State<ProfileView> {
   UserResponse? user;
-  AppStorage appStorage = AppStorage();
+  AppStorageShared appStorage = AppStorageShared();
   @override
   void initState() {
     super.initState();
@@ -117,7 +118,9 @@ class _ProfileViewState extends State<ProfileView> {
             ItemSetting(
               text: S.of(context).my_orders,
               icon: Icons.list_alt_outlined,
-              submit: () {},
+              submit: () {
+                NavigateApp.navigate(context, OrderListView());
+              },
             ),
             SizedBox(
               height: 5,

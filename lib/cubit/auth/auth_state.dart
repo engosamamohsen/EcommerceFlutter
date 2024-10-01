@@ -9,6 +9,10 @@ class AuthFailedState extends AuthStates {
   AuthFailedState({required this.message});
 }
 
+class AuthTryAgainState extends AuthStates {
+  AuthTryAgainState();
+}
+
 class AuthSuccessState<T> extends AuthStates {
   final T? data;
   AuthSuccessState({this.data});

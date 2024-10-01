@@ -1,19 +1,19 @@
-import 'package:auth/component/app_bar/app.bar.global.dart';
-import 'package:auth/component/button.global.dart';
-import 'package:auth/cubit/auth/auth_cubit.dart';
-import 'package:auth/cubit/auth/auth_state.dart';
-import 'package:auth/db_helper/app_storage.dart';
-import 'package:auth/generated/l10n.dart';
-import 'package:auth/models/login/login_response.dart';
-import 'package:auth/network/api_service.dart';
-import 'package:auth/network/end_point.dart';
-import 'package:auth/utils/global.assets.dart';
-import 'package:auth/core/app_color.dart';
-import 'package:auth/component/text.form.global.dart';
-import 'package:auth/views/auth/forget.password.view.dart';
-import 'package:auth/views/auth/register.view.dart';
-import 'package:auth/views/home/home_container.dart';
-import 'package:auth/views/home/home_view.dart';
+import 'package:Emend/app/app_color.dart';
+import 'package:Emend/component/app_bar/app.bar.global.dart';
+import 'package:Emend/component/button.global.dart';
+import 'package:Emend/component/text.form.global.dart';
+import 'package:Emend/cubit/auth/auth_cubit.dart';
+import 'package:Emend/cubit/auth/auth_state.dart';
+import 'package:Emend/db_helper/app_storage.dart';
+import 'package:Emend/generated/l10n.dart';
+import 'package:Emend/models/login/login_response.dart';
+import 'package:Emend/network/api_service.dart';
+import 'package:Emend/network/end_point.dart';
+import 'package:Emend/utils/global.assets.dart';
+import 'package:Emend/views/auth/forget.password.view.dart';
+import 'package:Emend/views/auth/register.view.dart';
+import 'package:Emend/views/home/home_container.dart';
+import 'package:Emend/views/home/home_view.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +21,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class LoginView extends StatelessWidget {
   LoginView({super.key});
 
-  AppStorage appStorage = AppStorage();
+  AppStorageShared appStorage = AppStorageShared();
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();

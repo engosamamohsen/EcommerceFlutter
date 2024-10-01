@@ -1,48 +1,58 @@
-import 'package:auth/models/order/order_response.dart';
+import 'package:Emend/models/order/order_model.dart';
 
-class OrderListResponse {
-  int? status;
-  String? message;
-  Data? data;
+class OrdersListResponse {
+  OrdersListResponse({
+    required this.status,
+    required this.message,
+    required this.data,
+  });
 
-  OrderListResponse({this.status, this.message, this.data});
+  final int status;
+  final String message;
+  final Data? data;
 
-  OrderListResponse.fromJson(Map<String, dynamic> json) {
-    status = json['status'];
-    message = json['message'];
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+  factory OrdersListResponse.fromJson(Map<String, dynamic> json) {
+    return OrdersListResponse(
+      status: json["status"] ?? 0,
+      message: json["message"] ?? "",
+      data: json["data"] == null ? null : Data.fromJson(json["data"]),
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status'] = this.status;
-    data['message'] = this.message;
-    if (this.data != null) {
-      data['data'] = this.data!.toJson();
-    }
-    return data;
+  Map<String, dynamic> toJson() => {
+        "status": status,
+        "message": message,
+        "data": data?.toJson(),
+      };
+
+  @override
+  String toString() {
+    return "$status, $message, $data, ";
   }
 }
 
 class Data {
-  List<OrderModel>? data;
+  Data({
+    required this.data,
+  });
 
-  Data({this.data});
+  final List<OrderModel> data;
 
-  Data.fromJson(Map<String, dynamic> json) {
-    if (json['data'] != null) {
-      data = <OrderModel>[];
-      json['data'].forEach((v) {
-        data!.add(new OrderModel.fromJson(v));
-      });
-    }
+  factory Data.fromJson(Map<String, dynamic> json) {
+    return Data(
+      data: json["data"] == null
+          ? []
+          : List<OrderModel>.from(
+              json["data"]!.map((x) => OrderModel.fromJson(x))),
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
-    }
-    return data;
+  Map<String, dynamic> toJson() => {
+        "data": data.map((x) => x?.toJson()).toList(),
+      };
+
+  @override
+  String toString() {
+    return "$data, ";
   }
 }

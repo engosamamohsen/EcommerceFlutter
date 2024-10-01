@@ -1,21 +1,22 @@
-import 'package:auth/app/navigate_app.dart';
-import 'package:auth/app/price_apis.dart';
-import 'package:auth/component/app_bar/app.bar.global.dart';
-import 'package:auth/component/button.global.dart';
-import 'package:auth/component/emptyView/empty_view.dart';
-import 'package:auth/component/network/loading_view_full.dart';
-import 'package:auth/component/network/network_error_view.dart';
-import 'package:auth/component/text/text_global.dart';
-import 'package:auth/core/app_color.dart';
-import 'package:auth/cubit/cart/cart_cubit.dart';
-import 'package:auth/cubit/cart/cart_state.dart';
-import 'package:auth/cubit/product/product_cubit.dart';
-import 'package:auth/generated/l10n.dart';
-import 'package:auth/models/cart/cart_list_response.dart';
-import 'package:auth/views/cart/cart_bottom.dart';
-import 'package:auth/views/cart/cart_item.dart';
-import 'package:auth/views/checkout/checkout_view.dart';
-import 'package:auth/views/home/home_view.dart';
+import 'package:Emend/app/navigate_app.dart';
+import 'package:Emend/app/price_apis.dart';
+import 'package:Emend/component/app_bar/app.bar.global.dart';
+import 'package:Emend/component/bottom_bar/bottom_navigation_cubit.dart';
+import 'package:Emend/component/button.global.dart';
+import 'package:Emend/component/emptyView/empty_view.dart';
+import 'package:Emend/component/network/loading_view_full.dart';
+import 'package:Emend/component/network/network_error_view.dart';
+import 'package:Emend/component/text/text_global.dart';
+import 'package:Emend/app/app_color.dart';
+import 'package:Emend/cubit/cart/cart_cubit.dart';
+import 'package:Emend/cubit/cart/cart_state.dart';
+import 'package:Emend/cubit/product/product_cubit.dart';
+import 'package:Emend/generated/l10n.dart';
+import 'package:Emend/models/cart/cart_list_response.dart';
+import 'package:Emend/views/cart/cart_bottom.dart';
+import 'package:Emend/views/cart/cart_item.dart';
+import 'package:Emend/views/checkout/checkout_view.dart';
+import 'package:Emend/views/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -151,12 +152,37 @@ class _CartViewState extends State<CartView> {
                   price: totalAfterDiscount,
                   btnText: S.of(context).checkout,
                   checkout: () {
-                    print("welcome here");
+                    // print("welcome here");
                     NavigateApp.navigate(
                         context,
                         CheckoutView(
                             carts: carts,
                             totalAfterDiscount: totalAfterDiscount));
+
+                    // Navigator.push(context,
+                    //     MaterialPageRoute(builder: (BuildContext context) {
+                    //   return CheckoutView(
+                    //       carts: carts, totalAfterDiscount: totalAfterDiscount);
+                    // })).then((result) {
+                    //   if (result == "checkout") {
+                    //     setState(() {
+                    //       BlocProvider.of<BottomNavigationCubit>(context)
+                    //           .updateTabIndex(HomeView());
+                    //     });
+                    //   }
+                    // });
+
+                    /*
+Navigator.push(context,
+                MaterialPageRoute(builder: (BuildContext context) {
+              return CheckoutSuccessView();
+            })).then((result) {
+              setState(() {
+                BlocProvider.of<BottomNavigationCubit>(context)
+                    .updateTabIndex(HomeView());
+              });
+            });
+                            */
                   },
                 )
               : null,

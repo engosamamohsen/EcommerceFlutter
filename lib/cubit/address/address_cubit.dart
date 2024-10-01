@@ -1,12 +1,12 @@
-import 'package:auth/cubit/address/address_state.dart';
-import 'package:auth/db_helper/app_storage.dart';
-import 'package:auth/models/address/add_address_request.dart';
-import 'package:auth/models/address/add_address_response.dart';
-import 'package:auth/models/address/address_list_response.dart';
-import 'package:auth/models/address/governates_response.dart';
-import 'package:auth/models/response/base_response.dart';
-import 'package:auth/network/api_service.dart';
-import 'package:auth/network/end_point.dart';
+import 'package:Emend/cubit/address/address_state.dart';
+import 'package:Emend/db_helper/app_storage.dart';
+import 'package:Emend/models/address/add_address_request.dart';
+import 'package:Emend/models/address/add_address_response.dart';
+import 'package:Emend/models/address/address_list_response.dart';
+import 'package:Emend/models/address/governates_response.dart';
+import 'package:Emend/models/response/base_response.dart';
+import 'package:Emend/network/api_service.dart';
+import 'package:Emend/network/end_point.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 
@@ -14,7 +14,7 @@ class AddressCubit extends Cubit<AddressStates> {
   AddressCubit() : super(AddressInitState());
 
   ApiService apiService = ApiService();
-  AppStorage appStorage = AppStorage();
+  AppStorageShared appStorage = AppStorageShared();
 
   void addAddress(AddAddressRequest address) async {
     try {

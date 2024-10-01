@@ -24,25 +24,33 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "add_address": MessageLookupByLibrary.simpleMessage("Add Adress"),
         "add_to_cart": MessageLookupByLibrary.simpleMessage("Add To Cart"),
+        "address_info": MessageLookupByLibrary.simpleMessage("Address Info"),
         "app_name": MessageLookupByLibrary.simpleMessage("Ceraj"),
         "area": MessageLookupByLibrary.simpleMessage("area"),
         "building": MessageLookupByLibrary.simpleMessage("Building"),
         "cancel_order": MessageLookupByLibrary.simpleMessage("Cancel Order"),
         "cart": MessageLookupByLibrary.simpleMessage("Cart"),
+        "cash": MessageLookupByLibrary.simpleMessage("Cash"),
         "categories": MessageLookupByLibrary.simpleMessage("Categories"),
         "category": MessageLookupByLibrary.simpleMessage("Category"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("Change Password"),
         "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
+        "complete": MessageLookupByLibrary.simpleMessage("Complete"),
         "confirm_code": MessageLookupByLibrary.simpleMessage("Confirm Code"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "contact_us_msg": MessageLookupByLibrary.simpleMessage(
             "If you have any inquries get in touch with us."),
+        "continue_shopping":
+            MessageLookupByLibrary.simpleMessage("Continue Shopping"),
+        "create_order": MessageLookupByLibrary.simpleMessage("Create order"),
         "currency": MessageLookupByLibrary.simpleMessage("EGP"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "delivered": MessageLookupByLibrary.simpleMessage("Delivered"),
+        "delivery": MessageLookupByLibrary.simpleMessage("Delivery"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "do_you_want_delete_this_item": MessageLookupByLibrary.simpleMessage(
             "Do you want delete this item?"),
@@ -59,7 +67,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "governate": MessageLookupByLibrary.simpleMessage("Governate"),
         "guest": MessageLookupByLibrary.simpleMessage("Guest"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "in_the_way": MessageLookupByLibrary.simpleMessage("In the way"),
         "is_required": MessageLookupByLibrary.simpleMessage("is required"),
+        "items_info": MessageLookupByLibrary.simpleMessage("Items Info"),
         "loading_please_wait":
             MessageLookupByLibrary.simpleMessage("Loading Please Wait ...."),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
@@ -80,9 +90,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Newest Products"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "order_details": MessageLookupByLibrary.simpleMessage("Order Details"),
+        "order_info": MessageLookupByLibrary.simpleMessage("Order Info"),
+        "order_number": MessageLookupByLibrary.simpleMessage("Order Number"),
         "orders": MessageLookupByLibrary.simpleMessage("Orders"),
         "otp": MessageLookupByLibrary.simpleMessage("OTP"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "payment_info": MessageLookupByLibrary.simpleMessage("Payment Info"),
+        "payment_method":
+            MessageLookupByLibrary.simpleMessage("Payment Method"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "please_enter": MessageLookupByLibrary.simpleMessage("Please Enter"),
         "please_enter_valid_email": MessageLookupByLibrary.simpleMessage(
@@ -99,10 +114,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please select your address"),
         "privacy_and_policy":
             MessageLookupByLibrary.simpleMessage("Privacy And Policy"),
+        "processing": MessageLookupByLibrary.simpleMessage("Processing"),
         "product_details":
             MessageLookupByLibrary.simpleMessage("Product Details"),
         "products": MessageLookupByLibrary.simpleMessage("Products"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+        "qty": MessageLookupByLibrary.simpleMessage("Qty"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "search_in": MessageLookupByLibrary.simpleMessage("Search in"),
@@ -116,7 +133,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "special_sign": MessageLookupByLibrary.simpleMessage("Special Sign"),
         "street": MessageLookupByLibrary.simpleMessage("Street"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
+        "success": MessageLookupByLibrary.simpleMessage("Success"),
         "tech_info": MessageLookupByLibrary.simpleMessage("Techincal Info"),
+        "thank_you_for_choosing_our_app": MessageLookupByLibrary.simpleMessage(
+            "Thank you for choosing our app!"),
+        "total": MessageLookupByLibrary.simpleMessage("Total"),
         "total_price": MessageLookupByLibrary.simpleMessage("Total Price"),
         "update_profile":
             MessageLookupByLibrary.simpleMessage("Update Profile"),
@@ -132,6 +153,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "your_categories_is_empty":
             MessageLookupByLibrary.simpleMessage("Your categories is empty"),
         "your_favorite_is_empty":
-            MessageLookupByLibrary.simpleMessage("Your Favorite is empty")
+            MessageLookupByLibrary.simpleMessage("Your Favorite is empty"),
+        "your_order_will_be_delivered_soon":
+            MessageLookupByLibrary.simpleMessage(
+                "Your order will be delivered soon.")
       };
 }

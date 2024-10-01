@@ -1,17 +1,18 @@
 import 'dart:convert';
 
-import 'package:auth/models/login/login_response.dart';
+import 'package:Emend/models/login/login_response.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class AppStorage {
+class AppStorageShared {
   final FlutterSecureStorage flutterSecureStorage =
       const FlutterSecureStorage();
 
   String _token = "TOKEN";
   String _user = "USER";
 
-  void putToken(value) {
-    flutterSecureStorage.write(key: _token, value: value);
+  void putToken(value) async {
+    print("token for saving $value");
+    await flutterSecureStorage.write(key: _token, value: value);
   }
 
   Future<String?> readToken() async {
@@ -23,8 +24,8 @@ class AppStorage {
     await flutterSecureStorage.delete(key: _token);
   }
 
-  void putKey(key, value) {
-    flutterSecureStorage.write(key: key, value: value);
+  void putKey(key, value) async {
+    await flutterSecureStorage.write(key: key, value: value);
   }
 
   Future<String> readKey(key) async {
@@ -36,9 +37,10 @@ class AppStorage {
     await flutterSecureStorage.delete(key: key);
   }
 
-  void putUser(UserResponse userResponse) {
+  void putUser(UserResponse userResponse) async {
     putToken(userResponse.data?.jwtToken);
-    flutterSecureStorage.write(key: _user, value: jsonEncode(userResponse));
+    await flutterSecureStorage.write(
+        key: _user, value: jsonEncode(userResponse));
   }
 
   Future<UserResponse> getUser() async {

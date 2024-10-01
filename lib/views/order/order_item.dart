@@ -1,8 +1,10 @@
-import 'package:auth/component/text/text_global.dart';
-import 'package:auth/core/app_color.dart';
-import 'package:auth/generated/l10n.dart';
-import 'package:auth/models/address/add_address_response.dart';
-import 'package:auth/models/order/order_response.dart';
+import 'package:Emend/app/app_color.dart';
+import 'package:Emend/app/price_apis.dart';
+import 'package:Emend/app_emend/emend.dart';
+import 'package:Emend/component/button.global.dart';
+import 'package:Emend/component/text/text_global.dart';
+import 'package:Emend/generated/l10n.dart';
+import 'package:Emend/models/order/order_model.dart';
 import 'package:flutter/material.dart';
 
 class OrderItem extends StatelessWidget {
@@ -28,34 +30,54 @@ class OrderItem extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  Icon(Icons.calendar_month_outlined),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  // TextGlobal(
-                  //     fontSize: 14,
-                  //     color: Colors.black,
-                  //     text:
-                  //         "${order.address.governorate.name.toString()} - ${address.city.name.toString()}"),
-                ],
-              ),
               SizedBox(
                 width: 8,
               ),
               Row(
                 children: [
-                  Icon(Icons.home_outlined),
-                  SizedBox(
+                  TextGlobal(
+                      fontSize: 14, text: "${S.of(context).order_number} : "),
+                  const SizedBox(
                     width: 10,
                   ),
-                  // TextGlobal(
-                  //     fontSize: 14,
-                  //     color: Colors.black,
-                  //     text:
-                  //         "${S.of(context).building} (${address.building.toString()}) - ${S.of(context).floor} (${address.floor.toString()}) - ${S.of(context).flat} (${address.flat.toString()})"),
+                  TextGlobal(
+                    fontSize: 14,
+                    color: Colors.black,
+                    text: "#${order.id}",
+                    fontWeight: FontWeight.bold,
+                  ),
                   Spacer(),
+                  ButtonGlobal(
+                    text: EmendApp.getOrderStatus(context, order.orderStatus),
+                    radius: 30,
+                    height: 20,
+                    fontSize: 10,
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              Row(
+                children: [
+                  TextGlobal(
+                    fontSize: 14,
+                    text: "${S.of(context).total} : ",
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  TextGlobal(
+                      fontSize: 14,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      text: order.total.parsePrice(context)),
+                  Spacer(),
+                  TextGlobal(
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                      color: GlobalColors.secondaryColor,
+                      text: order.date),
                 ],
               ),
               SizedBox(

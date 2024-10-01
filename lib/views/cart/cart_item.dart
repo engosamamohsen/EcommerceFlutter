@@ -1,10 +1,10 @@
-import 'package:auth/app/price_apis.dart';
-import 'package:auth/component/app_custom/cart_shipping.dart';
-import 'package:auth/component/image/image_round.dart';
-import 'package:auth/component/text/text_global.dart';
-import 'package:auth/core/app_color.dart';
-import 'package:auth/generated/l10n.dart';
-import 'package:auth/models/cart/cart_list_response.dart';
+import 'package:Emend/app/price_apis.dart';
+import 'package:Emend/component/app_custom/cart_shipping.dart';
+import 'package:Emend/component/image/image_round.dart';
+import 'package:Emend/component/text/text_global.dart';
+import 'package:Emend/app/app_color.dart';
+import 'package:Emend/generated/l10n.dart';
+import 'package:Emend/models/cart/cart_list_response.dart';
 import 'package:flutter/material.dart';
 
 class CartItem extends StatelessWidget {
@@ -131,12 +131,28 @@ class CartItem extends StatelessWidget {
                             ),
                           ],
                         ),
+                      SizedBox(
+                        height: 4,
+                      ),
                       if (!allowActions)
-                        TextGlobal(
-                          text: cart.count,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                        Row(
+                          children: [
+                            TextGlobal(
+                              text: S.of(context).qty,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            TextGlobal(
+                              text: "(${cart.count})",
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ],
                         ),
                     ],
                   ),

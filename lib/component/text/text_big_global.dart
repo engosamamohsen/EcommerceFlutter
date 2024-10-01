@@ -1,4 +1,4 @@
-import 'package:auth/core/app_color.dart';
+import 'package:Emend/app/app_color.dart';
 import 'package:flutter/material.dart';
 
 class TextGlobalBig extends StatefulWidget {

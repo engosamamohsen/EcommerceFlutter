@@ -1,13 +1,13 @@
-import 'package:auth/component/bottom_bar/BottomNavigationApp.dart';
-import 'package:auth/component/bottom_bar/bottom_navigation_cubit.dart';
-import 'package:auth/component/text.form.global.dart';
-import 'package:auth/component/text/text_global.dart';
-import 'package:auth/core/app_color.dart';
-import 'package:auth/cubit/home/home_cubit.dart';
-import 'package:auth/cubit/home/home_state.dart';
-import 'package:auth/generated/l10n.dart';
-import 'package:auth/views/category/categories_view.dart';
-import 'package:auth/views/home/home_view.dart';
+import 'package:Emend/component/bottom_bar/BottomNavigationApp.dart';
+import 'package:Emend/component/bottom_bar/bottom_navigation_cubit.dart';
+import 'package:Emend/component/text.form.global.dart';
+import 'package:Emend/component/text/text_global.dart';
+import 'package:Emend/app/app_color.dart';
+import 'package:Emend/cubit/home/home_cubit.dart';
+import 'package:Emend/cubit/home/home_state.dart';
+import 'package:Emend/generated/l10n.dart';
+import 'package:Emend/views/category/categories_view.dart';
+import 'package:Emend/views/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

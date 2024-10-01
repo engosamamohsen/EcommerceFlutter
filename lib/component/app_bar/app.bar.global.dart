@@ -1,4 +1,4 @@
-import 'package:auth/component/text/text_global.dart';
+import 'package:Emend/component/text/text_global.dart';
 import 'package:flutter/material.dart';
 
 class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {

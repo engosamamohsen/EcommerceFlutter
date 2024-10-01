@@ -1,17 +1,17 @@
 import 'dart:io';
 
-import 'package:auth/component/app_bar/app.bar.global.dart';
-import 'package:auth/component/button.global.dart';
-import 'package:auth/component/image/image_circle.dart';
-import 'package:auth/component/image/image_circle_avatar.dart';
-import 'package:auth/component/text.form.global.dart';
-import 'package:auth/cubit/auth/auth_cubit.dart';
-import 'package:auth/cubit/auth/auth_state.dart';
-import 'package:auth/db_helper/app_storage.dart';
-import 'package:auth/generated/l10n.dart';
-import 'package:auth/models/login/login_response.dart';
-import 'package:auth/utils/global.assets.dart';
-import 'package:auth/utils/toast_message.dart';
+import 'package:Emend/component/app_bar/app.bar.global.dart';
+import 'package:Emend/component/button.global.dart';
+import 'package:Emend/component/image/image_circle.dart';
+import 'package:Emend/component/image/image_circle_avatar.dart';
+import 'package:Emend/component/text.form.global.dart';
+import 'package:Emend/cubit/auth/auth_cubit.dart';
+import 'package:Emend/cubit/auth/auth_state.dart';
+import 'package:Emend/db_helper/app_storage.dart';
+import 'package:Emend/generated/l10n.dart';
+import 'package:Emend/models/login/login_response.dart';
+import 'package:Emend/utils/global.assets.dart';
+import 'package:Emend/utils/toast_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -25,7 +25,7 @@ class EditProfileView extends StatefulWidget {
 
 class _EditProfileViewState extends State<EditProfileView> {
   UserResponse? user;
-  AppStorage appStorage = AppStorage();
+  AppStorageShared appStorage = AppStorageShared();
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();

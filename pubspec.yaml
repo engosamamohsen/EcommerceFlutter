@@ -1,5 +1,5 @@
-name: auth
-description: "A new Flutter project."
+name: Emend
+description: "Shop now for everything your home needs, including home furniture, decor, office furniture, and home appliances, from the Homzmart website. Buy at the best price in Egypt, delivered to your door."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -49,6 +49,7 @@ dependencies:
   image_picker: ^1.1.2
   path: ^1.9.0
   flutter_html: ^3.0.0-beta.2
+  shared_preferences: ^2.3.2
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +76,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
+    - assets/vector/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

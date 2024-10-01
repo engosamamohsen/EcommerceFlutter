@@ -1,7 +1,7 @@
-import 'package:auth/app/navigate_app.dart';
-import 'package:auth/component/text/text_global.dart';
-import 'package:auth/core/app_color.dart';
-import 'package:auth/views/products/product_list_view.dart';
+import 'package:Emend/app/navigate_app.dart';
+import 'package:Emend/component/text/text_global.dart';
+import 'package:Emend/app/app_color.dart';
+import 'package:Emend/views/products/product_list_view.dart';
 import 'package:flutter/material.dart';
 
 class CategoryItem extends StatelessWidget {

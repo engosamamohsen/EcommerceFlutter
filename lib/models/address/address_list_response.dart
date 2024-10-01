@@ -1,4 +1,5 @@
-import 'package:auth/models/address/add_address_response.dart';
+import 'package:Emend/models/address/add_address_response.dart';
+import 'package:Emend/models/address/address_model.dart';
 
 class AddressListResponse {
   int? status;

@@ -1,4 +1,4 @@
-import 'package:auth/models/product/product_model.dart';
+import 'package:Emend/models/product/product_model.dart';
 
 class ProductListResponse {
   ProductListResponse({

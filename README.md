@@ -1,4 +1,4 @@
-# auth
+# emend
 
 A new Flutter project.
 

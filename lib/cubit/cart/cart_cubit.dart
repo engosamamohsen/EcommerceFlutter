@@ -1,11 +1,11 @@
 import 'dart:io';
-import 'package:auth/cubit/cart/cart_state.dart';
-import 'package:auth/db_helper/app_storage.dart';
-import 'package:auth/models/cart/cart_list_response.dart';
-import 'package:auth/models/cart/request/add_to_cart_request.dart';
-import 'package:auth/models/response/base_response.dart';
-import 'package:auth/network/api_service.dart';
-import 'package:auth/network/end_point.dart';
+import 'package:Emend/cubit/cart/cart_state.dart';
+import 'package:Emend/db_helper/app_storage.dart';
+import 'package:Emend/models/cart/cart_list_response.dart';
+import 'package:Emend/models/cart/request/add_to_cart_request.dart';
+import 'package:Emend/models/response/base_response.dart';
+import 'package:Emend/network/api_service.dart';
+import 'package:Emend/network/end_point.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 
@@ -13,7 +13,7 @@ class CartCubit extends Cubit<CartStates> {
   CartCubit() : super(CartInitState());
 
   ApiService apiService = ApiService();
-  AppStorage appStorage = AppStorage();
+  AppStorageShared appStorage = AppStorageShared();
 
   void getCarts() async {
     try {

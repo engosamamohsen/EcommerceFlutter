@@ -889,6 +889,196 @@ class S {
       args: [],
     );
   }
+
+  /// `Success`
+  String get success {
+    return Intl.message(
+      'Success',
+      name: 'success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complete`
+  String get complete {
+    return Intl.message(
+      'Complete',
+      name: 'complete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue Shopping`
+  String get continue_shopping {
+    return Intl.message(
+      'Continue Shopping',
+      name: 'continue_shopping',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your order will be delivered soon.`
+  String get your_order_will_be_delivered_soon {
+    return Intl.message(
+      'Your order will be delivered soon.',
+      name: 'your_order_will_be_delivered_soon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thank you for choosing our app!`
+  String get thank_you_for_choosing_our_app {
+    return Intl.message(
+      'Thank you for choosing our app!',
+      name: 'thank_you_for_choosing_our_app',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create order`
+  String get create_order {
+    return Intl.message(
+      'Create order',
+      name: 'create_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Processing`
+  String get processing {
+    return Intl.message(
+      'Processing',
+      name: 'processing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In the way`
+  String get in_the_way {
+    return Intl.message(
+      'In the way',
+      name: 'in_the_way',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delivered`
+  String get delivered {
+    return Intl.message(
+      'Delivered',
+      name: 'delivered',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order Number`
+  String get order_number {
+    return Intl.message(
+      'Order Number',
+      name: 'order_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total`
+  String get total {
+    return Intl.message(
+      'Total',
+      name: 'total',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment Method`
+  String get payment_method {
+    return Intl.message(
+      'Payment Method',
+      name: 'payment_method',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address Info`
+  String get address_info {
+    return Intl.message(
+      'Address Info',
+      name: 'address_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment Info`
+  String get payment_info {
+    return Intl.message(
+      'Payment Info',
+      name: 'payment_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cash`
+  String get cash {
+    return Intl.message(
+      'Cash',
+      name: 'cash',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delivery`
+  String get delivery {
+    return Intl.message(
+      'Delivery',
+      name: 'delivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Qty`
+  String get qty {
+    return Intl.message(
+      'Qty',
+      name: 'qty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order Info`
+  String get order_info {
+    return Intl.message(
+      'Order Info',
+      name: 'order_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Items Info`
+  String get items_info {
+    return Intl.message(
+      'Items Info',
+      name: 'items_info',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

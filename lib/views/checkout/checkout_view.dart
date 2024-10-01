@@ -1,28 +1,24 @@
-import 'package:auth/app/navigate_app.dart';
-import 'package:auth/component/app_bar/app.bar.global.dart';
-import 'package:auth/component/bottom_bar/bottom_navigation_cubit.dart';
-import 'package:auth/component/network/loading_view_full.dart';
-import 'package:auth/component/text/text_global.dart';
-import 'package:auth/core/app_color.dart';
-import 'package:auth/cubit/address/address_cubit.dart';
-import 'package:auth/cubit/address/address_state.dart';
-import 'package:auth/cubit/cart/cart_cubit.dart';
-import 'package:auth/cubit/cart/cart_state.dart';
-import 'package:auth/cubit/home/home_cubit.dart';
-import 'package:auth/cubit/order/order_cubit.dart';
-import 'package:auth/cubit/order/order_state.dart';
-import 'package:auth/generated/l10n.dart';
-import 'package:auth/models/address/add_address_response.dart';
-import 'package:auth/models/address/address_list_response.dart';
-import 'package:auth/models/cart/cart_list_response.dart';
-import 'package:auth/models/order/order_response.dart';
-import 'package:auth/utils/toast_message.dart';
-import 'package:auth/views/address/list/address_list.dart';
-import 'package:auth/views/address/list/address_item.dart';
-import 'package:auth/views/cart/cart_bottom.dart';
-import 'package:auth/views/cart/cart_item.dart';
-import 'package:auth/views/home/home_view.dart';
-import 'package:auth/views/profile/item_settings.dart';
+import 'package:Emend/component/app_bar/app.bar.global.dart';
+import 'package:Emend/component/network/loading_view_full.dart';
+import 'package:Emend/app/app_color.dart';
+import 'package:Emend/cubit/address/address_cubit.dart';
+import 'package:Emend/cubit/address/address_state.dart';
+import 'package:Emend/cubit/order/order_cubit.dart';
+import 'package:Emend/cubit/order/order_state.dart';
+import 'package:Emend/generated/l10n.dart';
+import 'package:Emend/models/address/add_address_response.dart';
+import 'package:Emend/models/address/address_list_response.dart';
+import 'package:Emend/models/address/address_model.dart';
+import 'package:Emend/models/cart/cart_list_response.dart';
+import 'package:Emend/models/order/order_list_response.dart';
+import 'package:Emend/models/response/base_response.dart';
+import 'package:Emend/utils/toast_message.dart';
+import 'package:Emend/views/address/list/address_item.dart';
+import 'package:Emend/views/address/list/address_list.dart';
+import 'package:Emend/views/cart/cart_bottom.dart';
+import 'package:Emend/views/cart/cart_item.dart';
+import 'package:Emend/views/checkout/checkout_success_view.dart';
+import 'package:Emend/views/profile/item_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -39,7 +35,7 @@ class CheckoutView extends StatefulWidget {
 class _CheckoutViewState extends State<CheckoutView> {
   int address_id = -1;
   double shipping = 0;
-  List<AddressModel>? addressList = null;
+  List<AddressModel>? addressList;
 
   @override
   void initState() {
@@ -64,13 +60,17 @@ class _CheckoutViewState extends State<CheckoutView> {
           }
         }),
         BlocListener<OrderCubit, OrderStates>(listener: (context, state) {
-          if (state is OrderSuccessState<OrderResponse>) {
+          if (state is OrderSuccessState<BaseResponse>) {
             ToastMessageHelper.showToastMessage(state.data!.message);
             // i want to navigate here to Home Screen
             // Navigate back to HomeView and ensure the Home tab is selected
-            Navigator.pop(context);
-            BlocProvider.of<BottomNavigationCubit>(context)
-                .updateTabIndex(HomeView());
+            // Navigator.pop(context);
+            // BlocProvider.of<BottomNavigationCubit>(context)
+            //     .updateTabIndex(HomeView());
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => CheckoutSuccessView()),
+            );
           }
         })
       ],
@@ -97,6 +97,8 @@ class _CheckoutViewState extends State<CheckoutView> {
                             itemBuilder: (context, item) {
                               return CartItem(
                                 cart: widget.carts[item],
+                                showProgress: false,
+                                allowActions: false,
                                 add: () {},
                                 minus: () {},
                                 delete: () {},
@@ -125,7 +127,7 @@ class _CheckoutViewState extends State<CheckoutView> {
                             });
                           },
                         ),
-                        SizedBox(height: 4),
+                        const SizedBox(height: 4),
                         Expanded(
                           child: ListView.builder(
                               itemCount: addressList!.length,

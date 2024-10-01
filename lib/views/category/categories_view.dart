@@ -1,15 +1,15 @@
-import 'package:auth/component/app_bar/app.bar.global.dart';
-import 'package:auth/component/emptyView/empty_view.dart';
-import 'package:auth/component/network/loading_view_full.dart';
-import 'package:auth/component/network/network_error_view.dart';
-import 'package:auth/component/text/text_global.dart';
-import 'package:auth/core/app_color.dart';
-import 'package:auth/cubit/home/home_cubit.dart';
-import 'package:auth/cubit/home/home_state.dart';
-import 'package:auth/generated/l10n.dart';
-import 'package:auth/models/category/categories_response.dart';
-import 'package:auth/models/category/category_model.dart';
-import 'package:auth/views/category/category_item.dart';
+import 'package:Emend/component/app_bar/app.bar.global.dart';
+import 'package:Emend/component/emptyView/empty_view.dart';
+import 'package:Emend/component/network/loading_view_full.dart';
+import 'package:Emend/component/network/network_error_view.dart';
+import 'package:Emend/component/text/text_global.dart';
+import 'package:Emend/app/app_color.dart';
+import 'package:Emend/cubit/home/home_cubit.dart';
+import 'package:Emend/cubit/home/home_state.dart';
+import 'package:Emend/generated/l10n.dart';
+import 'package:Emend/models/category/categories_response.dart';
+import 'package:Emend/models/category/category_model.dart';
+import 'package:Emend/views/category/category_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
