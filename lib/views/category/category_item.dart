@@ -1,6 +1,7 @@
 import 'package:Emend/app/navigate_app.dart';
 import 'package:Emend/component/text/text_global.dart';
 import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/global.assets.dart';
 import 'package:Emend/views/products/product_list_view.dart';
 import 'package:flutter/material.dart';
 
@@ -34,11 +35,13 @@ class CategoryItem extends StatelessWidget {
                 height: 60.0,
                 errorBuilder: (context, error, stackTrace) {
                   // This widget is displayed when the network image fails to load
-                  return Icon(
-                    Icons.error,
-                    color: Colors.red,
-                    size: 30,
-                  );
+                  return Center(
+                      child: Image.asset(
+                    width: 60,
+                    height: 60,
+                    "${GlobalAssets.imagesAssetsPath}no_image.jpg",
+                    fit: BoxFit.cover,
+                  ));
                 },
                 loadingBuilder: (context, child, loadingProgress) {
                   if (loadingProgress == null) {

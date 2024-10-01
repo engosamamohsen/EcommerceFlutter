@@ -4,8 +4,7 @@ import 'package:Emend/models/login/login_response.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class AppStorageShared {
-  final FlutterSecureStorage flutterSecureStorage =
-      const FlutterSecureStorage();
+  final flutterSecureStorage = new FlutterSecureStorage();
 
   String _token = "TOKEN";
   String _user = "USER";
@@ -13,6 +12,8 @@ class AppStorageShared {
   void putToken(value) async {
     print("token for saving $value");
     await flutterSecureStorage.write(key: _token, value: value);
+    String? token = await flutterSecureStorage.read(key: _token);
+    print("token for saving HERERERER $value");
   }
 
   Future<String?> readToken() async {
