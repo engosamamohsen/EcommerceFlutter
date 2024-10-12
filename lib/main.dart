@@ -1,3 +1,4 @@
+import 'package:Emend/app/routes/navigate_app_route.dart';
 import 'package:Emend/component/bottom_bar/bottom_navigation_cubit.dart';
 import 'package:Emend/cubit/address/address_cubit.dart';
 import 'package:Emend/cubit/cart/cart_cubit.dart';
@@ -12,8 +13,23 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'cubit/product/product_cubit.dart';
 
+// class ProductProvider with ChangeNotifier {
+//   Product? selectedProduct;
+
+//   void setProduct(Product product) {
+//     selectedProduct = product;
+//     notifyListeners();
+//   }
+// }
+
+// ChangeNotifierProvider(
+//       create: (_) => ProductProvider(),
+//       child: MyApp(),
+//     ),
+
 void main() {
   runApp(const MyApp());
+// flutter build web --release --no-pwa
 }
 
 class MyApp extends StatelessWidget {
@@ -22,30 +38,31 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => BottomNavigationCubit()),
-        BlocProvider(create: (context) => HomeCubit()),
-        BlocProvider(create: (context) => ProductCubit()),
-        BlocProvider(create: (context) => CartCubit()),
-        BlocProvider(create: (context) => OrderCubit()),
-        BlocProvider(create: (context) => SettingsCubit()),
-        BlocProvider(
-            create: (context) =>
-                AddressCubit()), // Provide your ProductCubit here
-      ],
-      child: MaterialApp(
-        localizationsDelegates: const [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
+        providers: [
+          BlocProvider(create: (context) => BottomNavigationCubit()),
+          BlocProvider(create: (context) => HomeCubit()),
+          BlocProvider(create: (context) => ProductCubit()),
+          BlocProvider(create: (context) => CartCubit()),
+          BlocProvider(create: (context) => OrderCubit()),
+          BlocProvider(create: (context) => SettingsCubit()),
+          BlocProvider(
+              create: (context) =>
+                  AddressCubit()), // Provide your ProductCubit here
         ],
-        supportedLocales: S.delegate.supportedLocales,
-        debugShowCheckedModeBanner: false,
-        debugShowMaterialGrid: false,
-        theme: ThemeData(useMaterial3: true),
-        home: const SplashView(),
-      ),
-    );
+        child: MaterialApp.router(
+          localizationsDelegates: const [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: S.delegate.supportedLocales,
+          debugShowCheckedModeBanner: false,
+          debugShowMaterialGrid: false,
+          theme: ThemeData(useMaterial3: true),
+          routerConfig: NavigateAppRoute.routes, // Use GoRouter here
+
+          // home: const SplashView(),
+        ));
   }
 }
