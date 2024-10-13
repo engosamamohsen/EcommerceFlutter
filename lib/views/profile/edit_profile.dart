@@ -14,7 +14,7 @@ import 'package:Emend/utils/global.assets.dart';
 import 'package:Emend/utils/toast_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
+// import 'package:image_picker/image_picker.dart';
 
 class EditProfileView extends StatefulWidget {
   const EditProfileView({super.key});
@@ -53,16 +53,16 @@ class _EditProfileViewState extends State<EditProfileView> {
   }
 
   File? _fileImage;
-  final picker = ImagePicker();
+  // final picker = ImagePicker();
 
   Future getImageFromGallery() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    // final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
-    setState(() {
-      if (pickedFile != null) {
-        _fileImage = File(pickedFile.path);
-      }
-    });
+    // setState(() {
+    //   // if (pickedFile != null) {
+    //   //   _fileImage = File(pickedFile.path);
+    //   }
+    // });
   }
 
   @override

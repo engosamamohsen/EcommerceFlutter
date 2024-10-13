@@ -1,5 +1,5 @@
 class RouteUrlConst {
-  static String HOME = "/";
+  static String HOME = "/home";
   static String LOGIN = "/login";
   static String REGISTER = "/register";
   static String FORGET_PASSWORD = "/forget-password";
