@@ -16,4 +16,5 @@ class RouteUrlConst {
   static String PRODUCT_LIST = "/product/list";
   static String EDIT_PROFILE = "/profile/edit";
   static String SPLASH = "/splash";
+  static String ORDER_LIST = "/order_list";
 }

@@ -21,7 +21,7 @@ class SplashView extends StatelessWidget {
       appStorage.readToken().then((token) {
         print("token:$token");
         if (token != null && token.isNotEmpty) {
-          NavigateAppRoute.navigate(context, RouteUrlConst.HOME,
+          NavigateAppRoute.replace(context, RouteUrlConst.HOME,
               removePrev: true);
 
           // Navigator.pushAndRemoveUntil(context,
@@ -29,7 +29,7 @@ class SplashView extends StatelessWidget {
           //   return HomeContainer();
           // }), (Route<dynamic> route) => false);
         } else {
-          NavigateAppRoute.navigate(context, RouteUrlConst.LOGIN,
+          NavigateAppRoute.replace(context, RouteUrlConst.LOGIN,
               removePrev: true);
           // Navigator.pushAndRemoveUntil(context,
           //     MaterialPageRoute(builder: (BuildContext context) {

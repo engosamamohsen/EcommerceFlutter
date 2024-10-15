@@ -1,6 +1,8 @@
 import 'package:Emend/component/text/text_global.dart';
 import 'package:flutter/material.dart';
 
+import '../../app/routes/navigate_app_route.dart';
+
 class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
   GlobalAppBar(
       {super.key,
@@ -41,7 +43,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
             ? IconButton(
                 onPressed: () {
                   onBackIconPressed == null
-                      ? Navigator.pop(context)
+                      ? NavigateAppRoute.pop(context)
                       : onBackIconPressed!();
                 },
                 icon: const Icon(

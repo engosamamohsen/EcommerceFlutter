@@ -18,6 +18,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../app/routes/const_routes_url.dart';
+import '../../app/routes/navigate_app_route.dart';
+
 class LoginView extends StatelessWidget {
   LoginView({super.key});
 
@@ -34,13 +37,8 @@ class LoginView extends StatelessWidget {
       child: BlocConsumer<AuthCubit, AuthStates>(
         listener: (context, state) {
           if (state is AuthSuccessState) {
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (BuildContext context) {
-                return HomeContainer();
-              }),
-              (Route<dynamic> route) => false,
-            );
+            NavigateAppRoute.replace(context, RouteUrlConst.HOME,
+                removePrev: true);
           }
         },
         builder: (context, state) {

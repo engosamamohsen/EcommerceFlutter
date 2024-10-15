@@ -13,6 +13,9 @@ import 'package:Emend/views/profile/item_settings.dart';
 import 'package:Emend/views/wishlist/wishlist_list_view.dart';
 import 'package:flutter/material.dart';
 
+import '../../app/routes/const_routes_url.dart';
+import '../../app/routes/navigate_app_route.dart';
+
 class ProfileView extends StatefulWidget {
   ProfileView({super.key});
 
@@ -93,10 +96,8 @@ class _ProfileViewState extends State<ProfileView> {
               text: S.of(context).edit_profile,
               icon: Icons.person,
               submit: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (BuildContext context) {
-                  return const EditProfileView();
-                }));
+                NavigateAppRoute.push(context, RouteUrlConst.EDIT_PROFILE);
+
               },
             ),
             SizedBox(
@@ -106,10 +107,8 @@ class _ProfileViewState extends State<ProfileView> {
               text: S.of(context).manage_address,
               icon: Icons.location_pin,
               submit: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (BuildContext context) {
-                  return AddressListView();
-                }));
+                NavigateAppRoute.push(context, RouteUrlConst.ADDRESS_LIST);
+
               },
             ),
             SizedBox(
@@ -119,7 +118,7 @@ class _ProfileViewState extends State<ProfileView> {
               text: S.of(context).my_orders,
               icon: Icons.list_alt_outlined,
               submit: () {
-                NavigateApp.navigate(context, OrderListView());
+                NavigateAppRoute.push(context, RouteUrlConst.ORDER_LIST);
               },
             ),
             SizedBox(
@@ -129,10 +128,8 @@ class _ProfileViewState extends State<ProfileView> {
               text: S.of(context).wishlist,
               icon: Icons.favorite_outline,
               submit: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (BuildContext context) {
-                  return const WishListView();
-                }));
+                NavigateAppRoute.push(context, RouteUrlConst.WISHLIST);
+
               },
             ),
             SizedBox(
@@ -150,10 +147,7 @@ class _ProfileViewState extends State<ProfileView> {
               text: S.of(context).contact_us,
               icon: Icons.contact_support_outlined,
               submit: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (BuildContext context) {
-                  return const ContactUsView();
-                }));
+                NavigateAppRoute.push(context, RouteUrlConst.CONTACT_US);
               },
             ),
             SizedBox(
@@ -164,13 +158,8 @@ class _ProfileViewState extends State<ProfileView> {
               icon: Icons.logout,
               submit: () {
                 _logout();
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (BuildContext context) {
-                    return LoginView();
-                  }),
-                  (Route<dynamic> route) => false,
-                );
+                NavigateAppRoute.replace(context, RouteUrlConst.LOGIN,
+                    removePrev: true);
               },
             )
           ],

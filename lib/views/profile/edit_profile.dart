@@ -14,7 +14,7 @@ import 'package:Emend/utils/global.assets.dart';
 import 'package:Emend/utils/toast_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:image_picker/image_picker.dart';
+import 'package:image_picker/image_picker.dart';
 
 class EditProfileView extends StatefulWidget {
   const EditProfileView({super.key});
@@ -25,6 +25,7 @@ class EditProfileView extends StatefulWidget {
 
 class _EditProfileViewState extends State<EditProfileView> {
   UserResponse? user;
+  // AppStorage appStorage = AppStorage();
   AppStorageShared appStorage = AppStorageShared();
 
   final TextEditingController nameController = TextEditingController();
@@ -53,16 +54,16 @@ class _EditProfileViewState extends State<EditProfileView> {
   }
 
   File? _fileImage;
-  // final picker = ImagePicker();
+  final picker = ImagePicker();
 
   Future getImageFromGallery() async {
-    // final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
-    // setState(() {
-    //   // if (pickedFile != null) {
-    //   //   _fileImage = File(pickedFile.path);
-    //   }
-    // });
+    setState(() {
+      if (pickedFile != null) {
+        _fileImage = File(pickedFile.path);
+      }
+    });
   }
 
   @override
@@ -110,8 +111,8 @@ class _EditProfileViewState extends State<EditProfileView> {
                         width: 80,
                         height: 80,
                         image: user != null &&
-                                user!.data != null &&
-                                user!.data!.image != null
+                            user!.data != null &&
+                            user!.data!.image != null
                             ? user!.data!.image.toString()
                             : "",
                         fileImage: _fileImage,
@@ -173,3 +174,4 @@ class _EditProfileViewState extends State<EditProfileView> {
     );
   }
 }
+

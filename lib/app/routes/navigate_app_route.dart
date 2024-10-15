@@ -13,7 +13,9 @@ import 'package:Emend/views/checkout/checkout_view.dart';
 import 'package:Emend/views/contactus/contact_us_view.dart';
 import 'package:Emend/views/home/home_container.dart';
 import 'package:Emend/views/home/home_view.dart';
+import 'package:Emend/views/order/orders_list_view.dart';
 import 'package:Emend/views/products/product_details.dart';
+import 'package:Emend/views/profile/edit_profile.dart';
 import 'package:Emend/views/profile/profile_view.dart';
 import 'package:Emend/views/splash/splash.view.dart';
 import 'package:Emend/views/wishlist/wishlist_list_view.dart';
@@ -96,6 +98,18 @@ class NavigateAppRoute {
         },
       ),
       GoRoute(
+        path: RouteUrlConst.EDIT_PROFILE,
+        builder: (BuildContext context, GoRouterState state) {
+          return EditProfileView();
+        },
+      ),
+      GoRoute(
+        path: RouteUrlConst.ORDER_LIST,
+        builder: (BuildContext context, GoRouterState state) {
+          return OrderListView();
+        },
+      ),
+      GoRoute(
         path: RouteUrlConst.CHECKOUT,
         builder: (BuildContext context, GoRouterState state) {
           final data = state.extra as Map<String, dynamic>;
@@ -126,7 +140,7 @@ class NavigateAppRoute {
     ],
   );
 
-  static void navigate(BuildContext context, String endPoint,
+  static void replace(BuildContext context, String endPoint,
       {bool removePrev = false}) {
     switch (removePrev) {
       case true:
@@ -134,6 +148,19 @@ class NavigateAppRoute {
         break;
       default:
         context.go(endPoint);
+    }
+  }
+
+  static void push(BuildContext context, String endPoint){
+    context.push(endPoint);
+  }
+
+  static void pop(BuildContext context) {
+    if (GoRouter.of(context).canPop()) {
+      GoRouter.of(context).pop();
+    } else {
+      // Handle cases where there's no route to pop (maybe go to a default page)
+      context.go(RouteUrlConst.HOME);
     }
   }
 }
