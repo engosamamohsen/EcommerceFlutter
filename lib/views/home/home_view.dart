@@ -4,6 +4,7 @@ import 'package:Emend/component/network/network_error_view.dart';
 import 'package:Emend/component/slider/slider_view.dart';
 import 'package:Emend/component/text.form.global.dart';
 import 'package:Emend/component/text/text_global.dart';
+import 'package:Emend/layout/menu/menu_view.dart';
 import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/cubit/home/home_cubit.dart';
 import 'package:Emend/cubit/home/home_state.dart';
@@ -13,6 +14,7 @@ import 'package:Emend/generated/l10n.dart';
 import 'package:Emend/models/home/home_response.dart';
 import 'package:Emend/models/product/add_wishlist_response.dart';
 import 'package:Emend/models/product/product_list_response.dart';
+import 'package:Emend/utils/device/device_utils.dart';
 import 'package:Emend/views/category/categories_view.dart';
 import 'package:Emend/views/home/home_categories.dart';
 import 'package:Emend/views/home/home_category_product.dart';
@@ -32,6 +34,7 @@ class _HomeViewState extends State<HomeView> {
   HomeModel? homeModel;
   int productIdFav = -1;
   ProductStates productStates = ProductInitState();
+
   @override
   void initState() {
     // TODO: implement initState
@@ -91,92 +94,18 @@ class _HomeViewState extends State<HomeView> {
             homeModel = state.data.data;
           }
         }, builder: (context, state) {
-          return Container(
-              padding: const EdgeInsets.all(8),
-              child: state is HomeLoadingState
-                  ? const LoadingViewFull()
-                  : homeModel != null
-                      ? BlocBuilder<ProductCubit, ProductStates>(
-                          builder: (context, productState) {
-                          return SingleChildScrollView(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                HomeBar(),
-                                const SizedBox(height: 30),
-                                SliderView(slider: homeModel!.banners),
-                                const SizedBox(height: 30),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    TextGlobal(
-                                      text: S.of(context).categories,
-                                      color: Colors.black,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    TextButton(
-                                      style: TextButton.styleFrom(
-                                        overlayColor: TColor.primary,
-                                      ),
-                                      onPressed: () {
-                                        BlocProvider.of<BottomNavigationCubit>(
-                                                context)
-                                            .updateTabIndex(CategoriesView());
-                                      },
-                                      child: TextGlobal(
-                                        fontWeight: FontWeight.bold,
-                                        text: S.of(context).see_all,
-                                        fontSize: 14,
-                                        color: TColor.primary,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                HomeCategories(
-                                    categories: homeModel!.categories),
-                                const SizedBox(height: 10),
-                                HomeCategoryProduct(
-                                  title: S.of(context).flash_sale,
-                                  products: homeModel!.flashSale.products,
-                                  productStates: productStates,
-                                  productIdFav: productIdFav,
-                                  submitFavourite: (productId) {
-                                    productIdFav = productId;
-
-                                    BlocProvider.of<ProductCubit>(context)
-                                        .addToFavourite(productId);
-                                  },
-                                ),
-                                const SizedBox(height: 10),
-                                HomeCategoryProduct(
-                                    title: S.of(context).newest_products,
-                                    products: homeModel!.newestProduct,
-                                    productStates: productStates,
-                                    productIdFav: productIdFav,
-                                    submitFavourite: (productId) {
-                                      productIdFav = productId;
-                                      BlocProvider.of<ProductCubit>(context)
-                                          .addToFavourite(productId);
-                                    }),
-                                const SizedBox(height: 10),
-                                HomeCategoryProduct(
-                                    title: S.of(context).most_sale,
-                                    products: homeModel!.mostSale,
-                                    productStates: productStates,
-                                    productIdFav: productIdFav,
-                                    submitFavourite: (productId) {
-                                      productIdFav = productId;
-
-                                      BlocProvider.of<ProductCubit>(context)
-                                          .addToFavourite(productId);
-                                    }),
-                              ],
-                            ),
-                          );
-                        })
-                      : NetworkError());
+          return Row(
+            children: [
+              if (!DeviceUtils.isMobileScreen(context)) TMenu(),
+              const Expanded(
+                  child: Column(
+                children: [
+                  Text("asdas das ds a"),
+                  Text("asdas das ds a"),
+                ],
+              )),
+            ],
+          );
         }));
   }
 }
@@ -190,6 +119,7 @@ class HomeBar extends StatefulWidget {
 
 class _HomeBarState extends State<HomeBar> {
   final TextEditingController searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Column(

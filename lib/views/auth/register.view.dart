@@ -4,8 +4,10 @@ import 'package:Emend/component/text.form.global.dart';
 import 'package:Emend/cubit/auth/auth_cubit.dart';
 import 'package:Emend/cubit/auth/auth_state.dart';
 import 'package:Emend/generated/l10n.dart';
+import 'package:Emend/utils/device/device_utils.dart';
 import 'package:Emend/utils/global.assets.dart';
 import 'package:Emend/views/home/home_container.dart';
+import 'package:Emend/views/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,7 +32,7 @@ class RegisterView extends StatelessWidget {
             Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (BuildContext context) {
-                return HomeContainer();
+                return const HomeContainer();
               }),
               (Route<dynamic> route) => false,
             );

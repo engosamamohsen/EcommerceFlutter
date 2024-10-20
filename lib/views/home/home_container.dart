@@ -11,6 +11,8 @@ import 'package:Emend/views/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../utils/device/device_utils.dart';
+
 class HomeContainer extends StatefulWidget {
   const HomeContainer({super.key});
 
@@ -46,11 +48,13 @@ class _HomeViewState extends State<HomeContainer> {
         return SafeArea(
           child: Scaffold(
             backgroundColor: Colors.white,
-            bottomNavigationBar: BottomNavigationApp(onTapPage: (page) {
-              setState(() {
-                _current_page = page;
-              });
-            }),
+            bottomNavigationBar: (DeviceUtils.isMobileScreen(context)
+                ? BottomNavigationApp(onTapPage: (page) {
+                    setState(() {
+                      _current_page = page;
+                    });
+                  })
+                : null),
             body: _current_page,
           ),
         );
@@ -68,6 +72,7 @@ class HomeBar extends StatefulWidget {
 
 class _HomeBarState extends State<HomeBar> {
   final TextEditingController searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Column(
