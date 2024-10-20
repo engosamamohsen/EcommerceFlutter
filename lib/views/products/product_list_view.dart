@@ -4,7 +4,7 @@ import 'package:Emend/component/emptyView/empty_view.dart';
 import 'package:Emend/component/network/loading_view_full.dart';
 import 'package:Emend/component/network/network_error_view.dart';
 import 'package:Emend/component/text/text_global.dart';
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/cubit/product/product_cubit.dart';
 import 'package:Emend/cubit/product/product_state.dart';
 import 'package:Emend/generated/l10n.dart';
@@ -16,9 +16,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductListView extends StatefulWidget {
-  ProductListView({super.key, required this.categoryId});
+  ProductListView({super.key, required this.categoryId, required this.categoryName});
 
   final int categoryId;
+  final String categoryName;
 
   @override
   State<ProductListView> createState() => _ProductListViewState();
@@ -70,7 +71,7 @@ class _ProductListViewState extends State<ProductListView> {
         return Scaffold(
             backgroundColor: Colors.white,
             appBar: GlobalAppBar(
-              title: S.of(context).wishlist,
+              title: widget.categoryName,
             ),
             body: state is ProductLoadingState
                 ? const LoadingViewFull()

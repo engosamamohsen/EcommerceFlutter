@@ -1,5 +1,5 @@
 import 'package:Emend/component/text/text_global.dart';
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:flutter/material.dart';
 
 class ItemSetting extends StatelessWidget {
@@ -19,7 +19,7 @@ class ItemSetting extends StatelessWidget {
       child: ListTile(
         leading: Icon(
           icon,
-          color: GlobalColors.mainColor,
+          color: TColor.primary,
         ),
         title: TextGlobal(
           text: text,
@@ -27,11 +27,11 @@ class ItemSetting extends StatelessWidget {
         ),
         trailing: Icon(
           Icons.arrow_forward_ios,
-          color: GlobalColors.mainColor,
+          color: TColor.primary,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
-          side: BorderSide(color: GlobalColors.mainColor, width: 1),
+          side: BorderSide(color: TColor.primary, width: 1),
         ),
         onTap: submit,
       ),

@@ -1,10 +1,10 @@
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
   var colorTheme = ThemeData(
     colorScheme:
-        ColorScheme.fromSeed(seedColor: GlobalColors.mainColor).copyWith(
+        ColorScheme.fromSeed(seedColor: TColor.primary).copyWith(
       surface: Colors.grey[50]!,
     ),
   );

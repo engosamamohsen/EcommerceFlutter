@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:Emend/app/routes/const_routes_url.dart';
 import 'package:Emend/models/cart/cart_list_response.dart';
@@ -15,6 +14,7 @@ import 'package:Emend/views/home/home_container.dart';
 import 'package:Emend/views/home/home_view.dart';
 import 'package:Emend/views/order/orders_list_view.dart';
 import 'package:Emend/views/products/product_details.dart';
+import 'package:Emend/views/products/product_list_view.dart';
 import 'package:Emend/views/profile/edit_profile.dart';
 import 'package:Emend/views/profile/profile_view.dart';
 import 'package:Emend/views/splash/splash.view.dart';
@@ -73,6 +73,7 @@ class NavigateAppRoute {
           return ContactUsView();
         },
       ),
+
       GoRoute(
         path: RouteUrlConst.HOME,
         builder: (BuildContext context, GoRouterState state) {
@@ -123,10 +124,26 @@ class NavigateAppRoute {
         },
       ),
       GoRoute(
-        path: RouteUrlConst.PRODUCT_DETAILS,
+        path: RouteUrlConst.PRODUCT_LIST,
         builder: (BuildContext context, GoRouterState state) {
-          final String id =
-              state.pathParameters['id']!; // Accessing the dynamic 'id'
+
+          final String? id = state.uri.queryParameters['id'];
+          final String? name = state.uri.queryParameters['name'];
+
+          return ProductListView(
+            categoryId: int.parse(id!),
+            categoryName: name.toString(),
+          );
+        },
+      ),
+      GoRoute(
+        path: RouteUrlConst.PRODUCT_DETAILS, // Notice the ':' instead of '{}'
+        builder: (BuildContext context, GoRouterState state) {
+          // final String id =
+          //     state.pathParameters['id']!; // Accessing the dynamic 'id'
+
+          final id = state.uri.queryParameters['id']!;
+
           return ProductDetailsView(productId: int.parse(id));
         },
       ),

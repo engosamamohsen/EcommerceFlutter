@@ -3,7 +3,7 @@ import 'package:Emend/component/bottom_bar/bottom_navigation_cubit.dart';
 import 'package:Emend/component/button.global.dart';
 import 'package:Emend/component/network/loading_view_full.dart';
 import 'package:Emend/component/text/text_global.dart';
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/cubit/address/address_cubit.dart';
 import 'package:Emend/cubit/address/address_state.dart';
 import 'package:Emend/cubit/order/order_cubit.dart';

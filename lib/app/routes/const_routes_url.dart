@@ -1,4 +1,6 @@
 class RouteUrlConst {
+  static String SPLASH = "/";
+
   static String HOME = "/home";
   static String LOGIN = "/login";
   static String REGISTER = "/register";
@@ -12,9 +14,8 @@ class RouteUrlConst {
   static String CONTACT_US = "/contact-us";
   static String PROFILE = "/profile";
   static String WISHLIST = "/wishlist";
-  static String PRODUCT_DETAILS = "/product-details/{id}";
+  static String PRODUCT_DETAILS = "/product-details";
   static String PRODUCT_LIST = "/product/list";
   static String EDIT_PROFILE = "/profile/edit";
-  static String SPLASH = "/splash";
   static String ORDER_LIST = "/order_list";
 }

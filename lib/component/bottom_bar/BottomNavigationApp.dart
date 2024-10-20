@@ -1,5 +1,5 @@
 import 'package:Emend/component/bottom_bar/bottom_navigation_cubit.dart';
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/generated/l10n.dart';
 import 'package:Emend/views/cart/cart_view.dart';
 import 'package:Emend/views/category/categories_view.dart';
@@ -52,8 +52,8 @@ class _BottomNavigationAppState extends State<BottomNavigationApp> {
       child: BottomNavigationBar(
         currentIndex: _selectedIndex,
         showSelectedLabels: true,
-        selectedItemColor: GlobalColors.mainColor,
-        unselectedItemColor: GlobalColors.secondaryColor,
+        selectedItemColor: TColor.primary,
+        unselectedItemColor: TColor.secondary,
         onTap: _onItemTapped,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(

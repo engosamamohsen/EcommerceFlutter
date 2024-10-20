@@ -1,5 +1,5 @@
-import 'package:Emend/app/app_color.dart';
-import 'package:Emend/app/app_constants.dart';
+import 'package:Emend/utils/constants/color.dart';
+import 'package:Emend/utils/constants/app_constants.dart';
 import 'package:Emend/app/price_apis.dart';
 import 'package:Emend/app_emend/emend.dart';
 import 'package:Emend/component/app_bar/app.bar.global.dart';
@@ -68,7 +68,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
           listener: (context, state) {},
           builder: (context, state) {
             return Scaffold(
-              backgroundColor: GlobalColors.backGroundColor,
+              backgroundColor: TColor.backGroundColor,
               appBar: GlobalAppBar(
                 title: S.of(context).order_details,
                 showBackBtn: true,
@@ -283,7 +283,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                 TextGlobal(
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
-                    color: GlobalColors.secondaryColor,
+                    color: TColor.secondary,
                     text: date),
               ],
             ),

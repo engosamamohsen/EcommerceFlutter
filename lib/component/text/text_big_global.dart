@@ -1,4 +1,4 @@
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:flutter/material.dart';
 
 class TextGlobalBig extends StatefulWidget {
@@ -25,7 +25,7 @@ class _TextGlobalState extends State<TextGlobalBig> {
           height: 0.9,
           fontWeight: widget.fontWeight ?? FontWeight.normal,
           fontSize: widget.fontSize,
-          color: widget.color ?? GlobalColors.mainColor),
+          color: widget.color ?? TColor.primary),
     );
   }
 }

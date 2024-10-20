@@ -3,7 +3,7 @@ import 'package:Emend/component/emptyView/empty_view.dart';
 import 'package:Emend/component/network/loading_view_full.dart';
 import 'package:Emend/component/network/network_error_view.dart';
 import 'package:Emend/component/text/text_global.dart';
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/cubit/home/home_cubit.dart';
 import 'package:Emend/cubit/home/home_state.dart';
 import 'package:Emend/generated/l10n.dart';
@@ -46,7 +46,7 @@ class _DepartmentViewState extends State<CategoriesView> {
       },
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: GlobalColors.backGroundColor,
+          backgroundColor: TColor.backGroundColor,
           appBar: GlobalAppBar(
             title: S.of(context).categories,
             showBackBtn: false,

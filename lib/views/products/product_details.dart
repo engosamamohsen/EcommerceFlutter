@@ -7,7 +7,7 @@ import 'package:Emend/component/network/network_error_view.dart';
 import 'package:Emend/component/rating.dart';
 import 'package:Emend/component/slider/slider_view.dart';
 import 'package:Emend/component/text/text_global.dart';
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/cubit/product/product_cubit.dart';
 import 'package:Emend/cubit/product/product_state.dart';
 import 'package:Emend/generated/l10n.dart';
@@ -165,7 +165,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                                               0,
                                       starCount: 5,
                                       size: 30,
-                                      color: GlobalColors.mainColor,
+                                      color: TColor.primary,
                                     ),
                                     SizedBox(
                                       width: 4,

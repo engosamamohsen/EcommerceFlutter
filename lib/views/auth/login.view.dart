@@ -1,4 +1,4 @@
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/component/app_bar/app.bar.global.dart';
 import 'package:Emend/component/button.global.dart';
 import 'package:Emend/component/text.form.global.dart';
@@ -19,6 +19,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../app/routes/const_routes_url.dart';
+import '../../app/routes/get_app_route.dart';
 import '../../app/routes/navigate_app_route.dart';
 
 class LoginView extends StatelessWidget {
@@ -37,7 +38,7 @@ class LoginView extends StatelessWidget {
       child: BlocConsumer<AuthCubit, AuthStates>(
         listener: (context, state) {
           if (state is AuthSuccessState) {
-            NavigateAppRoute.replace(context, RouteUrlConst.HOME,
+            GetAppRoute.push(context, RouteUrlConst.HOME,
                 removePrev: true);
           }
         },
@@ -106,7 +107,7 @@ class LoginView extends StatelessWidget {
                         TextSpan(
                             text: S.of(context).sign_up,
                             style: TextStyle(
-                                color: GlobalColors.mainColor,
+                                color: TColor.primary,
                                 fontWeight: FontWeight.bold),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
@@ -128,7 +129,7 @@ class LoginView extends StatelessWidget {
                           child: Text(S.of(context).forget_password,
                               textAlign: TextAlign.end,
                               style: TextStyle(
-                                  color: GlobalColors.secondaryColor,
+                                  color: TColor.secondary,
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold)),
                         ),

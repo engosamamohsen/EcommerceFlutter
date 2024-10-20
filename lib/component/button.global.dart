@@ -1,4 +1,4 @@
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:flutter/material.dart';
 
 class ButtonGlobal extends StatelessWidget {
@@ -30,7 +30,7 @@ class ButtonGlobal extends StatelessWidget {
             alignment: Alignment.center,
             height: height,
             decoration: BoxDecoration(
-                color: GlobalColors.mainColor,
+                color: TColor.primary,
                 borderRadius: BorderRadius.all(Radius.circular(radius)),
                 boxShadow: [
                   BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 6)

@@ -1,4 +1,4 @@
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:flutter/material.dart';
 
 class FavoriteCell extends StatelessWidget {
@@ -21,14 +21,14 @@ class FavoriteCell extends StatelessWidget {
       radius: 20,
       child: showProgress
           ? CircularProgressIndicator(
-              color: GlobalColors.mainColor,
+              color: TColor.primary,
               strokeWidth: 1,
             )
           : IconButton(
               padding: EdgeInsets.zero,
               icon: Icon(
                 isFavourite ? Icons.favorite : Icons.favorite_border,
-                color: isFavourite ? GlobalColors.mainColor : Colors.grey,
+                color: isFavourite ? TColor.primary : Colors.grey,
                 size: size,
               ),
               color: Colors.grey.shade300,

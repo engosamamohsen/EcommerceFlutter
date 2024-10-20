@@ -1,5 +1,5 @@
 import 'package:Emend/component/text/text_global.dart';
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/generated/l10n.dart';
 import 'package:Emend/models/address/add_address_response.dart';
 import 'package:Emend/models/address/address_model.dart';
@@ -29,7 +29,7 @@ class AddressItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           side: BorderSide(
               width: isFromCheckout && isSelected ? 2 : 0,
-              color: GlobalColors.mainColor) // Rounded corners
+              color: TColor.primary) // Rounded corners
           ),
       margin: EdgeInsets.symmetric(
           vertical: 10, horizontal: 16), // Space around the card

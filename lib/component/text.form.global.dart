@@ -1,4 +1,4 @@
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
@@ -98,7 +98,7 @@ class _TextFormGlobalState extends State<TextFormGlobal> {
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(6),
               borderSide: BorderSide(
-                  color: GlobalColors.mainColor), // Focused border color
+                  color: TColor.primary), // Focused border color
             ),
             labelStyle: const TextStyle(
                 color: Color.fromARGB(255, 190, 183, 183), height: 1),
@@ -114,7 +114,7 @@ class _TextFormGlobalState extends State<TextFormGlobal> {
 
 
 
-// import 'package:Emend/core/app_color.dart';
+// import 'package:Emend/core/color.dart';
 // import 'package:Emend/utils/toast_message.dart';
 // import 'package:Emend/generated/l10n.dart';
 // import 'package:flutter/material.dart';

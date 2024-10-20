@@ -7,7 +7,7 @@ import 'package:Emend/component/emptyView/empty_view.dart';
 import 'package:Emend/component/network/loading_view_full.dart';
 import 'package:Emend/component/network/network_error_view.dart';
 import 'package:Emend/component/text/text_global.dart';
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/cubit/cart/cart_cubit.dart';
 import 'package:Emend/cubit/cart/cart_state.dart';
 import 'package:Emend/cubit/product/product_cubit.dart';
@@ -88,7 +88,7 @@ class _CartViewState extends State<CartView> {
       },
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: GlobalColors.backGroundColor,
+          backgroundColor: TColor.backGroundColor,
           appBar: GlobalAppBar(
             title: S.of(context).cart,
             showBackBtn: false,

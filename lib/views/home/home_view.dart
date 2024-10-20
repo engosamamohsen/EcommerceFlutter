@@ -4,7 +4,7 @@ import 'package:Emend/component/network/network_error_view.dart';
 import 'package:Emend/component/slider/slider_view.dart';
 import 'package:Emend/component/text.form.global.dart';
 import 'package:Emend/component/text/text_global.dart';
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/cubit/home/home_cubit.dart';
 import 'package:Emend/cubit/home/home_state.dart';
 import 'package:Emend/cubit/product/product_cubit.dart';
@@ -118,7 +118,7 @@ class _HomeViewState extends State<HomeView> {
                                     ),
                                     TextButton(
                                       style: TextButton.styleFrom(
-                                        overlayColor: GlobalColors.mainColor,
+                                        overlayColor: TColor.primary,
                                       ),
                                       onPressed: () {
                                         BlocProvider.of<BottomNavigationCubit>(
@@ -129,7 +129,7 @@ class _HomeViewState extends State<HomeView> {
                                         fontWeight: FontWeight.bold,
                                         text: S.of(context).see_all,
                                         fontSize: 14,
-                                        color: GlobalColors.mainColor,
+                                        color: TColor.primary,
                                       ),
                                     ),
                                   ],
@@ -206,7 +206,7 @@ class _HomeBarState extends State<HomeBar> {
             Icon(
               Icons.circle_notifications,
               size: 40,
-              color: GlobalColors.mainColor,
+              color: TColor.primary,
             )
           ],
         ),

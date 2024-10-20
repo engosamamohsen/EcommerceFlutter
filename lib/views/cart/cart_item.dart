@@ -2,7 +2,7 @@ import 'package:Emend/app/price_apis.dart';
 import 'package:Emend/component/app_custom/cart_shipping.dart';
 import 'package:Emend/component/image/image_round.dart';
 import 'package:Emend/component/text/text_global.dart';
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/generated/l10n.dart';
 import 'package:Emend/models/cart/cart_list_response.dart';
 import 'package:flutter/material.dart';
@@ -102,7 +102,7 @@ class CartItem extends StatelessWidget {
                               icon: Icon(
                                 Icons.add_circle_outline,
                                 size: 25,
-                                color: GlobalColors.secondaryColor,
+                                color: TColor.secondary,
                               ),
                               onPressed: add,
                             ),
@@ -116,7 +116,7 @@ class CartItem extends StatelessWidget {
                               icon: Icon(
                                 Icons.remove_circle_outline,
                                 size: 25,
-                                color: GlobalColors.secondaryColor,
+                                color: TColor.secondary,
                               ),
                               onPressed: minus,
                             ),
@@ -125,7 +125,7 @@ class CartItem extends StatelessWidget {
                               icon: Icon(
                                 Icons.delete,
                                 size: 25,
-                                color: GlobalColors.secondaryColor,
+                                color: TColor.secondary,
                               ),
                               onPressed: delete,
                             ),
@@ -170,7 +170,7 @@ class CartItem extends StatelessWidget {
                   width: 30,
                   height: 30,
                   child: CircularProgressIndicator(
-                    color: GlobalColors.mainColor,
+                    color: TColor.primary,
                     strokeWidth: 2,
                   ),
                 ),

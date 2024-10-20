@@ -3,7 +3,7 @@ import 'package:Emend/component/app_bar/app.bar.global.dart';
 import 'package:Emend/component/network/loading_view_full.dart';
 import 'package:Emend/component/network/network_error_view.dart';
 import 'package:Emend/component/text/text_global.dart';
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/cubit/order/order_cubit.dart';
 import 'package:Emend/cubit/order/order_state.dart';
 import 'package:Emend/generated/l10n.dart';
@@ -54,7 +54,7 @@ class _OrderListViewState extends State<OrderListView> {
       },
       builder: (context, state) {
         return Scaffold(
-            backgroundColor: GlobalColors.backGroundColor,
+            backgroundColor: TColor.backGroundColor,
             appBar: GlobalAppBar(
               title: S.of(context).my_orders,
             ),

@@ -1,6 +1,6 @@
 import 'package:Emend/component/app_bar/app.bar.global.dart';
 import 'package:Emend/component/network/loading_view_full.dart';
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/cubit/address/address_cubit.dart';
 import 'package:Emend/cubit/address/address_state.dart';
 import 'package:Emend/cubit/order/order_cubit.dart';
@@ -78,7 +78,7 @@ class _CheckoutViewState extends State<CheckoutView> {
           listener: (context, state) {},
           builder: (context, state) {
             return Scaffold(
-              backgroundColor: GlobalColors.backGroundColor,
+              backgroundColor: TColor.backGroundColor,
               appBar: GlobalAppBar(
                 title: S.of(context).checkout,
                 showBackBtn: true,

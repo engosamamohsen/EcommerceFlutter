@@ -96,7 +96,7 @@ class _ProfileViewState extends State<ProfileView> {
               text: S.of(context).edit_profile,
               icon: Icons.person,
               submit: () {
-                NavigateAppRoute.push(context, RouteUrlConst.EDIT_PROFILE);
+                // GetAppRoute.push(context, RouteUrlConst.EDIT_PROFILE);
 
               },
             ),
@@ -107,7 +107,7 @@ class _ProfileViewState extends State<ProfileView> {
               text: S.of(context).manage_address,
               icon: Icons.location_pin,
               submit: () {
-                NavigateAppRoute.push(context, RouteUrlConst.ADDRESS_LIST);
+                // GetAppRoute.push(context, RouteUrlConst.ADDRESS_LIST);
 
               },
             ),
@@ -118,7 +118,7 @@ class _ProfileViewState extends State<ProfileView> {
               text: S.of(context).my_orders,
               icon: Icons.list_alt_outlined,
               submit: () {
-                NavigateAppRoute.push(context, RouteUrlConst.ORDER_LIST);
+                // GetAppRoute.push(context, RouteUrlConst.ORDER_LIST);
               },
             ),
             SizedBox(
@@ -128,7 +128,7 @@ class _ProfileViewState extends State<ProfileView> {
               text: S.of(context).wishlist,
               icon: Icons.favorite_outline,
               submit: () {
-                NavigateAppRoute.push(context, RouteUrlConst.WISHLIST);
+                // GetAppRoute.push(context, RouteUrlConst.WISHLIST);
 
               },
             ),
@@ -147,7 +147,7 @@ class _ProfileViewState extends State<ProfileView> {
               text: S.of(context).contact_us,
               icon: Icons.contact_support_outlined,
               submit: () {
-                NavigateAppRoute.push(context, RouteUrlConst.CONTACT_US);
+                // GetAppRoute.push(context, RouteUrlConst.CONTACT_US);
               },
             ),
             SizedBox(
@@ -158,8 +158,8 @@ class _ProfileViewState extends State<ProfileView> {
               icon: Icons.logout,
               submit: () {
                 _logout();
-                NavigateAppRoute.replace(context, RouteUrlConst.LOGIN,
-                    removePrev: true);
+                // GetAppRoute.replace(context, RouteUrlConst.LOGIN,
+                //     removePrev: true);
               },
             )
           ],

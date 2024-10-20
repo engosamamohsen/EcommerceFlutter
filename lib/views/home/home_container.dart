@@ -2,7 +2,7 @@ import 'package:Emend/component/bottom_bar/BottomNavigationApp.dart';
 import 'package:Emend/component/bottom_bar/bottom_navigation_cubit.dart';
 import 'package:Emend/component/text.form.global.dart';
 import 'package:Emend/component/text/text_global.dart';
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/cubit/home/home_cubit.dart';
 import 'package:Emend/cubit/home/home_state.dart';
 import 'package:Emend/generated/l10n.dart';
@@ -84,7 +84,7 @@ class _HomeBarState extends State<HomeBar> {
             Icon(
               Icons.circle_notifications,
               size: 40,
-              color: GlobalColors.mainColor,
+              color: TColor.primary,
             )
           ],
         ),

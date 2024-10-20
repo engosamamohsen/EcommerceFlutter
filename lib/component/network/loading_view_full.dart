@@ -1,4 +1,4 @@
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:flutter/material.dart';
 
 class LoadingViewFull extends StatelessWidget {
@@ -10,7 +10,7 @@ class LoadingViewFull extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Center(
           child: CircularProgressIndicator(
-        color: GlobalColors.mainColor,
+        color: TColor.primary,
         strokeWidth: 1,
       )),
     );

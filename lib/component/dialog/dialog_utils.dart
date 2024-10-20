@@ -1,5 +1,5 @@
 import 'package:Emend/component/text/text_global.dart';
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:flutter/material.dart';
 
 class DialogUtils {
@@ -17,7 +17,7 @@ class DialogUtils {
         return AlertDialog(
           title: TextGlobal(
             text: title,
-            color: GlobalColors.mainColor,
+            color: TColor.primary,
             fontSize: 16,
           ),
           content: TextGlobal(

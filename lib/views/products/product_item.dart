@@ -1,12 +1,16 @@
 import 'package:Emend/app/navigate_app.dart';
+import 'package:Emend/app/routes/const_routes_url.dart';
+import 'package:Emend/app/routes/navigate_app_route.dart';
 import 'package:Emend/component/favourite/favourite.dart';
 import 'package:Emend/component/text/text_global.dart';
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/generated/l10n.dart';
 import 'package:Emend/models/product/product_model.dart';
 import 'package:Emend/utils/global.assets.dart';
 import 'package:Emend/views/products/product_details.dart';
 import 'package:flutter/material.dart';
+
+import '../../app/routes/get_app_route.dart';
 
 class ProductItemView extends StatelessWidget {
   ProductItemView(
@@ -26,11 +30,13 @@ class ProductItemView extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        NavigateApp.navigate(
-            context,
-            ProductDetailsView(
-              productId: product.id,
-            ));
+        GetAppRoute.push(context, RouteUrlConst.PRODUCT_DETAILS,parameter: {'product_id' : product.id.toString()});
+
+        // NavigateApp.navigate(
+        //     context,
+        //     ProductDetailsView(
+        //       productId: product.id,
+        //     ));
       },
       child: Card(
         color: Colors.white,
@@ -107,7 +113,7 @@ class ProductItemView extends StatelessWidget {
               maxLines: 2,
               fontSize: 14,
               fontWeight: FontWeight.bold,
-              color: GlobalColors.mainColor,
+              color: TColor.primary,
             )
           ]),
         ),

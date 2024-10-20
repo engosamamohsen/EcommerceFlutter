@@ -1,4 +1,4 @@
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/app/price_apis.dart';
 import 'package:Emend/app_emend/emend.dart';
 import 'package:Emend/component/button.global.dart';
@@ -76,7 +76,7 @@ class OrderItem extends StatelessWidget {
                   TextGlobal(
                       fontSize: 10,
                       fontWeight: FontWeight.bold,
-                      color: GlobalColors.secondaryColor,
+                      color: TColor.secondary,
                       text: order.date),
                 ],
               ),

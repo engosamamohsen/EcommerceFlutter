@@ -1,4 +1,4 @@
-import 'package:Emend/app/app_color.dart';
+import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/component/app_bar/app.bar.global.dart';
 import 'package:Emend/component/dialog/dialog_utils.dart';
 import 'package:Emend/component/network/loading_view_full.dart';
@@ -64,7 +64,7 @@ class _AddressListViewState extends State<AddressListView> {
       },
       builder: (context, state) {
         return Scaffold(
-            backgroundColor: GlobalColors.backGroundColor,
+            backgroundColor: TColor.backGroundColor,
             appBar: GlobalAppBar(
               title: S.of(context).my_address,
               suffixIcon: Icons.add_circle_outline,
