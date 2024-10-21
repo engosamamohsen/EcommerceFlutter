@@ -8,7 +8,7 @@ class TSize{
   static const double xl = 32.0;
 
   static const double paddingPage = 8.0;
-  static const double paddingText = 4.0;
+  static const double paddingText = 10.0;
 
   //icon sizes
   static const double iconXs = 12.0;
@@ -46,6 +46,8 @@ class TSize{
   static const double borderRadiusSm = 4.0;
   static const double borderRadiusMd = 8.0;
   static const double borderRadiusLg = 12.0;
+  static const double borderRadiusXL = 18.0;
+  static const double borderRadiusXXL = 25.0;
 
   //divider height
   static const double dividerHeight = 1.0;

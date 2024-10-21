@@ -8,6 +8,7 @@ import 'package:Emend/cubit/home/home_state.dart';
 import 'package:Emend/generated/l10n.dart';
 import 'package:Emend/views/category/categories_view.dart';
 import 'package:Emend/views/home/home_view.dart';
+import 'package:Emend/widget/header_home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,12 +24,6 @@ class HomeContainer extends StatefulWidget {
 class _HomeViewState extends State<HomeContainer> {
   final TextEditingController searchController = TextEditingController();
   Widget? _current_page;
-
-  void _navigateToPage(Widget page) {
-    setState(() {
-      _current_page = page;
-    });
-  }
 
   @override
   void initState() {
@@ -55,7 +50,21 @@ class _HomeViewState extends State<HomeContainer> {
                     });
                   })
                 : null),
-            body: _current_page,
+            drawer: AppDrawer(),
+            body: Column(
+              children: [
+                HeaderHomeView(
+                  clickMenu: () {
+
+                  },
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: _current_page!,
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },
@@ -63,43 +72,62 @@ class _HomeViewState extends State<HomeContainer> {
   }
 }
 
-class HomeBar extends StatefulWidget {
-  HomeBar({super.key});
 
-  @override
-  State<HomeBar> createState() => _HomeBarState();
-}
 
-class _HomeBarState extends State<HomeBar> {
-  final TextEditingController searchController = TextEditingController();
-
+class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 20),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            TextGlobal(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                text: "${S.of(context).welcome_in} ${S.of(context).app_name}"),
-            Icon(
-              Icons.circle_notifications,
-              size: 40,
-              color: TColor.primary,
-            )
-          ],
-        ),
-        const SizedBox(height: 10),
-        TextFormGlobal(
-            hint: S.of(context).search,
-            textInputType: TextInputType.emailAddress,
-            obscureText: false,
-            controller: searchController)
-      ],
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero, // Removes default padding
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            ),
+            child: Text(
+              'Menu Header',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Home'),
+            onTap: () {
+              // Close the drawer and navigate to Home
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Settings'),
+            onTap: () {
+              // Close the drawer and navigate to Settings
+              Navigator.pop(context);
+              // You can implement navigation here
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.info),
+            title: Text('About'),
+            onTap: () {
+              // Close the drawer and navigate to About
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.logout),
+            title: Text('Logout'),
+            onTap: () {
+              // Handle logout functionality
+              Navigator.pop(context);
+            },
+          ),
+        ],
+      ),
     );
   }
 }

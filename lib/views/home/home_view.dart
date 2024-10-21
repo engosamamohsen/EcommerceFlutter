@@ -1,4 +1,5 @@
 import 'package:Emend/component/bottom_bar/bottom_navigation_cubit.dart';
+import 'package:Emend/component/network/loader_view.dart';
 import 'package:Emend/component/network/loading_view_full.dart';
 import 'package:Emend/component/network/network_error_view.dart';
 import 'package:Emend/component/slider/slider_view.dart';
@@ -12,8 +13,6 @@ import 'package:Emend/cubit/product/product_state.dart';
 import 'package:Emend/generated/l10n.dart';
 import 'package:Emend/models/home/home_response.dart';
 import 'package:Emend/models/product/add_wishlist_response.dart';
-import 'package:Emend/models/product/product_list_response.dart';
-import 'package:Emend/utils/device/device_utils.dart';
 import 'package:Emend/views/category/categories_view.dart';
 import 'package:Emend/views/home/home_categories.dart';
 import 'package:Emend/views/home/home_category_product.dart';
@@ -97,15 +96,16 @@ class _HomeViewState extends State<HomeView> {
         }, builder: (context, state) {
           return Container(
               child: state is HomeLoadingState
-                  ? const LoadingViewFull()
+                  ? const LoadingView()
                   : homeModel != null
                       ? BlocBuilder<ProductCubit, ProductStates>(
                           builder: (context, productState) {
-                          return SingleChildScrollView(
+                          return Padding(
+                            padding: const EdgeInsets.all(TSize.paddingPage),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                HomeBar(),
+                                // HeaderHomeView(),
                                 const SizedBox(height: 30),
                                 SliderView(slider: homeModel!.banners),
                                 const SizedBox(height: 30),
@@ -181,74 +181,5 @@ class _HomeViewState extends State<HomeView> {
                         })
                       : NetworkError());
         }));
-  }
-}
-
-class HomeBar extends StatefulWidget {
-  HomeBar({super.key});
-
-  @override
-  State<HomeBar> createState() => _HomeBarState();
-}
-
-class _HomeBarState extends State<HomeBar> {
-  final TextEditingController searchController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(TSize.sm),
-      decoration: BoxDecoration(boxShadow: const <BoxShadow>[
-        BoxShadow(
-            color: Colors.black54, blurRadius: 15.0, offset: Offset(0.0, 0.75))
-      ], color: TColor.primary),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: TSize.paddingPage),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                if (!DeviceUtils.isMobileScreen(context))
-                  Icon(color: TColor.white, Icons.menu),
-                const SizedBox(
-                  width: TSize.sm,
-                ),
-                TextGlobal(
-                    color: TColor.white,
-                    fontWeight: FontWeight.bold,
-                    text:
-                        "${S.of(context).welcome_in} ${S.of(context).app_name}"),
-                const SizedBox(
-                  width: TSize.sm,
-                ),
-                if (!DeviceUtils.isMobileScreen(context))
-                  Flexible(
-                      child: TextFormGlobal(
-                          hint: S.of(context).search,
-                          validateOnChange: true,
-                          // allowValidate: false,
-                          textInputType: TextInputType.text,
-                          obscureText: false,
-
-                          controller: searchController)),
-                const Spacer(),
-                if (DeviceUtils.isMobileScreen(context))
-                  Icon(color: TColor.white, Icons.search),
-                const SizedBox(
-                  width: TSize.sm,
-                ),
-                Icon(
-                  Icons.circle_notifications,
-                  size: 40,
-                  color: TColor.white,
-                )
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }
