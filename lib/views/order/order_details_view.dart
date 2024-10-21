@@ -1,5 +1,4 @@
 import 'package:Emend/utils/constants/color.dart';
-import 'package:Emend/utils/constants/app_constants.dart';
 import 'package:Emend/app/price_apis.dart';
 import 'package:Emend/app_emend/emend.dart';
 import 'package:Emend/component/app_bar/app.bar.global.dart';
@@ -12,6 +11,7 @@ import 'package:Emend/cubit/order/order_state.dart';
 import 'package:Emend/generated/l10n.dart';
 import 'package:Emend/models/cart/cart_list_response.dart';
 import 'package:Emend/models/order/details/order_details_response.dart';
+import 'package:Emend/utils/constants/t_size.dart';
 import 'package:Emend/views/address/list/address_item.dart';
 import 'package:Emend/views/cart/cart_item.dart';
 import 'package:flutter/material.dart';
@@ -75,7 +75,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
               ),
               body: widget.orderDetailsResponse != null
                   ? Padding(
-                      padding: EdgeInsets.all(GlobalConstants.paddingPage),
+                      padding: const EdgeInsets.all(TSize.paddingPage),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

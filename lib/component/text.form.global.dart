@@ -5,15 +5,15 @@ import 'package:flutter/material.dart';
 class TextFormGlobal extends StatefulWidget {
   TextFormGlobal(
       {super.key,
-      required this.hint,
-      required this.textInputType,
-      required this.obscureText,
-      required this.controller,
-      this.minLines = 1,
-      this.validator,
-      this.validateOnChange = true,
-      this.suffixIcon,
-      this.prefixIcon});
+        required this.hint,
+        required this.textInputType,
+        required this.obscureText,
+        required this.controller,
+        this.minLines = 1,
+        this.validator,
+        this.validateOnChange = true,
+        this.suffixIcon,
+        this.prefixIcon});
 
   int minLines;
   final String hint;
@@ -87,7 +87,7 @@ class _TextFormGlobalState extends State<TextFormGlobal> {
         decoration: InputDecoration(
             hintText: widget.hint,
             errorText: widget.errorMsg?.isEmpty == true ||
-                    widget.controller.text.isNotEmpty
+                widget.controller.text.isNotEmpty
                 ? null
                 : widget.errorMsg, // Show dynamic error message
             enabledBorder: OutlineInputBorder(
@@ -198,20 +198,20 @@ class _TextFormGlobalState extends State<TextFormGlobal> {
 //     );
 //   }
 
-  // String? _defaultValidator(BuildContext context, String? value) {
-  //   if (value == null || value.isEmpty) {
-  //     ToastMessageHelper.showToastMessage(
-  //         '${widget.hint} ${S.of(context).is_required}');
-  //     return '${widget.hint} ${S.of(context).is_required}';
-  //   }
-  //   if (widget.textInputType == TextInputType.emailAddress) {
-  //     if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-  //       ToastMessageHelper.showToastMessage(
-  //           S.of(context).please_enter_valid_email);
-  //       return S.of(context).please_enter_valid_email;
-  //     }
-  //   }
-  //   return "";
-  // }
+// String? _defaultValidator(BuildContext context, String? value) {
+//   if (value == null || value.isEmpty) {
+//     ToastMessageHelper.showToastMessage(
+//         '${widget.hint} ${S.of(context).is_required}');
+//     return '${widget.hint} ${S.of(context).is_required}';
+//   }
+//   if (widget.textInputType == TextInputType.emailAddress) {
+//     if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+//       ToastMessageHelper.showToastMessage(
+//           S.of(context).please_enter_valid_email);
+//       return S.of(context).please_enter_valid_email;
+//     }
+//   }
+//   return "";
+// }
 // }
 
