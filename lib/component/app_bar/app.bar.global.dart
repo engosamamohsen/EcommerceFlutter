@@ -1,4 +1,5 @@
 import 'package:Emend/app/routes/get_app_route.dart';
+import 'package:Emend/component/app_bar/app_text_bar.dart';
 import 'package:Emend/component/text/text_global.dart';
 import 'package:flutter/material.dart';
 
@@ -33,12 +34,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
         elevation: 0, // Remove default AppBar elevation
         centerTitle: true,
         title: title.isNotEmpty
-            ? TextGlobal(
-                text: title,
-                fontSize: 16,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              )
+            ? AppTextBar(title: title)
             : null,
         leading: (showBackBtn
             ? IconButton(

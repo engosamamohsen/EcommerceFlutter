@@ -8,6 +8,7 @@ class BottomNavigationCubit extends Cubit<Widget> {
 
   // Function to change the selected tab
   void updateTabIndex(Widget index) {
+    print("welcome in index $index");
     emit(index);
   }
 }

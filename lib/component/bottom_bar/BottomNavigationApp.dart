@@ -42,10 +42,13 @@ class _BottomNavigationAppState extends State<BottomNavigationApp> {
   Widget build(BuildContext context) {
     return BlocListener<BottomNavigationCubit, Widget>(
       listener: (context, state) {
+        print("welcome in index hererere");
+
         if (state is HomeView) {
           _onItemTapped(0);
         }
         if (state is CategoriesView) {
+          print("welcome in index Done");
           _onItemTapped(1);
         }
       },

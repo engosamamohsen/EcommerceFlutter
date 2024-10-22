@@ -6,6 +6,7 @@ import 'package:Emend/widget/header_home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../component/bottom_bar/bottom_navigation_cubit.dart';
 import '../../utils/device/device_utils.dart';
 import '../../widget/drawer_view.dart';
 
@@ -48,7 +49,10 @@ class _HomeViewState extends State<HomeContainer> {
                     });
                   })
                 : null),
-            drawer: AppDrawer(selectPage: _current_page,),
+            drawer: AppDrawer(selectPage: _current_page, widgetPageSelect: (page) {
+              BlocProvider.of<BottomNavigationCubit>(context)
+                  .updateTabIndex(page);
+            },),
             body: Column(
               children: [
                 HeaderHomeView(

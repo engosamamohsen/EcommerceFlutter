@@ -13,9 +13,10 @@ import '../generated/l10n.dart';
 import '../utils/constants/t_size.dart';
 
 class AppDrawer extends StatefulWidget {
-  AppDrawer({required this.selectPage , super.key});
+  AppDrawer({required this.selectPage ,required this.widgetPageSelect, super.key});
 
   Widget? selectPage;
+  void Function(Widget) widgetPageSelect;
 
   @override
   State<AppDrawer> createState() => _DrawerViewState();
@@ -71,17 +72,20 @@ class _DrawerViewState extends State<AppDrawer> {
               textColor: (widget.selectPage is HomeView ?  TColor.primary : TColor.black),
               onTap: () {
                 widget.selectPage = HomeView();
+                widget.widgetPageSelect(HomeView());
                 // Close the drawer and navigate to Home
                 Navigator.pop(context);
               },
             ),
             ListTile(
               leading: Icon(Icons.grid_view),
-              title: Text(S.of(context).orders),
+              title: Text(S.of(context).categories),
               iconColor: (widget.selectPage is CategoriesView ?  TColor.primary : TColor.black),
               textColor: (widget.selectPage is CategoriesView ?  TColor.primary : TColor.black),
               onTap: () {
                 widget.selectPage = CategoriesView();
+                widget.widgetPageSelect(CategoriesView());
+
                 // Close the drawer and navigate to Settings
                 Navigator.pop(context);
                 // You can implement navigation here

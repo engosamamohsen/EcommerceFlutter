@@ -17,6 +17,7 @@ class CartCubit extends Cubit<CartStates> {
 
   void getCarts() async {
     try {
+      print("start is here");
       emit(CartLoadingState());
       Response? response = await apiService.get(EndPoint.cartList);
       print("start post call cubit");
