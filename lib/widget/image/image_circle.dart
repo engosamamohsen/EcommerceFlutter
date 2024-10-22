@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-class ImageCircle extends StatelessWidget {
-  ImageCircle(
+import '../../utils/global.assets.dart';
+
+class TImageCircle extends StatelessWidget {
+  TImageCircle(
       {super.key,
       required this.image,
       this.width = 150,
@@ -46,11 +48,18 @@ class ImageCircle extends StatelessWidget {
           errorBuilder:
               (BuildContext context, Object exception, StackTrace? stackTrace) {
             // Handle error scenarios, like displaying a placeholder or error message
-            return Icon(Icons.error,
-                size: (width + height) / 2); // Placeholder for errors
+            return Center(
+              child: Image.asset(
+                width: (width + height)/2,
+                height: (width + height)/2,
+                "${GlobalAssets.imagesAssetsPath}no_image.jpg",
+                fit: BoxFit.cover,
+              ),
+            ); // Placeholder for errors
           },
         ),
       ),
     );
   }
 }
+

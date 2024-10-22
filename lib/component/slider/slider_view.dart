@@ -1,7 +1,8 @@
-import 'package:Emend/component/image/image_round.dart';
 import 'package:Emend/models/home/home_response.dart';
 import 'package:Emend/utils/global.assets.dart';
 import 'package:flutter/material.dart';
+
+import '../../widget/image/image_round.dart';
 
 final List<String> imagesPath = [
   "${GlobalAssets.imagesAssetsPath}img_login.png",

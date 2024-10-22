@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 
 import '../../app/routes/const_routes_url.dart';
 import '../../app/routes/navigate_app_route.dart';
+import '../../widget/image/image_circle.dart';
+
 class CategoryItem extends StatelessWidget {
   CategoryItem({
     super.key,
@@ -25,15 +27,13 @@ class CategoryItem extends StatelessWidget {
       onTap: () {
         // NavigateApp.navigate(context, ProductListView(categoryId: categoryId));
         // GetAppRoute.push(context, "${RouteUrlConst.PRODUCT_LIST}?id=$categoryId&name=$name");
-
-        print("category $categoryId , $name");
         // GetAppRoute.push(
         //     context,
         //     "${RouteUrlConst.PRODUCT_LIST}?id=$categoryId&name=$name"
         // );
       },
       child: SizedBox(
-        width: 100,  // Set fixed width to avoid big square issue
+        width: 100, // Set fixed width to avoid big square issue
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -41,45 +41,23 @@ class CategoryItem extends StatelessWidget {
               radius: 30.0,
               backgroundColor: Colors.transparent,
               child: ClipOval(
-                child: Image.network(
-                  image,
-                  fit: BoxFit.cover,
-                  width: 60.0,
-                  height: 60.0,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Center(
-                      child: Image.asset(
-                        width: 60,
-                        height: 60,
-                        "${GlobalAssets.imagesAssetsPath}no_image.jpg",
-                        fit: BoxFit.cover,
-                      ),
-                    );
-                  },
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) {
-                      return child;
-                    } else {
-                      return Center(
-                        child: CircularProgressIndicator(
-                          color: TColor.primary,
-                          strokeWidth: 2,
-                        ),
-                      );
-                    }
-                  },
-                ),
+                child: TImageCircle(
+                    width: 60,
+                    height: 60,
+                    image:
+                        "https://eg-rv.homzmart.net/catalog/product/w/3/w3_9.jpg"),
               ),
             ),
             SizedBox(height: 8), // Space between image and text
             SizedBox(
-              width: 80,  // Constrain text width
+              width: 80, // Constrain text width
               child: TextGlobal(
                 text: name,
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
-                textAlign: TextAlign.center, // Align text center
+                textAlign: TextAlign.center,
+                // Align text center
                 maxLines: 2, // Prevent text overflow
               ),
             ),

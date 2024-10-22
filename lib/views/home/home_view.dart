@@ -13,6 +13,7 @@ import 'package:Emend/cubit/product/product_state.dart';
 import 'package:Emend/generated/l10n.dart';
 import 'package:Emend/models/home/home_response.dart';
 import 'package:Emend/models/product/add_wishlist_response.dart';
+import 'package:Emend/utils/device/device_utils.dart';
 import 'package:Emend/views/category/categories_view.dart';
 import 'package:Emend/views/home/home_categories.dart';
 import 'package:Emend/views/home/home_category_product.dart';
@@ -119,21 +120,22 @@ class _HomeViewState extends State<HomeView> {
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
                                     ),
-                                    TextButton(
-                                      style: TextButton.styleFrom(
-                                        overlayColor: TColor.primary,
-                                      ),
-                                      onPressed: () {
-                                        BlocProvider.of<BottomNavigationCubit>(
+                                    if(DeviceUtils.isMobileScreen(context))
+                                      TextButton(
+                                          style: TextButton.styleFrom(
+                                            overlayColor: TColor.primary,
+                                          ),
+                                          onPressed: () {
+                                            BlocProvider.of<BottomNavigationCubit>(
                                                 context)
-                                            .updateTabIndex(CategoriesView());
-                                      },
-                                      child: TextGlobal(
-                                        fontWeight: FontWeight.bold,
-                                        text: S.of(context).see_all,
-                                        fontSize: 14,
-                                        color: TColor.primary,
-                                      ),
+                                                .updateTabIndex(CategoriesView());
+                                          },
+                                          child: TextGlobal(
+                                            fontWeight: FontWeight.bold,
+                                            text: S.of(context).see_all,
+                                            fontSize: 14,
+                                            color: TColor.primary,
+                                          )
                                     ),
                                   ],
                                 ),

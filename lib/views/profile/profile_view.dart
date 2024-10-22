@@ -1,5 +1,4 @@
 import 'package:Emend/app/navigate_app.dart';
-import 'package:Emend/component/image/image_circle.dart';
 import 'package:Emend/component/text/text_global.dart';
 import 'package:Emend/db_helper/app_storage.dart';
 import 'package:Emend/generated/l10n.dart';
@@ -16,6 +15,7 @@ import 'package:flutter/material.dart';
 import '../../app/routes/const_routes_url.dart';
 import '../../app/routes/get_app_route.dart';
 import '../../app/routes/navigate_app_route.dart';
+import '../../widget/image/image_circle.dart';
 
 class ProfileView extends StatefulWidget {
   ProfileView({super.key});
@@ -69,7 +69,7 @@ class _ProfileViewState extends State<ProfileView> {
               height: 20,
             ),
             if (user != null)
-              ImageCircle(
+              TImageCircle(
                   width: imageWidth,
                   height: imageHeight,
                   image: user != null &&

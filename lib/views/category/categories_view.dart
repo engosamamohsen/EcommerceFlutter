@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:Emend/component/app_bar/app.bar.global.dart';
 import 'package:Emend/component/emptyView/empty_view.dart';
+import 'package:Emend/component/network/loader_view.dart';
 import 'package:Emend/component/network/loading_view_full.dart';
 import 'package:Emend/component/network/network_error_view.dart';
 import 'package:Emend/component/text/text_global.dart';
@@ -34,42 +37,75 @@ class _DepartmentViewState extends State<CategoriesView> {
 
   @override
   Widget build(BuildContext context) {
+    final currentCount = (MediaQuery.of(context).size.width ~/ 250).toInt();
+    final minCount = 4;
+
     return BlocConsumer<HomeCubit, HomeStates>(
       listener: (context, state) {
         if (state is CategoriesSuccessState<CategoriesResponse>) {
+          print("categories start is here");
           setState(() {
+            print("categories start is here ${state.data.data}");
+
             if (state.data.data != null) {
               categories = state.data.data!.categories;
+              print("categories ${categories.length}");
             }
           });
         }
       },
       builder: (context, state) {
-        return Scaffold(
-          backgroundColor: TColor.backGroundColor,
-          appBar: GlobalAppBar(
-            title: S.of(context).categories,
-            showBackBtn: false,
-          ),
-          body: state is CategoriesLoadingState
-              ? const LoadingViewFull()
+        if (state is CategoriesLoadingState) return LoadingView();
+        if (state is FailedState) return NetworkError();
+        if (state is CategoriesSuccessState) {
+          if (categories.isEmpty)
+            return EmptyView(
+              textMsg: S.of(context).your_categories_is_empty,
+            );
+          else {
+            return SizedBox(
+              height: 800,
+              child: GridView.count(
+                crossAxisCount: 4,
+                children: List.generate(categories.length, (index) {
+                  return CategoryItem(
+                    categoryId: categories[index].id,
+                    name: categories[index].name,
+                    image: categories[index].icon,
+                  );
+                })),
+            );
+          }
+        } else {
+          return Text('data');
+        }
+        return Container(
+          child: state is CategoriesLoadingState
+              ? const LoadingView()
               : state is CategoriesSuccessState
                   ? categories.isEmpty
                       ? EmptyView(
                           textMsg: S.of(context).your_categories_is_empty,
                         )
-                      : GridView.builder(
-                          scrollDirection: Axis.vertical,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 3),
-                          itemCount: categories.length,
-                          itemBuilder: (context, item) {
-                            return CategoryItem(
-                                categoryId: categories[item].id,
-                                name: categories[item].name,
-                                image: categories[item].icon);
-                          })
+                      : Column(
+                          children: [
+                            Text("asdasasdasd"),
+                            Text("asdasasdasd"),
+                            Text("asdasasdasd"),
+                            Text("asdasasdasd"),
+                            Text("asdasasdasd"),
+                            ListView.builder(
+                              scrollDirection: Axis.vertical,
+                              itemBuilder: (context, index) {
+                                return Text(
+                                  "data",
+                                  style: TextStyle(fontSize: 30),
+                                );
+                              },
+                              itemCount: categories.length,
+                            ),
+                          ],
+                        )
                   : state is FailedState
                       ? NetworkError()
                       : Center(

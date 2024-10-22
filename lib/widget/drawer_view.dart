@@ -81,22 +81,22 @@ class _DrawerViewState extends State<AppDrawer> {
                 Navigator.pop(context);
               },
             ),
-            ListTile(
-              leading: Icon(Icons.grid_view),
-              title: Text(S.of(context).categories),
-              iconColor: (widget.selectPage is CategoriesView ?  TColor.primary : TColor.black),
-              textColor: (widget.selectPage is CategoriesView ?  TColor.primary : TColor.black),
-              onTap: () {
-                widget.selectPage = CategoriesView();
-                // widget.widgetPageSelect(CategoriesView());
-
-                // Close the drawer and navigate to Settings
-                Navigator.pop(context);
-                GetAppRoute.push(context, RouteUrlConst.CATEGORIES);
-
-                // You can implement navigation here
-              },
-            ),
+            // ListTile(
+            //   leading: Icon(Icons.grid_view),
+            //   title: Text(S.of(context).categories),
+            //   iconColor: (widget.selectPage is CategoriesView ?  TColor.primary : TColor.black),
+            //   textColor: (widget.selectPage is CategoriesView ?  TColor.primary : TColor.black),
+            //   onTap: () {
+            //     widget.selectPage = CategoriesView();
+            //     // widget.widgetPageSelect(CategoriesView());
+            //
+            //     // Close the drawer and navigate to Settings
+            //     Navigator.pop(context);
+            //     GetAppRoute.push(context, RouteUrlConst.CATEGORIES);
+            //
+            //     // You can implement navigation here
+            //   },
+            // ),
             ListTile(
               leading: Icon(Icons.list_alt_outlined),
               title: Text(S.of(context).orders),

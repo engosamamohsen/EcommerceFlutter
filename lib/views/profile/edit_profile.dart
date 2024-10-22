@@ -2,8 +2,6 @@ import 'dart:io';
 
 import 'package:Emend/component/app_bar/app.bar.global.dart';
 import 'package:Emend/component/button.global.dart';
-import 'package:Emend/component/image/image_circle.dart';
-import 'package:Emend/component/image/image_circle_avatar.dart';
 import 'package:Emend/component/text.form.global.dart';
 import 'package:Emend/cubit/auth/auth_cubit.dart';
 import 'package:Emend/cubit/auth/auth_state.dart';
@@ -15,6 +13,8 @@ import 'package:Emend/utils/toast_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+
+import '../../widget/image/image_circle_avatar.dart';
 
 class EditProfileView extends StatefulWidget {
   const EditProfileView({super.key});
