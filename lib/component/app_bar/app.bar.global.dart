@@ -1,9 +1,6 @@
 import 'package:Emend/app/routes/get_app_route.dart';
 import 'package:Emend/component/app_bar/app_text_bar.dart';
-import 'package:Emend/component/text/text_global.dart';
 import 'package:flutter/material.dart';
-
-import '../../app/routes/navigate_app_route.dart';
 
 class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
   GlobalAppBar(
@@ -40,7 +37,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
             ? IconButton(
                 onPressed: () {
                   onBackIconPressed == null
-                      ? GetAppRoute.pop(context)
+                      ? Navigator.pop(context)
                       : onBackIconPressed!();
                 },
                 icon: const Icon(

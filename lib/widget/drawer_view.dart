@@ -8,6 +8,8 @@ import 'package:Emend/views/profile/edit_profile.dart';
 import 'package:Emend/views/wishlist/wishlist_list_view.dart';
 import 'package:flutter/material.dart';
 
+import '../app/routes/const_routes_url.dart';
+import '../app/routes/get_app_route.dart';
 import '../db_helper/app_storage.dart';
 import '../generated/l10n.dart';
 import '../utils/constants/t_size.dart';
@@ -33,7 +35,9 @@ class _DrawerViewState extends State<AppDrawer> {
     appStorage.readToken().then((token) {
       print("token:$token");
       if (token != null && token.isNotEmpty) {
-        this.token = token;
+        setState(() {
+          this.token = token;
+        });;
       }
     });
   }
@@ -84,10 +88,12 @@ class _DrawerViewState extends State<AppDrawer> {
               textColor: (widget.selectPage is CategoriesView ?  TColor.primary : TColor.black),
               onTap: () {
                 widget.selectPage = CategoriesView();
-                widget.widgetPageSelect(CategoriesView());
+                // widget.widgetPageSelect(CategoriesView());
 
                 // Close the drawer and navigate to Settings
                 Navigator.pop(context);
+                GetAppRoute.push(context, RouteUrlConst.CATEGORIES);
+
                 // You can implement navigation here
               },
             ),
@@ -97,8 +103,10 @@ class _DrawerViewState extends State<AppDrawer> {
               iconColor: (widget.selectPage is OrderListView ?  TColor.primary : TColor.black),
               textColor: (widget.selectPage is OrderListView ?  TColor.primary : TColor.black),
               onTap: () {
-                // Close the drawer and navigate to About
+                widget.selectPage = OrderListView();
                 Navigator.pop(context);
+                GetAppRoute.push(context, RouteUrlConst.ORDER_LIST);
+                // Close the drawer and navigate to About
               },
             ),
             ListTile(
@@ -107,8 +115,10 @@ class _DrawerViewState extends State<AppDrawer> {
               iconColor: (widget.selectPage is EditProfileView ?  TColor.primary : TColor.black),
               textColor: (widget.selectPage is EditProfileView ?  TColor.primary : TColor.black),
               onTap: () {
+                widget.selectPage = EditProfileView();
                 // Close the drawer and navigate to About
                 Navigator.pop(context);
+                GetAppRoute.push(context, RouteUrlConst.EDIT_PROFILE);
               },
             ),
             ListTile(
@@ -117,8 +127,11 @@ class _DrawerViewState extends State<AppDrawer> {
               textColor: (widget.selectPage is WishListView ?  TColor.primary : TColor.black),
               title: Text(S.of(context).wishlist),
               onTap: () {
+                widget.selectPage = WishListView();
+
                 // Close the drawer and navigate to About
                 Navigator.pop(context);
+                GetAppRoute.push(context, RouteUrlConst.WISHLIST);
               },
             ),
 
@@ -128,8 +141,10 @@ class _DrawerViewState extends State<AppDrawer> {
               textColor: (widget.selectPage is AddressListView ?  TColor.primary : TColor.black),
               title: Text(S.of(context).manage_address),
               onTap: () {
+                widget.selectPage = AddressListView();
                 // Close the drawer and navigate to About
                 Navigator.pop(context);
+                GetAppRoute.push(context, RouteUrlConst.ADDRESS_LIST);
               },
             ),
             ListTile(
@@ -138,8 +153,10 @@ class _DrawerViewState extends State<AppDrawer> {
               textColor: (widget.selectPage is ContactUsView ?  TColor.primary : TColor.black),
               title: Text(S.of(context).contact_us),
               onTap: () {
+                widget.selectPage = ContactUsView();
                 // Close the drawer and navigate to About
                 Navigator.pop(context);
+                GetAppRoute.push(context, RouteUrlConst.CONTACT_US);
               },
             ),
             ListTile(

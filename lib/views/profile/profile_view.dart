@@ -14,6 +14,7 @@ import 'package:Emend/views/wishlist/wishlist_list_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../app/routes/const_routes_url.dart';
+import '../../app/routes/get_app_route.dart';
 import '../../app/routes/navigate_app_route.dart';
 
 class ProfileView extends StatefulWidget {
@@ -96,6 +97,7 @@ class _ProfileViewState extends State<ProfileView> {
               text: S.of(context).edit_profile,
               icon: Icons.person,
               submit: () {
+                GetAppRoute.push(context, RouteUrlConst.EDIT_PROFILE);
                 // GetAppRoute.push(context, RouteUrlConst.EDIT_PROFILE);
 
               },
@@ -108,6 +110,7 @@ class _ProfileViewState extends State<ProfileView> {
               icon: Icons.location_pin,
               submit: () {
                 // GetAppRoute.push(context, RouteUrlConst.ADDRESS_LIST);
+                GetAppRoute.push(context, RouteUrlConst.ADDRESS_LIST);
 
               },
             ),
@@ -118,6 +121,8 @@ class _ProfileViewState extends State<ProfileView> {
               text: S.of(context).my_orders,
               icon: Icons.list_alt_outlined,
               submit: () {
+                GetAppRoute.push(context, RouteUrlConst.ORDER_LIST);
+
                 // GetAppRoute.push(context, RouteUrlConst.ORDER_LIST);
               },
             ),
@@ -128,6 +133,8 @@ class _ProfileViewState extends State<ProfileView> {
               text: S.of(context).wishlist,
               icon: Icons.favorite_outline,
               submit: () {
+                GetAppRoute.push(context, RouteUrlConst.WISHLIST);
+
                 // GetAppRoute.push(context, RouteUrlConst.WISHLIST);
 
               },
@@ -138,7 +145,9 @@ class _ProfileViewState extends State<ProfileView> {
             ItemSetting(
               text: S.of(context).privacy_and_policy,
               icon: Icons.privacy_tip_outlined,
-              submit: () {},
+              submit: () {
+
+              },
             ),
             SizedBox(
               height: 5,
@@ -147,6 +156,8 @@ class _ProfileViewState extends State<ProfileView> {
               text: S.of(context).contact_us,
               icon: Icons.contact_support_outlined,
               submit: () {
+                GetAppRoute.push(context, RouteUrlConst.CONTACT_US);
+
                 // GetAppRoute.push(context, RouteUrlConst.CONTACT_US);
               },
             ),

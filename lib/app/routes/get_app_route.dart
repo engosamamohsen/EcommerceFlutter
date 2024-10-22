@@ -69,9 +69,12 @@ class GetAppRoute {
   // }
 
   static void pop(BuildContext context) {
+    print("object back");
     if (GoRouter.of(context).canPop()) {
+      print("object back ttooo");
       Get.back();
     } else {
+      print("object back splash");
       // Handle cases where there's no route to pop (maybe go to a default page)
       Get.toNamed(RouteUrlConst.SPLASH);
     }
