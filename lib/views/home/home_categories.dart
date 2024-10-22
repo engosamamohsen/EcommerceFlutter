@@ -14,6 +14,7 @@ class HomeCategories extends StatelessWidget {
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: categories.length,
+          shrinkWrap: true,
           itemBuilder: (context, index) {
             final category = categories[index];
             return Padding(
