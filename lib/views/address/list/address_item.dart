@@ -5,6 +5,8 @@ import 'package:Emend/models/address/add_address_response.dart';
 import 'package:Emend/models/address/address_model.dart';
 import 'package:flutter/material.dart';
 
+import '../../../widget/web/TMeta.dart';
+
 class AddressItem extends StatelessWidget {
   AddressItem(
       {super.key,
@@ -22,6 +24,8 @@ class AddressItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TMeta.keywords();
+
     return Card(
       color: Colors.white,
       elevation: 5, // Controls the shadow

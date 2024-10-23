@@ -10,14 +10,18 @@ import 'package:Emend/views/auth/login.view.dart';
 import 'package:Emend/views/auth/register.view.dart';
 import 'package:Emend/views/home/home_view.dart';
 import 'package:Emend/views/splash/splash.view.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get/get.dart' as getx;
+import 'package:meta_seo/meta_seo.dart';
 
 import 'app/routes/get_app_route.dart';
 import 'cubit/product/product_cubit.dart';
+
+import 'package:flutter_web_plugins/url_strategy.dart';
 
 // class ProductProvider with ChangeNotifier {
 //   Product? selectedProduct;
@@ -35,6 +39,13 @@ import 'cubit/product/product_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  //================handle web=========================
+  usePathUrlStrategy();
+  if (kIsWeb) {
+    MetaSEO().config();
+  }
+  //===============================================
   runApp(const MyApp());
 // flutter build web --release --no-pwa
 }

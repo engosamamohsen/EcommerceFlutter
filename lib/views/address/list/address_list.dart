@@ -15,6 +15,8 @@ import 'package:Emend/views/address/list/address_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../widget/web/TMeta.dart';
+
 class AddressListView extends StatefulWidget {
   AddressListView({super.key, this.addressList});
   List<AddressModel>? addressList;
@@ -43,6 +45,8 @@ class _AddressListViewState extends State<AddressListView> {
 
   @override
   Widget build(BuildContext context) {
+    TMeta.keywords();
+
     return BlocConsumer<AddressCubit, AddressStates>(
       listener: (context, state) {
         if (state is AddressSuccessState<AddressListResponse>) {

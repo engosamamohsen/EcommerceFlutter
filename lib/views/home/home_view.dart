@@ -21,6 +21,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../utils/constants/t_size.dart';
+import '../../widget/web/TMeta.dart';
 
 class HomeView extends StatefulWidget {
   HomeView({super.key});
@@ -40,7 +41,7 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
+    TMeta.keywords();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<HomeCubit>(context).home();
     });

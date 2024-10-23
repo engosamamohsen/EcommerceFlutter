@@ -5,10 +5,12 @@ import 'package:Emend/views/home/home_view.dart';
 import 'package:Emend/widget/header_home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meta_seo/meta_seo.dart';
 
 import '../../component/bottom_bar/bottom_navigation_cubit.dart';
 import '../../utils/device/device_utils.dart';
 import '../../widget/drawer_view.dart';
+import '../../widget/web/TMeta.dart';
 
 class HomeContainer extends StatefulWidget {
   const HomeContainer({super.key});
@@ -34,6 +36,7 @@ class _HomeViewState extends State<HomeContainer> {
 
   @override
   Widget build(BuildContext context) {
+    TMeta.keywords();
 
     return BlocConsumer<HomeCubit, HomeStates>(
       listener: (context, state) {},

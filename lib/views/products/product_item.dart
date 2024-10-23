@@ -11,6 +11,7 @@ import 'package:Emend/views/products/product_details.dart';
 import 'package:flutter/material.dart';
 
 import '../../app/routes/get_app_route.dart';
+import '../../widget/web/TMeta.dart';
 
 class ProductItemView extends StatelessWidget {
   ProductItemView(
@@ -28,6 +29,8 @@ class ProductItemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TMeta.keywords();
+
     return InkWell(
       onTap: () {
         GetAppRoute.push(context, RouteUrlConst.PRODUCT_DETAILS,parameter: {'product_id' : product.id.toString()});

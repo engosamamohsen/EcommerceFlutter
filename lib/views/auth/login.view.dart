@@ -21,6 +21,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../app/routes/const_routes_url.dart';
 import '../../app/routes/get_app_route.dart';
 import '../../app/routes/navigate_app_route.dart';
+import '../../widget/web/TMeta.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({super.key});
@@ -31,6 +32,8 @@ class LoginView extends StatelessWidget {
   final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    TMeta.keywords();
+
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     return BlocProvider(

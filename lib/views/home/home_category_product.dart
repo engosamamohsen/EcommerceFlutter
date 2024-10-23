@@ -8,6 +8,8 @@ import 'package:Emend/views/products/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../widget/web/TMeta.dart';
+
 class HomeCategoryProduct extends StatelessWidget {
   HomeCategoryProduct(
       {super.key,
@@ -25,6 +27,8 @@ class HomeCategoryProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TMeta.keywords();
+
     print("state category product $productStates , $productIdFav");
     return Column(
       children: [

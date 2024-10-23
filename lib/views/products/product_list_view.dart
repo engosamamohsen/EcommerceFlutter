@@ -15,6 +15,8 @@ import 'package:Emend/views/products/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../widget/web/TMeta.dart';
+
 class ProductListView extends StatefulWidget {
   ProductListView({super.key, required this.categoryId, required this.categoryName});
 
@@ -44,6 +46,8 @@ class _ProductListViewState extends State<ProductListView> {
 
   @override
   Widget build(BuildContext context) {
+    TMeta.keywords();
+
     return BlocConsumer<ProductCubit, ProductStates>(
       listener: (context, state) {
         if (state is ProductSuccessState<ProductListResponse>) {

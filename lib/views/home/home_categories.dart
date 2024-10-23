@@ -2,6 +2,8 @@ import 'package:Emend/models/category/category_model.dart';
 import 'package:Emend/views/category/category_item.dart';
 import 'package:flutter/material.dart';
 
+import '../../widget/web/TMeta.dart';
+
 class HomeCategories extends StatelessWidget {
   HomeCategories({super.key, this.categories = const []});
 
@@ -9,6 +11,8 @@ class HomeCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TMeta.keywords();
+
     return SizedBox(
       height: 100,
       child: ListView.builder(

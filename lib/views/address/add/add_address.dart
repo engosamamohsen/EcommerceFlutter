@@ -17,6 +17,8 @@ import 'package:Emend/views/address/add/drop_down_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../widget/web/TMeta.dart';
+
 class AddAddressView extends StatefulWidget {
   const AddAddressView({super.key});
 
@@ -70,6 +72,8 @@ class _AddAddressView extends State<AddAddressView> {
   @override
   @override
   Widget build(BuildContext context) {
+    TMeta.keywords();
+
     return BlocConsumer<AddressCubit, AddressStates>(
       listener: (context, state) {
         if (state is AddressSuccessState<GovernoratesResponse>) {

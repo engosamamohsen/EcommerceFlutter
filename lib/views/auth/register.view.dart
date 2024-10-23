@@ -11,6 +11,8 @@ import 'package:Emend/views/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../widget/web/TMeta.dart';
+
 class RegisterView extends StatelessWidget {
   RegisterView({super.key});
   final TextEditingController nameController = TextEditingController();
@@ -22,6 +24,8 @@ class RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TMeta.keywords();
+
     GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     return BlocProvider(

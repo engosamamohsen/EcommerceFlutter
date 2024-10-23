@@ -8,6 +8,8 @@ import 'package:Emend/utils/global.assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../widget/web/TMeta.dart';
+
 class ConfirmCodeView extends StatelessWidget {
   ConfirmCodeView({super.key});
 
@@ -15,6 +17,8 @@ class ConfirmCodeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TMeta.keywords();
+
     GlobalKey<FormState> formKey = GlobalKey<FormState>();
     return BlocProvider(
       create: (context) => AuthCubit(),

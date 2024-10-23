@@ -8,6 +8,8 @@ import 'package:Emend/utils/global.assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../widget/web/TMeta.dart';
+
 class ForgetPasswordView extends StatelessWidget {
   ForgetPasswordView({super.key});
 
@@ -15,6 +17,8 @@ class ForgetPasswordView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TMeta.keywords();
+
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     return BlocProvider(
