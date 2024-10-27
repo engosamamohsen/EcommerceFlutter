@@ -47,22 +47,46 @@ class HomeModel {
   late final List<ProductModel> mostSale;
 
   HomeModel.fromJson(Map<String, dynamic> json) {
-    try {} catch (e) {
-      print("error $e");
+    try {
+      banners =
+          List.from(json['banners']).map((e) => Banners.fromJson(e)).toList();
+    } catch (e) {
+      print("error==>>>>>>> $e");
     }
-    banners =
-        List.from(json['banners']).map((e) => Banners.fromJson(e)).toList();
-    categories = List.from(json['categories'])
-        .map((e) => CategoryModel.fromJson(e))
-        .toList();
-    newestProduct = List.from(json['newest_product'])
-        .map((e) => ProductModel.fromJson(e))
-        .toList();
-    address = null;
-    flashSale = FlashSale.fromJson(json['flash_sale']);
-    mostSale = List.from(json['most_sale'])
-        .map((e) => ProductModel.fromJson(e))
-        .toList();
+    try{
+      categories = List.from(json['categories'])
+          .map((e) => CategoryModel.fromJson(e))
+          .toList();
+    }catch(e){
+      print("error categories ==>>>>>>> $e");
+    }
+
+    try{
+      newestProduct = List.from(json['newest_product'])
+          .map((e) => ProductModel.fromJson(e))
+          .toList();
+    }catch(e){
+      print("error newestProduct ==>>>>>>> $e");
+    }
+
+
+      address = null;
+    try{
+      flashSale = FlashSale.fromJson(json['flash_sale']);
+
+    }catch(e){
+      print("error flashSale ==>>>>>>> $e");
+    }
+
+    try{
+      mostSale = List.from(json['most_sale'])
+          .map((e) => ProductModel.fromJson(e))
+          .toList();
+
+    }catch(e){
+      print("error mostSale ==>>>>>>> $e");
+    }
+
   }
 
   Map<String, dynamic> toJson() {

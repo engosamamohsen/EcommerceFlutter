@@ -36,7 +36,7 @@ class HomeCubit extends Cubit<HomeStates> {
         }
       }
     } catch (e) {
-      print("start e ${e}");
+      print("start e=>> ${e}");
     }
   }
 
