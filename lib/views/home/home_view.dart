@@ -67,6 +67,14 @@ class _HomeViewState extends State<HomeView> {
                 print("state welcome productFav $productIdFav");
                 setState(() {
                   if (homeModel != null) {
+                    homeModel?.categories.map((categorie) {
+                      categorie.products.map((product){
+                        if (product.id == productIdFav) {
+                          print("state welcome");
+                          product.isLike = !product.isLike;
+                        }
+                      }).toList();
+                    }).toList();
                     homeModel?.flashSale.map((product) {
                       if (product.id == productIdFav) {
                         print("state welcome");

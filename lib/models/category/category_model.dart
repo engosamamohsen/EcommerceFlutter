@@ -5,12 +5,12 @@ class CategoryModel {
     required this.id,
     required this.name,
     required this.icon,
-    required this.products
+    this.products
   });
   late final int id;
   late final String name;
   late final String icon;
-  late final List<ProductModel> products;
+  late final List<ProductModel>? products;
 
   CategoryModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -26,7 +26,7 @@ class CategoryModel {
     _data['id'] = id;
     _data['name'] = name;
     _data['icon'] = icon;
-    _data['products'] = products;
+    _data['products'] = products?.map((e) => e.toJson()).toList();
     return _data;
   }
 }
