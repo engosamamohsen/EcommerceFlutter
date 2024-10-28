@@ -5,7 +5,6 @@ import 'package:Emend/views/home/home_view.dart';
 import 'package:Emend/widget/header_home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta_seo/meta_seo.dart';
 
 import '../../component/bottom_bar/bottom_navigation_cubit.dart';
 import '../../utils/device/device_utils.dart';

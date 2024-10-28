@@ -61,7 +61,7 @@ class HomeCategoryProduct extends StatelessWidget {
         SizedBox(
           height: 200, // Adjust height based on the product item height
           child: ListView.builder(
-            shrinkWrap: true,
+            // shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemCount:
                 products.length, // Adjust this to the actual number of products

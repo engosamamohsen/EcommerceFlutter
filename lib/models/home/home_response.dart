@@ -43,7 +43,8 @@ class HomeModel {
   late final List<CategoryModel> categories;
   late final List<ProductModel> newestProduct;
   late final Null address;
-  late final FlashSale flashSale;
+  late final List<ProductModel> flashSale;
+
   late final List<ProductModel> mostSale;
 
   HomeModel.fromJson(Map<String, dynamic> json) {
@@ -72,7 +73,9 @@ class HomeModel {
 
       address = null;
     try{
-      flashSale = FlashSale.fromJson(json['flash_sale']);
+      flashSale = List.from(json['flash_sale'])
+          .map((e) => ProductModel.fromJson(e))
+          .toList();
 
     }catch(e){
       print("error flashSale ==>>>>>>> $e");
@@ -95,7 +98,7 @@ class HomeModel {
     _data['categories'] = categories.map((e) => e.toJson()).toList();
     _data['newest_product'] = newestProduct.map((e) => e.toJson()).toList();
     _data['address'] = address;
-    _data['flash_sale'] = flashSale.toJson();
+    _data['flash_sale'] = flashSale.map((e) => e.toJson()).toList();
     _data['most_sale'] = mostSale.map((e) => e.toJson()).toList();
     return _data;
   }
@@ -163,29 +166,6 @@ class NewestProduct {
     _data['likes'] = likes;
     _data['isLike'] = isLike;
     _data['rate'] = rate;
-    return _data;
-  }
-}
-
-class FlashSale {
-  FlashSale({
-    required this.expiredAt,
-    required this.products,
-  });
-  late final String expiredAt;
-  late final List<ProductModel> products;
-
-  FlashSale.fromJson(Map<String, dynamic> json) {
-    expiredAt = json['expired_at'];
-    products = List.from(json['products'])
-        .map((e) => ProductModel.fromJson(e))
-        .toList();
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['expired_at'] = expiredAt;
-    // _data['products'] = ProductModel.map((e) => e.toJson()).toList();
     return _data;
   }
 }

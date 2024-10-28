@@ -45,7 +45,7 @@ class CategoryItem extends StatelessWidget {
                     width: 60,
                     height: 60,
                     image:
-                        "https://eg-rv.homzmart.net/catalog/product/w/3/w3_9.jpg"),
+                        image),
               ),
             ),
             SizedBox(height: 8), // Space between image and text

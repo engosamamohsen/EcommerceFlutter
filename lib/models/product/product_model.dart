@@ -12,7 +12,7 @@ class ProductModel {
   late final int id;
   late final String name;
   late final String? description;
-  late final String price;
+  late final double price;
   late final String image;
   late final int likes;
   late bool isLike;
@@ -22,11 +22,11 @@ class ProductModel {
     id = json['id'];
     name = json['name'];
     description = null;
-    price = json['price'];
+    price = (json['price'] as num).toDouble();
     image = json['image'];
     likes = json['likes'];
     isLike = json['isLike'];
-    rate = json['rate'];
+    rate = (json['rate'] as num).toDouble();
   }
 
   Map<String, dynamic> toJson() {

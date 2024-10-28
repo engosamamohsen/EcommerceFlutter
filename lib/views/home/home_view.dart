@@ -17,6 +17,7 @@ import 'package:Emend/utils/device/device_utils.dart';
 import 'package:Emend/views/category/categories_view.dart';
 import 'package:Emend/views/home/home_categories.dart';
 import 'package:Emend/views/home/home_category_product.dart';
+import 'package:Emend/views/home/home_category_products_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -66,7 +67,7 @@ class _HomeViewState extends State<HomeView> {
                 print("state welcome productFav $productIdFav");
                 setState(() {
                   if (homeModel != null) {
-                    homeModel?.flashSale.products.map((product) {
+                    homeModel?.flashSale.map((product) {
                       if (product.id == productIdFav) {
                         print("state welcome");
                         product.isLike = !product.isLike;
@@ -121,31 +122,41 @@ class _HomeViewState extends State<HomeView> {
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
                                     ),
-                                    if(DeviceUtils.isMobileScreen(context))
+                                    if (DeviceUtils.isMobileScreen(context))
                                       TextButton(
                                           style: TextButton.styleFrom(
                                             overlayColor: TColor.primary,
                                           ),
                                           onPressed: () {
-                                            BlocProvider.of<BottomNavigationCubit>(
-                                                context)
-                                                .updateTabIndex(CategoriesView());
+                                            BlocProvider.of<
+                                                        BottomNavigationCubit>(
+                                                    context)
+                                                .updateTabIndex(
+                                                    CategoriesView());
                                           },
                                           child: TextGlobal(
                                             fontWeight: FontWeight.bold,
                                             text: S.of(context).see_all,
                                             fontSize: 14,
                                             color: TColor.primary,
-                                          )
-                                    ),
+                                          )),
                                   ],
                                 ),
                                 HomeCategories(
                                     categories: homeModel!.categories),
-                                const SizedBox(height: 10),
+                                SizedBox(height: 20),
+                                HomeCategoryProductsList(
+                                    categories: homeModel!.categories,
+                                    productStates: productStates,
+                                    productIdFav: productIdFav,
+                                    submitFavourite: (productId) {
+                                      productIdFav = productId;
+                                      BlocProvider.of<ProductCubit>(context)
+                                          .addToFavourite(productId);
+                                    }),
                                 HomeCategoryProduct(
                                   title: S.of(context).flash_sale,
-                                  products: homeModel!.flashSale.products,
+                                  products: homeModel!.flashSale,
                                   productStates: productStates,
                                   productIdFav: productIdFav,
                                   submitFavourite: (productId) {
@@ -155,7 +166,9 @@ class _HomeViewState extends State<HomeView> {
                                         .addToFavourite(productId);
                                   },
                                 ),
-                                const SizedBox(height: 10),
+                                //categories products
+
+                                // SizedBox(height: 10),
                                 HomeCategoryProduct(
                                     title: S.of(context).newest_products,
                                     products: homeModel!.newestProduct,
