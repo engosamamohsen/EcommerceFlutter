@@ -11,12 +11,14 @@ class TextFormGlobal extends StatefulWidget {
         required this.obscureText,
         required this.controller,
         this.minLines = 1,
+        this.maxLines,
         this.validator,
         this.allowValidate = true,
         this.suffixIcon,
         this.prefixIcon});
 
   int minLines;
+  int? maxLines;
   final String hint;
   final TextInputType textInputType;
   final bool obscureText;
@@ -81,8 +83,8 @@ class _TextFormGlobalState extends State<TextFormGlobal> {
             return null;
           }
         },
-        minLines: widget.obscureText ? null : widget.minLines,
-        // maxLines: null,
+        minLines: widget.obscureText || widget.maxLines != null ? null : widget.minLines,
+        maxLines: widget.obscureText && widget.maxLines == null ? 1 : widget.maxLines ?? widget.minLines,
         // validator: validator ?? (value) => _defaultValidator(context, value),
         decoration: InputDecoration(
 

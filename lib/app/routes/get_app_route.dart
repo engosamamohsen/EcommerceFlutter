@@ -30,7 +30,7 @@ class GetAppRoute {
     GetPage(name: RouteUrlConst.LOGIN, page: () => LoginView()),
     GetPage(name: RouteUrlConst.REGISTER, page: () => RegisterView()),
     GetPage(name: RouteUrlConst.FORGET_PASSWORD, page: () => ForgetPasswordView()),
-    GetPage(name: RouteUrlConst.HOME, page: () => HomeContainer()),
+    GetPage(name: RouteUrlConst.HOME, page: () => HomeContainer()), // look to home container which carry bottom navigation
     GetPage(name: RouteUrlConst.PRODUCT_DETAILS, page: () => ProductDetailsView(productId: int.parse(Get.parameters['product_id'] ?? '0'))),
     GetPage(name: RouteUrlConst.ADDRESS_LIST, page: () => AddressListView()),
     GetPage(name: RouteUrlConst.ADD_ADDRESS, page: () => AddAddressView()),
@@ -44,7 +44,6 @@ class GetAppRoute {
     GetPage(name: RouteUrlConst.EDIT_PROFILE, page: () => EditProfileView()),
     GetPage(name: RouteUrlConst.ORDER_LIST, page: () => OrderListView()),
     GetPage(name: RouteUrlConst.PRODUCT_LIST, page: () => ProductListView(categoryId: 0, categoryName: "")),
-
   ];
 
   static void push(BuildContext context, String endPoint,
@@ -63,10 +62,6 @@ class GetAppRoute {
     }
   }
 
-  // static void push(BuildContext context, String endPoint,
-  //     {Map<String, String> parameter = const {}}){
-  //   Get.toNamed(endPoint,parameters: parameter);
-  // }
 
   static void pop(BuildContext context) {
     print("object back");

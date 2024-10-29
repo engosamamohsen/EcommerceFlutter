@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/app/routes/const_routes_url.dart';
-import 'package:Emend/app/routes/navigate_app_route.dart';
+// import 'package:Emend/app/routes/navigate_app_route.dart';
 import 'package:Emend/db_helper/app_storage.dart';
 import 'package:Emend/views/auth/login.view.dart';
 import 'package:Emend/views/home/home_container.dart';

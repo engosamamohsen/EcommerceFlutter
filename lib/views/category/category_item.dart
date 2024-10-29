@@ -6,7 +6,8 @@ import 'package:Emend/views/products/product_list_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../app/routes/const_routes_url.dart';
-import '../../app/routes/navigate_app_route.dart';
+import '../../app/routes/get_app_route.dart';
+// import '../../app/routes/navigate_app_route.dart';
 import '../../widget/image/image_circle.dart';
 
 class CategoryItem extends StatelessWidget {
@@ -25,6 +26,8 @@ class CategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        GetAppRoute.push(context, RouteUrlConst.PRODUCT_LIST,parameter: {'category_id' : categoryId.toString()});
+
         // NavigateApp.navigate(context, ProductListView(categoryId: categoryId));
         // GetAppRoute.push(context, "${RouteUrlConst.PRODUCT_LIST}?id=$categoryId&name=$name");
         // GetAppRoute.push(

@@ -27,12 +27,12 @@ class CartCubit extends Cubit<CartStates> {
         if (response.statusCode == 200 &&
             response.data is Map<String, dynamic>) {
           print("start post call cubit not null dynamic");
-          // final Map<String, dynamic> json =
-          //     response.data as Map<String, dynamic>;
-          // CartListResponse cartList = CartListResponse.fromJson(json);
-          // print("start post call cubit not null dynamic working");
-          //
-          // emit(CartSuccessState(data: cartList));
+          final Map<String, dynamic> json =
+              response.data as Map<String, dynamic>;
+          CartListResponse cartList = CartListResponse.fromJson(json);
+          print("start post call cubit not null dynamic working");
+
+          emit(CartSuccessState(data: cartList));
         } else
           emit(CartFailedState(message: "Failed Please Try Again"));
       }

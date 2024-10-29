@@ -110,8 +110,8 @@ class _ContactUsView extends State<ContactUsView> {
                             ),
                             TextFormGlobal(
                                 hint: S.of(context).message,
-                                minLines: 6,
-                                textInputType: TextInputType.number,
+                                maxLines: 6,
+                                textInputType: TextInputType.text,
                                 obscureText: false,
                                 controller: message),
                             SizedBox(

@@ -96,12 +96,10 @@ class ApiService {
     } on DioException catch (e) {
       // print("start post response DioError catch ${e}");
       handleStatusCode(e.response?.statusCode ?? 0, e.toString());
-    } catch (e) {
-      // Handle DioError here or rethrow
-      // rethrow;
 
-      // print("start post response catch ${e}");
+    } catch (e) {
       handleStatusCode(0, e.toString());
+
     }
     return null;
   }

@@ -68,7 +68,7 @@ class _HomeViewState extends State<HomeView> {
                 setState(() {
                   if (homeModel != null) {
                     homeModel?.categories.map((categorie) {
-                      categorie.products.map((product){
+                      categorie.products?.map((product){
                         if (product.id == productIdFav) {
                           print("state welcome");
                           product.isLike = !product.isLike;

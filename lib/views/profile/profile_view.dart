@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
 
 import '../../app/routes/const_routes_url.dart';
 import '../../app/routes/get_app_route.dart';
-import '../../app/routes/navigate_app_route.dart';
+// import '../../app/routes/navigate_app_route.dart';
 import '../../widget/image/image_circle.dart';
 
 class ProfileView extends StatefulWidget {

@@ -66,7 +66,7 @@ class _CartViewState extends State<CartView> {
       listener: (context, state) {
         if (state is CartSuccessState<CartListResponse>) {
           setState(() {
-            if (state.data?.data?.data != null) {
+            if (state.data != null && state.data?.data != null && state.data?.data?.data != null  && state.data?.data?.data != null) {
               carts.clear();
               totalAfterDiscount = 0;
               totalBeforeDiscount = 0;

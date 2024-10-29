@@ -13,12 +13,17 @@ class CategoryModel {
   late final List<ProductModel>? products;
 
   CategoryModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    icon = json['icon'];
-    products = List.from(json['products'])
-        .map((e) => ProductModel.fromJson(e))
-        .toList();
+    try{
+      id = json['id'];
+      name = json['name'];
+      icon = json['icon'];
+      if(json.containsKey("products"))
+        products = List.from(json['products'])
+            .map((e) => ProductModel.fromJson(e))
+            .toList();
+    }catch(e){
+      print(e.toString());
+    }
   }
 
   Map<String, dynamic> toJson() {

@@ -42,7 +42,7 @@ class HomeCategoryProductsList extends StatelessWidget {
             itemBuilder: (context, indexCategory) {
               return HomeCategoryProduct(
                   title: categories[indexCategory].name,
-                  products: categories[indexCategory].products,
+                  products: categories[indexCategory].products ?? [],
                   productStates: productStates,
                   productIdFav: productIdFav,
                   submitFavourite: submitFavourite);

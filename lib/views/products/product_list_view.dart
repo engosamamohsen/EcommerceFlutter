@@ -11,6 +11,7 @@ import 'package:Emend/generated/l10n.dart';
 import 'package:Emend/models/product/add_wishlist_response.dart';
 import 'package:Emend/models/product/product_model.dart';
 import 'package:Emend/models/product/product_list_response.dart';
+import 'package:Emend/utils/device/device_utils.dart';
 import 'package:Emend/views/products/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -88,17 +89,15 @@ class _ProductListViewState extends State<ProductListView> {
                               )
                             : Padding(
                                 padding: EdgeInsets.all(8.0),
-                                child: GridView.builder(
-                                    scrollDirection: Axis.vertical,
-                                    gridDelegate:
-                                        const SliverGridDelegateWithFixedCrossAxisCount(
-                                            crossAxisCount: 2),
-                                    itemCount: wishlist!.length,
-                                    itemBuilder: (context, item) {
+                                child: GridView.count(
+                                    crossAxisCount: DeviceUtils.isMobileScreen(context) ? 2 : 4,
+                                    children: List.generate(wishlist!.length, (item){
                                       return ProductItemView(
                                         product: wishlist![item],
+                                        // width: 80,
+                                        // height: 80,
                                         showProgres: state
-                                                is ProductLoadingWishlistState &&
+                                        is ProductLoadingWishlistState &&
                                             positionFav == item,
                                         submitFavourite: (int productId) {
                                           positionFav = item;
@@ -106,7 +105,7 @@ class _ProductListViewState extends State<ProductListView> {
                                               .addToFavourite(productId);
                                         },
                                       );
-                                    }))
+                                    })))
                         : state is ProductFailedState
                             ? NetworkError()
                             : Center(
