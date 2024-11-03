@@ -17,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../widget/web/TMeta.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProductListView extends StatefulWidget {
   ProductListView({super.key, required this.categoryId, required this.categoryName});
@@ -85,7 +86,7 @@ class _ProductListViewState extends State<ProductListView> {
                     child: wishlist != null
                         ? wishlist!.isEmpty
                             ? EmptyView(
-                                textMsg: S.of(context).your_favorite_is_empty,
+                                textMsg: AppLocalizations.of(context)!.your_favorite_is_empty,
                               )
                             : Padding(
                                 padding: EdgeInsets.all(8.0),
@@ -112,7 +113,7 @@ class _ProductListViewState extends State<ProductListView> {
                                 child: TextGlobal(
                                   maxLines: 2,
                                   text:
-                                      "${S.of(context).loading_please_wait} $state",
+                                      "${AppLocalizations.of(context)!.loading_please_wait} $state",
                                 ),
                               )));
       },

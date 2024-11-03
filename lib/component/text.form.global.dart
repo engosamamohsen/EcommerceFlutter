@@ -2,6 +2,7 @@ import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/generated/l10n.dart';
 import 'package:Emend/utils/constants/t_size.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TextFormGlobal extends StatefulWidget {
   TextFormGlobal(
@@ -49,14 +50,14 @@ class _TextFormGlobalState extends State<TextFormGlobal> {
   String? _defaultValidator(BuildContext context, String? value) {
     if (value == null || value.isEmpty) {
       // ToastMessageHelper.showToastMessage(
-      //     '${widget.hint} ${S.of(context).is_required}');
-      return '${widget.hint} ${S.of(context).is_required}';
+      //     '${widget.hint} ${AppLocalizations.of(context)!.is_required}');
+      return '${widget.hint} ${AppLocalizations.of(context)!.is_required}';
     }
     if (widget.textInputType == TextInputType.emailAddress) {
       if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
         // ToastMessageHelper.showToastMessage(
-        //     S.of(context).please_enter_valid_email);
-        return S.of(context).please_enter_valid_email;
+        //     AppLocalizations.of(context)!.please_enter_valid_email);
+        return AppLocalizations.of(context)!.please_enter_valid_email;
       }
     }
     return "";
@@ -78,7 +79,7 @@ class _TextFormGlobalState extends State<TextFormGlobal> {
         keyboardType: widget.textInputType,
         validator: (String? value) {
           if (widget.allowValidate && widget.errorMsg == null && widget.controller.text.isEmpty) {
-            return "${widget.hint} ${S.of(context).is_required}";
+            return "${widget.hint} ${AppLocalizations.of(context)!.is_required}";
           } else {
             return null;
           }

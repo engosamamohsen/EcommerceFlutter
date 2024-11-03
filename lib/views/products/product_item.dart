@@ -12,6 +12,8 @@ import 'package:flutter/material.dart';
 
 import '../../app/routes/get_app_route.dart';
 import '../../widget/web/TMeta.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class ProductItemView extends StatelessWidget {
   ProductItemView(
       {super.key,
@@ -116,7 +118,7 @@ class ProductItemView extends StatelessWidget {
                 ),
                 SizedBox(height: 5),
                 TextGlobal(
-                  text: "${product.price} ${S.of(context).currency}",
+                  text: "${product.price} ${AppLocalizations.of(context)!.currency}",
                   maxLines: 2,
                   fontSize: 14,
                   fontWeight: FontWeight.bold,

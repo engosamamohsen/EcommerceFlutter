@@ -16,6 +16,7 @@ import 'package:Emend/views/address/list/address_item.dart';
 import 'package:Emend/views/cart/cart_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OrderDetailsView extends StatefulWidget {
   OrderDetailsView({super.key, required this.orderId});
@@ -70,7 +71,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
             return Scaffold(
               backgroundColor: TColor.backGroundColor,
               appBar: GlobalAppBar(
-                title: S.of(context).order_details,
+                title: AppLocalizations.of(context)!.order_details,
                 showBackBtn: true,
               ),
               body: widget.orderDetailsResponse != null
@@ -83,7 +84,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                             height: 12,
                           ),
                           TextGlobal(
-                            text: S.of(context).order_info,
+                            text: AppLocalizations.of(context)!.order_info,
                             fontWeight: FontWeight.bold,
                           ),
                           const SizedBox(
@@ -96,7 +97,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                               widget.orderDetailsResponse!.data!.date),
                           const SizedBox(height: 40),
                           TextGlobal(
-                            text: S.of(context).items_info,
+                            text: AppLocalizations.of(context)!.items_info,
                             fontWeight: FontWeight.bold,
                           ),
                           const SizedBox(
@@ -124,7 +125,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                           // Text("asdas"),
                           // const SizedBox(height: 12),
                           TextGlobal(
-                            text: S.of(context).address_info,
+                            text: AppLocalizations.of(context)!.address_info,
                             fontWeight: FontWeight.bold,
                           ),
                           const SizedBox(height: 8),
@@ -135,7 +136,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                                     .orderDetailsResponse!.data!.address!),
                           // const SizedBox(height: 12),
                           // TextGlobal(
-                          //   text: S.of(context).payment_info,
+                          //   text: AppLocalizations.of(context)!.payment_info,
                           //   fontWeight: FontWeight.bold,
                           // ),
                           // SizedBox(height: 12),
@@ -155,7 +156,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   TextGlobal(
-                                    text: S.of(context).payment_method,
+                                    text: AppLocalizations.of(context)!.payment_method,
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
@@ -193,7 +194,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   TextGlobal(
-                                    text: S.of(context).total,
+                                    text: AppLocalizations.of(context)!.total,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 22,
                                   ),
@@ -241,7 +242,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
               children: [
                 TextGlobal(
                   fontSize: 14,
-                  text: "${S.of(context).order_number} : ",
+                  text: "${AppLocalizations.of(context)!.order_number} : ",
                   fontWeight: FontWeight.bold,
                 ),
                 const SizedBox(
@@ -269,7 +270,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
               children: [
                 TextGlobal(
                   fontSize: 14,
-                  text: "${S.of(context).total} : ",
+                  text: "${AppLocalizations.of(context)!.total} : ",
                 ),
                 const SizedBox(
                   width: 10,

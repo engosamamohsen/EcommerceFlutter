@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../widget/web/TMeta.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RegisterView extends StatelessWidget {
   RegisterView({super.key});
@@ -44,7 +45,7 @@ class RegisterView extends StatelessWidget {
         },
         builder: (context, state) {
           return Scaffold(
-            appBar: GlobalAppBar(title: S.of(context).register),
+            appBar: GlobalAppBar(title: AppLocalizations.of(context)!.register),
             backgroundColor: Colors.white,
             body: SafeArea(
                 child: Container(
@@ -68,7 +69,7 @@ class RegisterView extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 30),
-                    Text(S.of(context).please_make_new_account,
+                    Text(AppLocalizations.of(context)!.please_make_new_account,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                             fontWeight: FontWeight.w400,
@@ -76,31 +77,31 @@ class RegisterView extends StatelessWidget {
                             fontSize: 18)),
                     const SizedBox(height: 10),
                     TextFormGlobal(
-                        hint: S.of(context).username,
+                        hint: AppLocalizations.of(context)!.username,
                         textInputType: TextInputType.name,
                         obscureText: false,
                         controller: nameController),
                     const SizedBox(height: 10),
                     TextFormGlobal(
-                        hint: S.of(context).email,
+                        hint: AppLocalizations.of(context)!.email,
                         textInputType: TextInputType.emailAddress,
                         obscureText: false,
                         controller: emailController),
                     const SizedBox(height: 10),
                     TextFormGlobal(
-                        hint: S.of(context).phone,
+                        hint: AppLocalizations.of(context)!.phone,
                         textInputType: TextInputType.phone,
                         obscureText: false,
                         controller: phoneController),
                     const SizedBox(height: 10),
                     TextFormGlobal(
-                        hint: S.of(context).password,
+                        hint: AppLocalizations.of(context)!.password,
                         textInputType: TextInputType.visiblePassword,
                         obscureText: true,
                         controller: passwordController),
                     const SizedBox(height: 10),
                     TextFormGlobal(
-                        hint: S.of(context).confirm_password,
+                        hint: AppLocalizations.of(context)!.confirm_password,
                         textInputType: TextInputType.visiblePassword,
                         obscureText: true,
                         controller: confirmPasswordController),
@@ -109,7 +110,7 @@ class RegisterView extends StatelessWidget {
                       height: 30,
                     ),
                     ButtonGlobal(
-                      text: S.of(context).register,
+                      text: AppLocalizations.of(context)!.register,
                       showProgress: state is AuthLoadingState ? true : false,
                       onTap: () {
                         if (formKey.currentState?.validate() ?? false) {

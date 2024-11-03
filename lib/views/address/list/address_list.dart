@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../widget/web/TMeta.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddressListView extends StatefulWidget {
   AddressListView({super.key, this.addressList});
@@ -70,7 +71,7 @@ class _AddressListViewState extends State<AddressListView> {
         return Scaffold(
             backgroundColor: TColor.backGroundColor,
             appBar: GlobalAppBar(
-              title: S.of(context).my_address,
+              title: AppLocalizations.of(context)!.my_address,
               suffixIcon: Icons.add_circle_outline,
               onSuffixIconPressed: () {
                 Navigator.push(context,
@@ -103,12 +104,12 @@ class _AddressListViewState extends State<AddressListView> {
                                       });
                                       DialogUtils.showDialogSimple(
                                           context,
-                                          S.of(context).delete,
+                                          AppLocalizations.of(context)!.delete,
                                           S
                                               .of(context)
                                               .do_you_want_delete_this_item,
-                                          S.of(context).yes,
-                                          S.of(context).no, () {
+                                          AppLocalizations.of(context)!.yes,
+                                          AppLocalizations.of(context)!.no, () {
                                         BlocProvider.of<AddressCubit>(context)
                                             .delete(
                                                 widget.addressList![item].id);
@@ -125,7 +126,7 @@ class _AddressListViewState extends State<AddressListView> {
                                 child: TextGlobal(
                                   maxLines: 2,
                                   text:
-                                      "${S.of(context).loading_please_wait} $state",
+                                      "${AppLocalizations.of(context)!.loading_please_wait} $state",
                                 ),
                               )));
       },

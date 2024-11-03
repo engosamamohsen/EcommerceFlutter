@@ -15,6 +15,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../widget/image/image_circle_avatar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditProfileView extends StatefulWidget {
   const EditProfileView({super.key});
@@ -81,7 +82,7 @@ class _EditProfileViewState extends State<EditProfileView> {
         },
         builder: (context, state) {
           return Scaffold(
-            appBar: GlobalAppBar(title: S.of(context).edit_profile),
+            appBar: GlobalAppBar(title: AppLocalizations.of(context)!.edit_profile),
             backgroundColor: Colors.white,
             body: Form(
               key: formKey,
@@ -125,19 +126,19 @@ class _EditProfileViewState extends State<EditProfileView> {
                       ),
                       const SizedBox(height: 10),
                       TextFormGlobal(
-                          hint: S.of(context).username,
+                          hint: AppLocalizations.of(context)!.username,
                           textInputType: TextInputType.name,
                           obscureText: false,
                           controller: nameController),
                       const SizedBox(height: 10),
                       TextFormGlobal(
-                          hint: S.of(context).email,
+                          hint: AppLocalizations.of(context)!.email,
                           textInputType: TextInputType.emailAddress,
                           obscureText: false,
                           controller: emailController),
                       const SizedBox(height: 10),
                       TextFormGlobal(
-                          hint: S.of(context).phone,
+                          hint: AppLocalizations.of(context)!.phone,
                           textInputType: TextInputType.phone,
                           obscureText: false,
                           controller: phoneController),
@@ -146,7 +147,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                         height: 30,
                       ),
                       ButtonGlobal(
-                        text: S.of(context).update_profile,
+                        text: AppLocalizations.of(context)!.update_profile,
                         showProgress: state is AuthLoadingState ? true : false,
                         onTap: () {
                           if (formKey.currentState?.validate() ?? false) {

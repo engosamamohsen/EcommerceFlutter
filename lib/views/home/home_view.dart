@@ -6,6 +6,8 @@ import 'package:Emend/component/slider/slider_view.dart';
 import 'package:Emend/component/text.form.global.dart';
 import 'package:Emend/component/text/text_global.dart';
 import 'package:Emend/utils/constants/color.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:Emend/cubit/home/home_cubit.dart';
 import 'package:Emend/cubit/home/home_state.dart';
 import 'package:Emend/cubit/product/product_cubit.dart';
@@ -125,7 +127,7 @@ class _HomeViewState extends State<HomeView> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     TextGlobal(
-                                      text: S.of(context).categories,
+                                      text: AppLocalizations.of(context)!.categories,
                                       color: Colors.black,
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
@@ -144,7 +146,7 @@ class _HomeViewState extends State<HomeView> {
                                           },
                                           child: TextGlobal(
                                             fontWeight: FontWeight.bold,
-                                            text: S.of(context).see_all,
+                                            text: AppLocalizations.of(context)!.see_all,
                                             fontSize: 14,
                                             color: TColor.primary,
                                           )),
@@ -163,7 +165,7 @@ class _HomeViewState extends State<HomeView> {
                                           .addToFavourite(productId);
                                     }),
                                 HomeCategoryProduct(
-                                  title: S.of(context).flash_sale,
+                                  title: AppLocalizations.of(context)!.flash_sale,
                                   products: homeModel!.flashSale,
                                   productStates: productStates,
                                   productIdFav: productIdFav,
@@ -178,7 +180,7 @@ class _HomeViewState extends State<HomeView> {
 
                                 // SizedBox(height: 10),
                                 HomeCategoryProduct(
-                                    title: S.of(context).newest_products,
+                                    title: AppLocalizations.of(context)!.newest_products,
                                     products: homeModel!.newestProduct,
                                     productStates: productStates,
                                     productIdFav: productIdFav,
@@ -189,7 +191,7 @@ class _HomeViewState extends State<HomeView> {
                                     }),
                                 const SizedBox(height: 10),
                                 HomeCategoryProduct(
-                                    title: S.of(context).most_sale,
+                                    title: AppLocalizations.of(context)!.most_sale,
                                     products: homeModel!.mostSale,
                                     productStates: productStates,
                                     productIdFav: productIdFav,

@@ -18,6 +18,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../widget/web/TMeta.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddAddressView extends StatefulWidget {
   const AddAddressView({super.key});
@@ -95,7 +96,7 @@ class _AddAddressView extends State<AddAddressView> {
         return Scaffold(
             backgroundColor: TColor.backGroundColor,
             appBar: GlobalAppBar(
-              title: S.of(context).add_address,
+              title: AppLocalizations.of(context)!.add_address,
             ),
             body: state is AddressLoadingState
                 ? const LoadingViewFull()
@@ -112,7 +113,7 @@ class _AddAddressView extends State<AddAddressView> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 DropdownMenuGlobal(
-                                  hint: S.of(context).governate,
+                                  hint: AppLocalizations.of(context)!.governate,
                                   items: governates,
                                   selected: (index) {
                                     setState(() {
@@ -129,7 +130,7 @@ class _AddAddressView extends State<AddAddressView> {
                                   height: 10,
                                 ),
                                 DropdownMenuGlobal(
-                                  hint: S.of(context).city,
+                                  hint: AppLocalizations.of(context)!.city,
                                   items: cities,
                                   selected: (index) {
                                     setState(() {
@@ -144,7 +145,7 @@ class _AddAddressView extends State<AddAddressView> {
                                   height: 10,
                                 ),
                                 TextFormGlobal(
-                                    hint: S.of(context).area,
+                                    hint: AppLocalizations.of(context)!.area,
                                     textInputType: TextInputType.text,
                                     obscureText: false,
                                     controller: area),
@@ -152,7 +153,7 @@ class _AddAddressView extends State<AddAddressView> {
                                   height: 10,
                                 ),
                                 TextFormGlobal(
-                                    hint: S.of(context).street,
+                                    hint: AppLocalizations.of(context)!.street,
                                     textInputType: TextInputType.name,
                                     obscureText: false,
                                     controller: street),
@@ -160,7 +161,7 @@ class _AddAddressView extends State<AddAddressView> {
                                   height: 10,
                                 ),
                                 TextFormGlobal(
-                                    hint: S.of(context).building,
+                                    hint: AppLocalizations.of(context)!.building,
                                     textInputType: TextInputType.name,
                                     obscureText: false,
                                     controller: building),
@@ -168,7 +169,7 @@ class _AddAddressView extends State<AddAddressView> {
                                   height: 10,
                                 ),
                                 TextFormGlobal(
-                                    hint: S.of(context).floor,
+                                    hint: AppLocalizations.of(context)!.floor,
                                     textInputType: TextInputType.number,
                                     obscureText: false,
                                     controller: floor),
@@ -176,7 +177,7 @@ class _AddAddressView extends State<AddAddressView> {
                                   height: 10,
                                 ),
                                 TextFormGlobal(
-                                    hint: S.of(context).flat,
+                                    hint: AppLocalizations.of(context)!.flat,
                                     textInputType: TextInputType.number,
                                     obscureText: false,
                                     controller: flat),
@@ -184,7 +185,7 @@ class _AddAddressView extends State<AddAddressView> {
                                   height: 10,
                                 ),
                                 TextFormGlobal(
-                                    hint: S.of(context).special_sign,
+                                    hint: AppLocalizations.of(context)!.special_sign,
                                     textInputType: TextInputType.name,
                                     obscureText: false,
                                     controller: special_sign),
@@ -196,13 +197,13 @@ class _AddAddressView extends State<AddAddressView> {
                                       state is AddressLoadingButtonState
                                           ? true
                                           : false,
-                                  text: S.of(context).submit,
+                                  text: AppLocalizations.of(context)!.submit,
                                   onTap: () {
                                     if (formKey.currentState?.validate() ??
                                         false) {
                                       if (selectedCityId == 0) {
                                         ToastMessageHelper.showErrorMessage(
-                                            "${S.of(context).please_enter} ${S.of(context).city}");
+                                            "${AppLocalizations.of(context)!.please_enter} ${AppLocalizations.of(context)!.city}");
                                       }
                                       // Form is valid, proceed with sign in
                                       //call api
@@ -230,7 +231,7 @@ class _AddAddressView extends State<AddAddressView> {
                         ? NetworkError()
                         : Center(
                             child: TextGlobal(
-                                text: S.of(context).loading_please_wait),
+                                text: AppLocalizations.of(context)!.loading_please_wait),
                           ));
       },
     );

@@ -17,6 +17,7 @@ import 'package:Emend/views/home/home_view.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../app/routes/const_routes_url.dart';
 import '../../app/routes/get_app_route.dart';
@@ -69,7 +70,7 @@ class LoginView extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 30),
-                      Text(S.of(context).login_to_your_account,
+                      Text(AppLocalizations.of(context)!.login_to_your_account,
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                               fontWeight: FontWeight.w400,
@@ -77,13 +78,13 @@ class LoginView extends StatelessWidget {
                               fontSize: 18)),
                       const SizedBox(height: 10),
                       TextFormGlobal(
-                          hint: S.of(context).email,
+                          hint: AppLocalizations.of(context)!.email,
                           textInputType: TextInputType.emailAddress,
                           obscureText: false,
                           controller: emailController),
                       const SizedBox(height: 10),
                       TextFormGlobal(
-                          hint: S.of(context).password,
+                          hint: AppLocalizations.of(context)!.password,
                           textInputType: TextInputType.visiblePassword,
                           obscureText: true,
                           controller: passwordController),
@@ -92,7 +93,7 @@ class LoginView extends StatelessWidget {
                       ),
                       ButtonGlobal(
                         showProgress: state is AuthLoadingState ? true : false,
-                        text: S.of(context).sign_in,
+                        text: AppLocalizations.of(context)!.sign_in,
                         onTap: () {
                           if (formKey.currentState?.validate() ?? false) {
                             // Form is valid, proceed with sign in
@@ -106,9 +107,9 @@ class LoginView extends StatelessWidget {
                       const SizedBox(height: 30),
                       Center(
                           child: Text.rich(TextSpan(children: [
-                        TextSpan(text: S.of(context).dont_have_account),
+                        TextSpan(text: AppLocalizations.of(context)!.dont_have_account),
                         TextSpan(
-                            text: S.of(context).sign_up,
+                            text: AppLocalizations.of(context)!.sign_up,
                             style: TextStyle(
                                 color: TColor.primary,
                                 fontWeight: FontWeight.bold),
@@ -129,7 +130,7 @@ class LoginView extends StatelessWidget {
                               return ForgetPasswordView();
                             }));
                           },
-                          child: Text(S.of(context).forget_password,
+                          child: Text(AppLocalizations.of(context)!.forget_password,
                               textAlign: TextAlign.end,
                               style: TextStyle(
                                   color: TColor.secondary,

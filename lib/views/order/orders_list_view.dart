@@ -14,6 +14,7 @@ import 'package:Emend/views/order/order_details_view.dart';
 import 'package:Emend/views/order/order_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OrderListView extends StatefulWidget {
   OrderListView({super.key, this.orders});
@@ -56,7 +57,7 @@ class _OrderListViewState extends State<OrderListView> {
         return Scaffold(
             backgroundColor: TColor.backGroundColor,
             appBar: GlobalAppBar(
-              title: S.of(context).my_orders,
+              title: AppLocalizations.of(context)!.my_orders,
             ),
             body: state is OrderLoadingState
                 ? const LoadingViewFull()
@@ -86,7 +87,7 @@ class _OrderListViewState extends State<OrderListView> {
                                 child: TextGlobal(
                                   maxLines: 2,
                                   text:
-                                      "${S.of(context).loading_please_wait} $state",
+                                      "${AppLocalizations.of(context)!.loading_please_wait} $state",
                                 ),
                               )));
       },

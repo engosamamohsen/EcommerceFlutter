@@ -6,6 +6,7 @@ import 'package:Emend/models/address/address_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../widget/web/TMeta.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddressItem extends StatelessWidget {
   AddressItem(
@@ -70,7 +71,7 @@ class AddressItem extends StatelessWidget {
                       fontSize: 14,
                       color: Colors.black,
                       text:
-                          "${S.of(context).building} (${address.building.toString()}) - ${S.of(context).floor} (${address.floor.toString()}) - ${S.of(context).flat} (${address.flat.toString()})"),
+                          "${AppLocalizations.of(context)!.building} (${address.building.toString()}) - ${AppLocalizations.of(context)!.floor} (${address.floor.toString()}) - ${AppLocalizations.of(context)!.flat} (${address.flat.toString()})"),
                   Spacer(),
                   if (!isFromCheckout) // Pushes the delete icon to the right
                     InkWell(

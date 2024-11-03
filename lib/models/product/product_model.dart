@@ -4,6 +4,8 @@ class ProductModel {
     required this.name,
     this.description,
     required this.price,
+    required this.priceAfter,
+    required this.discount,
     required this.image,
     required this.likes,
     required this.isLike,
@@ -12,7 +14,9 @@ class ProductModel {
   late final int id;
   late final String name;
   late final String? description;
+  late final String discount;
   late final double price;
+  late final double priceAfter;
   late final String image;
   late final int likes;
   late bool isLike;
@@ -23,6 +27,8 @@ class ProductModel {
     name = json['name'];
     description = null;
     price = (json['price'] as num).toDouble();
+    priceAfter = (json['price_after'] as num).toDouble();
+    discount = json['discount'];
     image = json['image'];
     likes = json['likes'];
     isLike = json['isLike'];
@@ -35,6 +41,8 @@ class ProductModel {
     _data['name'] = name;
     _data['description'] = description;
     _data['price'] = price;
+    _data['price_after'] = priceAfter;
+    _data['discount'] = discount;
     _data['image'] = image;
     _data['likes'] = likes;
     _data['isLike'] = isLike;

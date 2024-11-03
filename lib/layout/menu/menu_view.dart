@@ -6,6 +6,7 @@ import '../../app/routes/const_routes_url.dart';
 import '../../generated/l10n.dart';
 import '../../utils/constants/color.dart';
 import 'menu_item_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TMenu extends StatefulWidget {
   TMenu({ Key? key}) : super(key: key);
@@ -45,7 +46,7 @@ class _TMenuState extends State<TMenu> {
         child: Column(
           children: [
             MenuItem(
-              title: S.of(context).home,
+              title: AppLocalizations.of(context)!.home,
               checked: _positionSelect == RouteUrlConst.HOME,
               onTap: () {
                 setState(() {
@@ -55,7 +56,7 @@ class _TMenuState extends State<TMenu> {
             ),
             SizedBox(height: TSize.spaceBtwItems),
             MenuItem(
-              title: S.of(context).categories,
+              title: AppLocalizations.of(context)!.categories,
               checked: _positionSelect == RouteUrlConst.CATEGORIES,
               onTap: () {
                 setState(() {
@@ -65,7 +66,7 @@ class _TMenuState extends State<TMenu> {
             ),
             SizedBox(height: TSize.spaceBtwItems),
             MenuItem(
-              title: S.of(context).cart,
+              title: AppLocalizations.of(context)!.cart,
               checked: _positionSelect == RouteUrlConst.CART,
               onTap: () {
                 setState(() {
@@ -75,7 +76,7 @@ class _TMenuState extends State<TMenu> {
             ),
             SizedBox(height: TSize.spaceBtwItems),
             MenuItem(
-              title: S.of(context).profile,
+              title: AppLocalizations.of(context)!.profile,
               checked: _positionSelect == RouteUrlConst.PROFILE,
               onTap: () {
                 setState(() {
@@ -85,7 +86,7 @@ class _TMenuState extends State<TMenu> {
             ),
             SizedBox(height: TSize.spaceBtwItems),
             MenuItem(
-              title: S.of(context).orders,
+              title: AppLocalizations.of(context)!.orders,
               checked: _positionSelect == RouteUrlConst.ORDER_LIST,
               onTap: () {
                 setState(() {

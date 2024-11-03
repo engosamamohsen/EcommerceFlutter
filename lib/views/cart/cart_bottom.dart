@@ -4,6 +4,7 @@ import 'package:Emend/component/text/text_global.dart';
 import 'package:Emend/utils/constants/color.dart';
 import 'package:Emend/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CartBottom extends StatefulWidget {
   CartBottom(
@@ -42,7 +43,7 @@ class _CartBottomState extends State<CartBottom> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextGlobal(
-              text: "(${widget.prodcutsCount}) ${S.of(context).products}",
+              text: "(${widget.prodcutsCount}) ${AppLocalizations.of(context)!.products}",
               fontSize: 14,
               fontWeight: FontWeight.normal,
               color: Colors.black,

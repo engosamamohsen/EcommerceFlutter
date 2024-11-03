@@ -101,5 +101,6 @@
     "delivery" : "Delivery",
     "qty": "Qty",
     "order_info" :"Order Info",
-    "items_info" : "Items Info"
+    "items_info" : "Items Info",
+    "change_language" : "Change Language"
 }

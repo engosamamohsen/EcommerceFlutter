@@ -20,6 +20,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
 
 import '../../widget/web/TMeta.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProductDetailsView extends StatefulWidget {
   ProductDetailsView({super.key, required this.productId});
@@ -186,7 +187,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                                   height: 30,
                                 ),
                                 TextGlobal(
-                                    text: S.of(context).description,
+                                    text: AppLocalizations.of(context)!.description,
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black),
@@ -204,7 +205,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                                   height: 30,
                                 ),
                                 TextGlobal(
-                                  text: S.of(context).tech_info,
+                                  text: AppLocalizations.of(context)!.tech_info,
                                   color: Colors.black,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -230,7 +231,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                           ? NetworkError()
                           : Center(
                               child: TextGlobal(
-                                  text: S.of(context).loading_please_wait),
+                                  text: AppLocalizations.of(context)!.loading_please_wait),
                             )),
         );
       },
@@ -260,7 +261,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                   ButtonGlobal(
                     showProgress:
                         state is ProductLoadingAddToCartState ? true : false,
-                    text: S.of(context).add_to_cart,
+                    text: AppLocalizations.of(context)!.add_to_cart,
                     radius: 20,
                     padding: 30,
                     onTap: () => {
@@ -281,7 +282,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   TextGlobal(
-                    text: S.of(context).total_price,
+                    text: AppLocalizations.of(context)!.total_price,
                     color: Colors.black,
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -290,7 +291,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                     height: 5,
                   ),
                   TextGlobal(
-                    text: "$price ${S.of(context).currency}",
+                    text: "$price ${AppLocalizations.of(context)!.currency}",
                     color: Colors.black,
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

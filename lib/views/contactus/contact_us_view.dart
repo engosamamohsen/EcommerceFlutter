@@ -13,6 +13,7 @@ import 'package:Emend/models/response/base_response.dart';
 import 'package:Emend/utils/toast_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ContactUsView extends StatefulWidget {
   const ContactUsView({super.key});
@@ -49,7 +50,7 @@ class _ContactUsView extends State<ContactUsView> {
         return Scaffold(
             backgroundColor: TColor.backGroundColor,
             appBar: GlobalAppBar(
-              title: S.of(context).contact_us,
+              title: AppLocalizations.of(context)!.contact_us,
             ),
             body: state is SettingsLoadingState
                 ? const LoadingViewFull()
@@ -66,7 +67,7 @@ class _ContactUsView extends State<ContactUsView> {
                               height: 10,
                             ),
                             TextGlobal(
-                              text: S.of(context).contact_us_msg,
+                              text: AppLocalizations.of(context)!.contact_us_msg,
                               fontSize: 16,
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -75,7 +76,7 @@ class _ContactUsView extends State<ContactUsView> {
                               height: 10,
                             ),
                             TextGlobal(
-                              text: S.of(context).we_will_help_you,
+                              text: AppLocalizations.of(context)!.we_will_help_you,
                               fontSize: 14,
                               textAlign: TextAlign.start,
                               color: Colors.black,
@@ -85,7 +86,7 @@ class _ContactUsView extends State<ContactUsView> {
                               height: 10,
                             ),
                             TextFormGlobal(
-                                hint: S.of(context).name,
+                                hint: AppLocalizations.of(context)!.name,
                                 textInputType: TextInputType.text,
                                 obscureText: false,
                                 controller: name),
@@ -93,7 +94,7 @@ class _ContactUsView extends State<ContactUsView> {
                               height: 10,
                             ),
                             TextFormGlobal(
-                                hint: S.of(context).phone,
+                                hint: AppLocalizations.of(context)!.phone,
                                 textInputType: TextInputType.phone,
                                 obscureText: false,
                                 controller: phone),
@@ -101,7 +102,7 @@ class _ContactUsView extends State<ContactUsView> {
                               height: 10,
                             ),
                             TextFormGlobal(
-                                hint: S.of(context).email,
+                                hint: AppLocalizations.of(context)!.email,
                                 textInputType: TextInputType.emailAddress,
                                 obscureText: false,
                                 controller: email),
@@ -109,7 +110,7 @@ class _ContactUsView extends State<ContactUsView> {
                               height: 10,
                             ),
                             TextFormGlobal(
-                                hint: S.of(context).message,
+                                hint: AppLocalizations.of(context)!.message,
                                 maxLines: 6,
                                 textInputType: TextInputType.text,
                                 obscureText: false,
@@ -121,7 +122,7 @@ class _ContactUsView extends State<ContactUsView> {
                               showProgress: state is SettingsLoadingButtonState
                                   ? true
                                   : false,
-                              text: S.of(context).submit,
+                              text: AppLocalizations.of(context)!.submit,
                               onTap: () {
                                 if (formKey.currentState?.validate() ?? false) {
                                   BlocProvider.of<SettingsCubit>(context)

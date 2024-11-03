@@ -7,6 +7,7 @@ import 'package:Emend/views/home/home_view.dart';
 import 'package:Emend/views/profile/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BottomNavigationApp extends StatefulWidget {
   const BottomNavigationApp({super.key, required this.onTapPage});
@@ -61,19 +62,19 @@ class _BottomNavigationAppState extends State<BottomNavigationApp> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: S.of(context).home,
+            label: AppLocalizations.of(context)!.home,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.grid_view),
-            label: S.of(context).categories,
+            label: AppLocalizations.of(context)!.categories,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart_checkout_outlined),
-            label: S.of(context).cart,
+            label: AppLocalizations.of(context)!.cart,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
-            label: S.of(context).profile,
+            label: AppLocalizations.of(context)!.profile,
           ),
         ],
       ),

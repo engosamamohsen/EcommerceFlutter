@@ -16,6 +16,7 @@ import '../../app/routes/const_routes_url.dart';
 import '../../app/routes/get_app_route.dart';
 // import '../../app/routes/navigate_app_route.dart';
 import '../../widget/image/image_circle.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileView extends StatefulWidget {
   ProfileView({super.key});
@@ -86,7 +87,7 @@ class _ProfileViewState extends State<ProfileView> {
               text:
                   user != null && user!.data != null && user!.data!.name != null
                       ? user!.data!.name.toString()
-                      : S.of(context).guest,
+                      : AppLocalizations.of(context)!.guest,
               fontSize: 18,
               color: Colors.black,
             ),
@@ -94,7 +95,7 @@ class _ProfileViewState extends State<ProfileView> {
               height: 20,
             ),
             ItemSetting(
-              text: S.of(context).edit_profile,
+              text: AppLocalizations.of(context)!.edit_profile,
               icon: Icons.person,
               submit: () {
                 GetAppRoute.push(context, RouteUrlConst.EDIT_PROFILE);
@@ -106,7 +107,7 @@ class _ProfileViewState extends State<ProfileView> {
               height: 5,
             ),
             ItemSetting(
-              text: S.of(context).manage_address,
+              text: AppLocalizations.of(context)!.manage_address,
               icon: Icons.location_pin,
               submit: () {
                 // GetAppRoute.push(context, RouteUrlConst.ADDRESS_LIST);
@@ -118,7 +119,7 @@ class _ProfileViewState extends State<ProfileView> {
               height: 5,
             ),
             ItemSetting(
-              text: S.of(context).my_orders,
+              text: AppLocalizations.of(context)!.my_orders,
               icon: Icons.list_alt_outlined,
               submit: () {
                 GetAppRoute.push(context, RouteUrlConst.ORDER_LIST);
@@ -130,7 +131,7 @@ class _ProfileViewState extends State<ProfileView> {
               height: 5,
             ),
             ItemSetting(
-              text: S.of(context).wishlist,
+              text: AppLocalizations.of(context)!.wishlist,
               icon: Icons.favorite_outline,
               submit: () {
                 GetAppRoute.push(context, RouteUrlConst.WISHLIST);
@@ -143,7 +144,20 @@ class _ProfileViewState extends State<ProfileView> {
               height: 5,
             ),
             ItemSetting(
-              text: S.of(context).privacy_and_policy,
+              text: "change language",
+              icon: Icons.language_outlined,
+              submit: () {
+                // GetAppRoute.push(context, RouteUrlConst.WISHLIST);
+
+                // GetAppRoute.push(context, RouteUrlConst.WISHLIST);
+
+              },
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            ItemSetting(
+              text: AppLocalizations.of(context)!.privacy_and_policy,
               icon: Icons.privacy_tip_outlined,
               submit: () {
 
@@ -153,7 +167,7 @@ class _ProfileViewState extends State<ProfileView> {
               height: 5,
             ),
             ItemSetting(
-              text: S.of(context).contact_us,
+              text: AppLocalizations.of(context)!.contact_us,
               icon: Icons.contact_support_outlined,
               submit: () {
                 GetAppRoute.push(context, RouteUrlConst.CONTACT_US);
@@ -165,7 +179,7 @@ class _ProfileViewState extends State<ProfileView> {
               height: 5,
             ),
             ItemSetting(
-              text: S.of(context).logout,
+              text: AppLocalizations.of(context)!.logout,
               icon: Icons.logout,
               submit: () {
                 _logout();

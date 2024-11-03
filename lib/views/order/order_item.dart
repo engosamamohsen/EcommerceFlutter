@@ -6,6 +6,7 @@ import 'package:Emend/component/text/text_global.dart';
 import 'package:Emend/generated/l10n.dart';
 import 'package:Emend/models/order/order_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OrderItem extends StatelessWidget {
   OrderItem({super.key, required this.order, this.selected});
@@ -36,7 +37,7 @@ class OrderItem extends StatelessWidget {
               Row(
                 children: [
                   TextGlobal(
-                      fontSize: 14, text: "${S.of(context).order_number} : "),
+                      fontSize: 14, text: "${AppLocalizations.of(context)!.order_number} : "),
                   const SizedBox(
                     width: 10,
                   ),
@@ -62,7 +63,7 @@ class OrderItem extends StatelessWidget {
                 children: [
                   TextGlobal(
                     fontSize: 14,
-                    text: "${S.of(context).total} : ",
+                    text: "${AppLocalizations.of(context)!.total} : ",
                   ),
                   const SizedBox(
                     width: 10,

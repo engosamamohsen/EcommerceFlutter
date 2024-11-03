@@ -14,6 +14,7 @@ import 'package:Emend/models/product/product_list_response.dart';
 import 'package:Emend/views/products/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WishListView extends StatefulWidget {
   const WishListView({super.key});
@@ -68,7 +69,7 @@ class _WishListViewState extends State<WishListView> {
         return Scaffold(
             backgroundColor: TColor.backGroundColor,
             appBar: GlobalAppBar(
-              title: S.of(context).wishlist,
+              title: AppLocalizations.of(context)!.wishlist,
             ),
             body: state is ProductLoadingState
                 ? const LoadingViewFull()
@@ -77,7 +78,7 @@ class _WishListViewState extends State<WishListView> {
                     child: wishlist != null
                         ? wishlist!.isEmpty
                             ? EmptyView(
-                                textMsg: S.of(context).your_favorite_is_empty,
+                                textMsg: AppLocalizations.of(context)!.your_favorite_is_empty,
                               )
                             : Padding(
                                 padding: EdgeInsets.all(8.0),
@@ -106,7 +107,7 @@ class _WishListViewState extends State<WishListView> {
                                 child: TextGlobal(
                                   maxLines: 2,
                                   text:
-                                      "${S.of(context).loading_please_wait} $state",
+                                      "${AppLocalizations.of(context)!.loading_please_wait} $state",
                                 ),
                               )));
       },

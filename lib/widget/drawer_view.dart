@@ -13,6 +13,7 @@ import '../app/routes/get_app_route.dart';
 import '../db_helper/app_storage.dart';
 import '../generated/l10n.dart';
 import '../utils/constants/t_size.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppDrawer extends StatefulWidget {
   AppDrawer({required this.selectPage ,required this.widgetPageSelect, super.key});
@@ -71,7 +72,7 @@ class _DrawerViewState extends State<AppDrawer> {
             ),
             ListTile(
               leading: Icon(Icons.home),
-              title: Text(S.of(context).home),
+              title: Text(AppLocalizations.of(context)!.home),
               iconColor: (widget.selectPage is HomeView ?  TColor.primary : TColor.black),
               textColor: (widget.selectPage is HomeView ?  TColor.primary : TColor.black),
               onTap: () {
@@ -83,7 +84,7 @@ class _DrawerViewState extends State<AppDrawer> {
             ),
             // ListTile(
             //   leading: Icon(Icons.grid_view),
-            //   title: Text(S.of(context).categories),
+            //   title: Text(AppLocalizations.of(context)!.categories),
             //   iconColor: (widget.selectPage is CategoriesView ?  TColor.primary : TColor.black),
             //   textColor: (widget.selectPage is CategoriesView ?  TColor.primary : TColor.black),
             //   onTap: () {
@@ -99,7 +100,7 @@ class _DrawerViewState extends State<AppDrawer> {
             // ),
             ListTile(
               leading: Icon(Icons.list_alt_outlined),
-              title: Text(S.of(context).orders),
+              title: Text(AppLocalizations.of(context)!.orders),
               iconColor: (widget.selectPage is OrderListView ?  TColor.primary : TColor.black),
               textColor: (widget.selectPage is OrderListView ?  TColor.primary : TColor.black),
               onTap: () {
@@ -111,7 +112,7 @@ class _DrawerViewState extends State<AppDrawer> {
             ),
             ListTile(
               leading: Icon(Icons.person),
-              title: Text(S.of(context).edit_profile),
+              title: Text(AppLocalizations.of(context)!.edit_profile),
               iconColor: (widget.selectPage is EditProfileView ?  TColor.primary : TColor.black),
               textColor: (widget.selectPage is EditProfileView ?  TColor.primary : TColor.black),
               onTap: () {
@@ -125,7 +126,7 @@ class _DrawerViewState extends State<AppDrawer> {
               leading: Icon(Icons.favorite_outline),
               iconColor: (widget.selectPage is WishListView ?  TColor.primary : TColor.black),
               textColor: (widget.selectPage is WishListView ?  TColor.primary : TColor.black),
-              title: Text(S.of(context).wishlist),
+              title: Text(AppLocalizations.of(context)!.wishlist),
               onTap: () {
                 widget.selectPage = WishListView();
 
@@ -139,7 +140,7 @@ class _DrawerViewState extends State<AppDrawer> {
               leading: Icon(Icons.location_pin),
               iconColor: (widget.selectPage is AddressListView ?  TColor.primary : TColor.black),
               textColor: (widget.selectPage is AddressListView ?  TColor.primary : TColor.black),
-              title: Text(S.of(context).manage_address),
+              title: Text(AppLocalizations.of(context)!.manage_address),
               onTap: () {
                 widget.selectPage = AddressListView();
                 // Close the drawer and navigate to About
@@ -151,7 +152,7 @@ class _DrawerViewState extends State<AppDrawer> {
               leading: Icon(Icons.contact_support_outlined),
               iconColor: (widget.selectPage is ContactUsView ?  TColor.primary : TColor.black),
               textColor: (widget.selectPage is ContactUsView ?  TColor.primary : TColor.black),
-              title: Text(S.of(context).contact_us),
+              title: Text(AppLocalizations.of(context)!.contact_us),
               onTap: () {
                 widget.selectPage = ContactUsView();
                 // Close the drawer and navigate to About
@@ -163,7 +164,7 @@ class _DrawerViewState extends State<AppDrawer> {
               leading: Icon(Icons.privacy_tip_outlined),
               // iconColor: (widget.selectPage is ContactUsView ?  TColor.primary : TColor.black),
               // textColor: (widget.selectPage is ContactUsView ?  TColor.primary : TColor.black),
-              title: Text(S.of(context).privacy_and_policy),
+              title: Text(AppLocalizations.of(context)!.privacy_and_policy),
               onTap: () {
                 // Close the drawer and navigate to About
                 Navigator.pop(context);
@@ -171,7 +172,7 @@ class _DrawerViewState extends State<AppDrawer> {
             ),
             ListTile(
               leading: Icon(token.isEmpty ? Icons.login : Icons.logout),
-              title: Text(token.isEmpty ? S.of(context).login : S.of(context).logout),
+              title: Text(token.isEmpty ? AppLocalizations.of(context)!.login : AppLocalizations.of(context)!.logout),
               onTap: () {
                 // Handle logout functionality
                 Navigator.pop(context);

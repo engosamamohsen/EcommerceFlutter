@@ -24,6 +24,7 @@ import 'package:Emend/views/profile/item_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CheckoutSuccessView extends StatefulWidget {
   CheckoutSuccessView({super.key});
@@ -42,7 +43,7 @@ class _CheckoutSuccessViewState extends State<CheckoutSuccessView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GlobalAppBar(
-        title: S.of(context).complete,
+        title: AppLocalizations.of(context)!.complete,
         showBackBtn: true,
         onBackIconPressed: () {
           Navigator.pop(context);
@@ -65,7 +66,7 @@ class _CheckoutSuccessViewState extends State<CheckoutSuccessView> {
                 height: 20,
               ),
               TextGlobal(
-                text: S.of(context).success,
+                text: AppLocalizations.of(context)!.success,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
@@ -73,7 +74,7 @@ class _CheckoutSuccessViewState extends State<CheckoutSuccessView> {
                 height: 8,
               ),
               TextGlobal(
-                text: S.of(context).your_order_will_be_delivered_soon,
+                text: AppLocalizations.of(context)!.your_order_will_be_delivered_soon,
                 fontSize: 16,
                 color: Colors.black,
                 maxLines: 2,
@@ -84,7 +85,7 @@ class _CheckoutSuccessViewState extends State<CheckoutSuccessView> {
                 height: 8,
               ),
               TextGlobal(
-                text: S.of(context).thank_you_for_choosing_our_app,
+                text: AppLocalizations.of(context)!.thank_you_for_choosing_our_app,
                 fontSize: 16,
                 color: Colors.black,
                 maxLines: 2,
@@ -95,7 +96,7 @@ class _CheckoutSuccessViewState extends State<CheckoutSuccessView> {
                 height: 20,
               ),
               ButtonGlobal(
-                text: S.of(context).continue_shopping,
+                text: AppLocalizations.of(context)!.continue_shopping,
                 radius: 30,
                 onTap: () {
                   Navigator.pop(context);

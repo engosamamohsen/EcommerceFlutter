@@ -21,6 +21,7 @@ import 'package:Emend/views/checkout/checkout_success_view.dart';
 import 'package:Emend/views/profile/item_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CheckoutView extends StatefulWidget {
   CheckoutView(
@@ -80,7 +81,7 @@ class _CheckoutViewState extends State<CheckoutView> {
             return Scaffold(
               backgroundColor: TColor.backGroundColor,
               appBar: GlobalAppBar(
-                title: S.of(context).checkout,
+                title: AppLocalizations.of(context)!.checkout,
                 showBackBtn: true,
               ),
               body: addressList != null
@@ -111,7 +112,7 @@ class _CheckoutViewState extends State<CheckoutView> {
                         // SizedBox(height: 10),
                         // Text("asdas"),
                         ItemSetting(
-                          text: S.of(context).please_select_your_address,
+                          text: AppLocalizations.of(context)!.please_select_your_address,
                           icon: Icons.location_pin,
                           submit: () {
                             Navigator.push(context, MaterialPageRoute(
@@ -150,13 +151,13 @@ class _CheckoutViewState extends State<CheckoutView> {
                         CartBottom(
                           prodcutsCount: widget.carts.length,
                           price: widget.totalAfterDiscount,
-                          btnText: S.of(context).make_order,
+                          btnText: AppLocalizations.of(context)!.make_order,
                           showProgress:
                               state is OrderLoadingState ? true : false,
                           checkout: () {
                             if (address_id == -1) {
                               ToastMessageHelper.showErrorMessage(
-                                  "${S.of(context).please_enter} ${S.of(context).your_address}");
+                                  "${AppLocalizations.of(context)!.please_enter} ${AppLocalizations.of(context)!.your_address}");
                               return;
                             }
                             BlocProvider.of<OrderCubit>(context)

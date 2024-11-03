@@ -1,6 +1,7 @@
 import 'package:Emend/component/text/text_global.dart';
 import 'package:Emend/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NetworkError extends StatelessWidget {
   const NetworkError({super.key});
@@ -14,7 +15,7 @@ class NetworkError extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextGlobal(
-                  text: S.of(context).network_error,
+                  text: AppLocalizations.of(context)!.network_error,
                   maxLines: 2,
                   fontSize: 20,
                   color: Colors.red,

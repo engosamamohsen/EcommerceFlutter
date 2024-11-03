@@ -15,6 +15,7 @@ import 'package:Emend/models/category/category_model.dart';
 import 'package:Emend/views/category/category_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CategoriesView extends StatefulWidget {
   const CategoriesView({super.key});
@@ -60,7 +61,7 @@ class _DepartmentViewState extends State<CategoriesView> {
         if (state is CategoriesSuccessState) {
           if (categories.isEmpty)
             return EmptyView(
-              textMsg: S.of(context).your_categories_is_empty,
+              textMsg: AppLocalizations.of(context)!.your_categories_is_empty,
             );
           else {
             return SizedBox(
@@ -85,7 +86,7 @@ class _DepartmentViewState extends State<CategoriesView> {
               : state is CategoriesSuccessState
                   ? categories.isEmpty
                       ? EmptyView(
-                          textMsg: S.of(context).your_categories_is_empty,
+                          textMsg: AppLocalizations.of(context)!.your_categories_is_empty,
                         )
                       : Column(
                           children: [
@@ -110,7 +111,7 @@ class _DepartmentViewState extends State<CategoriesView> {
                       ? NetworkError()
                       : Center(
                           child: TextGlobal(
-                              text: S.of(context).loading_please_wait),
+                              text: AppLocalizations.of(context)!.loading_please_wait),
                         ),
         );
       },

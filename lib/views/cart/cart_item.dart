@@ -7,6 +7,7 @@ import 'package:Emend/models/cart/cart_list_response.dart';
 import 'package:flutter/material.dart';
 
 import '../../widget/image/image_round.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CartItem extends StatelessWidget {
   CartItem(
@@ -139,7 +140,7 @@ class CartItem extends StatelessWidget {
                         Row(
                           children: [
                             TextGlobal(
-                              text: S.of(context).qty,
+                              text: AppLocalizations.of(context)!.qty,
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               color: Colors.black,

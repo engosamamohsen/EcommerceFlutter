@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../widget/web/TMeta.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ConfirmCodeView extends StatelessWidget {
   ConfirmCodeView({super.key});
@@ -26,7 +27,7 @@ class ConfirmCodeView extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
-            appBar: GlobalAppBar(title: S.of(context).confirm_code),
+            appBar: GlobalAppBar(title: AppLocalizations.of(context)!.confirm_code),
             backgroundColor: Colors.white,
             body: SafeArea(
                 child: Container(
@@ -52,13 +53,13 @@ class ConfirmCodeView extends StatelessWidget {
                         .please_enter_your_otp_had_been_sent_to_you),
                     const SizedBox(height: 10),
                     TextFormGlobal(
-                        hint: S.of(context).otp,
+                        hint: AppLocalizations.of(context)!.otp,
                         textInputType: TextInputType.text,
                         obscureText: false,
                         controller: otpText),
                     const SizedBox(height: 30),
                     ButtonGlobal(
-                      text: S.of(context).submit,
+                      text: AppLocalizations.of(context)!.submit,
                       onTap: () {
                         if (formKey.currentState?.validate() ?? false) {
                           BlocProvider.of<AuthCubit>(context)

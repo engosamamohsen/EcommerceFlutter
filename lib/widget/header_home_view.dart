@@ -7,6 +7,7 @@ import '../generated/l10n.dart';
 import '../utils/constants/color.dart';
 import '../utils/constants/t_size.dart';
 import '../utils/device/device_utils.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HeaderHomeView extends StatefulWidget {
   HeaderHomeView({super.key,required this.clickMenu});
@@ -43,14 +44,14 @@ class _HeaderHomeViewState extends State<HeaderHomeView> {
                   color: TColor.white,
                   fontWeight: FontWeight.bold,
                   text:
-                  "${S.of(context).welcome_in} ${S.of(context).app_name}"),
+                  "${AppLocalizations.of(context)!.welcome_in} ${AppLocalizations.of(context)!.app_name}"),
               const SizedBox(
                 width: TSize.sm,
               ),
               if (!DeviceUtils.isMobileScreen(context))
                 Flexible(
                     child: TextFormGlobal(
-                        hint: S.of(context).search,
+                        hint: AppLocalizations.of(context)!.search,
                         allowValidate: false,
                         textInputType: TextInputType.text,
                         obscureText: false,

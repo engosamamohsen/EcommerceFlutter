@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../widget/web/TMeta.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ForgetPasswordView extends StatelessWidget {
   ForgetPasswordView({super.key});
@@ -29,7 +30,7 @@ class ForgetPasswordView extends StatelessWidget {
           return Scaffold(
             backgroundColor: Colors.white,
             appBar: GlobalAppBar(
-              title: S.of(context).forget_password,
+              title: AppLocalizations.of(context)!.forget_password,
             ),
             body: SafeArea(
                 child: Container(
@@ -51,16 +52,16 @@ class ForgetPasswordView extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     Text(
-                        S.of(context).please_enter_your_email_address_you_will),
+                        AppLocalizations.of(context)!.please_enter_your_email_address_you_will),
                     const SizedBox(height: 10),
                     TextFormGlobal(
-                        hint: S.of(context).email,
+                        hint: AppLocalizations.of(context)!.email,
                         textInputType: TextInputType.emailAddress,
                         obscureText: false,
                         controller: emailController),
                     const SizedBox(height: 30),
                     ButtonGlobal(
-                      text: S.of(context).submit,
+                      text: AppLocalizations.of(context)!.submit,
                       showProgress: state is AuthFailedState ? true : false,
                       onTap: () {
                         if (formKey.currentState?.validate() ?? false) {

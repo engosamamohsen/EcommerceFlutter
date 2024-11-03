@@ -8,6 +8,8 @@ import 'package:Emend/generated/l10n.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get/get.dart' as getx;
@@ -66,18 +68,24 @@ class MyApp extends StatelessWidget {
         child: GetMaterialApp(
           defaultTransition: getx.Transition.cupertino,
           initialRoute: '/',
+          // locale: Locale("ar"),
+
           localizationsDelegates: const [
-            S.delegate,
+            AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          supportedLocales: S.delegate.supportedLocales,
+          supportedLocales: [
+            Locale('en'),
+            Locale('ar')
+          ],
+          locale: Locale('ar'),
           debugShowCheckedModeBanner: false,
           debugShowMaterialGrid: false,
           theme: ThemeData(useMaterial3: true),
           getPages: GetAppRoute.routes,
-
+          
           // routerConfig: GetAppRoute.routes, // Use GoRouter here
 
           // home: const SplashView(),

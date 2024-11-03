@@ -13,6 +13,8 @@ import 'package:Emend/cubit/cart/cart_cubit.dart';
 import 'package:Emend/cubit/cart/cart_state.dart';
 import 'package:Emend/cubit/product/product_cubit.dart';
 import 'package:Emend/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:Emend/models/cart/cart_list_response.dart';
 import 'package:Emend/utils/constants/t_size.dart';
 import 'package:Emend/views/cart/cart_bottom.dart';
@@ -95,11 +97,11 @@ class _CartViewState extends State<CartView> {
           return LoadingView();
         else if (state is CartFailedState)
           return Center(
-            child: TextGlobal(text: S.of(context).network_error),
+            child: TextGlobal(text: AppLocalizations.of(context)!.network_error),
           );
         else if (state is CartSuccessState) {
           if (carts.isEmpty) {
-            return EmptyView(textMsg: S.of(context).your_cart_is_empty);
+            return EmptyView(textMsg: AppLocalizations.of(context)!.your_cart_is_empty);
           } else {
             return Column(children: [
               SizedBox(
@@ -141,7 +143,7 @@ class _CartViewState extends State<CartView> {
               CartBottom(
                 prodcutsCount: carts.length,
                 price: totalAfterDiscount,
-                btnText: S.of(context).checkout,
+                btnText: AppLocalizations.of(context)!.checkout,
                 checkout: () {
                   // print("welcome here");
                   NavigateApp.navigate(
@@ -177,7 +179,7 @@ class _CartViewState extends State<CartView> {
 //         crossAxisAlignment: CrossAxisAlignment.start,
 //         children: [
 //           TextGlobal(
-//             text: "($count) ${S.of(context).products}",
+//             text: "($count) ${AppLocalizations.of(context)!.products}",
 //             fontSize: 14,
 //             fontWeight: FontWeight.normal,
 //             color: Colors.black,
@@ -204,7 +206,7 @@ class _CartViewState extends State<CartView> {
 //               height: 50,
 //               child: Center(
 //                 child: TextGlobal(
-//                   text: S.of(context).checkout,
+//                   text: AppLocalizations.of(context)!.checkout,
 //                   color: Colors.white,
 //                   fontSize: 18,
 //                   fontWeight: FontWeight.bold,
