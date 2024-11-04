@@ -136,7 +136,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "success": MessageLookupByLibrary.simpleMessage("Success"),
         "tech_info": MessageLookupByLibrary.simpleMessage("Techincal Info"),
         "thank_you_for_choosing_our_app": MessageLookupByLibrary.simpleMessage(
-            "Thank you for choosing our app!"),
+            "Thank you for choosing our restart!"),
         "total": MessageLookupByLibrary.simpleMessage("Total"),
         "total_price": MessageLookupByLibrary.simpleMessage("Total Price"),
         "update_profile":

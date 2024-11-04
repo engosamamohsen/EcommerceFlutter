@@ -21,7 +21,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../app/routes/const_routes_url.dart';
 import '../../app/routes/get_app_route.dart';
-// import '../../app/routes/navigate_app_route.dart';
+// import '../../restart/routes/navigate_app_route.dart';
 import '../../widget/web/TMeta.dart';
 
 class LoginView extends StatelessWidget {

@@ -930,10 +930,10 @@ class S {
     );
   }
 
-  /// `Thank you for choosing our app!`
+  /// `Thank you for choosing our restart!`
   String get thank_you_for_choosing_our_app {
     return Intl.message(
-      'Thank you for choosing our app!',
+      'Thank you for choosing our restart!',
       name: 'thank_you_for_choosing_our_app',
       desc: '',
       args: [],

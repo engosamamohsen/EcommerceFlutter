@@ -45,7 +45,7 @@ class _GlobalAppBarSearchState extends State<GlobalAppBarSearch> {
                 onChanged: _onTextChanged,
                 decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintText: "Search in app name",
+                  hintText: "Search in restart name",
                   hintStyle: TextStyle(color: Colors.grey[600]),
                 ),
               ),

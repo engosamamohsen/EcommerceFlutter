@@ -10,11 +10,15 @@ import 'package:Emend/views/order/orders_list_view.dart';
 import 'package:Emend/views/profile/edit_profile.dart';
 import 'package:Emend/views/profile/item_settings.dart';
 import 'package:Emend/views/wishlist/wishlist_list_view.dart';
+import 'package:Emend/widget/dialog/change_language_view.dart';
+import 'package:Emend/widget/local/LocaleModel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../app/routes/const_routes_url.dart';
 import '../../app/routes/get_app_route.dart';
-// import '../../app/routes/navigate_app_route.dart';
+
+// import '../../restart/routes/navigate_app_route.dart';
 import '../../widget/image/image_circle.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -28,6 +32,7 @@ class ProfileView extends StatefulWidget {
 class _ProfileViewState extends State<ProfileView> {
   UserResponse? user;
   AppStorageShared appStorage = AppStorageShared();
+
   @override
   void initState() {
     super.initState();
@@ -100,7 +105,6 @@ class _ProfileViewState extends State<ProfileView> {
               submit: () {
                 GetAppRoute.push(context, RouteUrlConst.EDIT_PROFILE);
                 // GetAppRoute.push(context, RouteUrlConst.EDIT_PROFILE);
-
               },
             ),
             SizedBox(
@@ -112,7 +116,6 @@ class _ProfileViewState extends State<ProfileView> {
               submit: () {
                 // GetAppRoute.push(context, RouteUrlConst.ADDRESS_LIST);
                 GetAppRoute.push(context, RouteUrlConst.ADDRESS_LIST);
-
               },
             ),
             SizedBox(
@@ -137,21 +140,37 @@ class _ProfileViewState extends State<ProfileView> {
                 GetAppRoute.push(context, RouteUrlConst.WISHLIST);
 
                 // GetAppRoute.push(context, RouteUrlConst.WISHLIST);
-
               },
             ),
             SizedBox(
               height: 5,
             ),
-            ItemSetting(
-              text: "change language",
-              icon: Icons.language_outlined,
-              submit: () {
-                // GetAppRoute.push(context, RouteUrlConst.WISHLIST);
-
-                // GetAppRoute.push(context, RouteUrlConst.WISHLIST);
-
-              },
+            Consumer<LocaleModel>(
+              builder: (context, localModel, child) => ItemSetting(
+                text: AppLocalizations.of(context)!.change_language,
+                icon: Icons.language_outlined,
+                submit: () {
+                  // GetAppRoute.push(context, RouteUrlConst.WISHLIST);
+                  showDialog(
+                      context: context,
+                      builder: (context) => ChangeLanguageView(confirm: (language) {
+                            print("welcome here");
+                            // GetAppRoute.pop(context);
+                            Navigator.of(context).pop();
+                            localModel.set(Locale(language));
+                            // RestartWidget.restartApp(context);
+                            // Restart.restartApp(
+                            //   /// In Web Platform, Fill webOrigin only when your new origin is different than the app's origin
+                            //   // webOrigin: 'http://example.com',
+                            //
+                            //   // Customizing the notification message only on iOS
+                            //   notificationTitle: 'Restarting App',
+                            //   notificationBody: 'Please tap here to open the app again.',
+                            // );
+                          }));
+                  // GetAppRoute.push(context, RouteUrlConst.WISHLIST);
+                },
+              ),
             ),
             SizedBox(
               height: 5,
@@ -159,9 +178,7 @@ class _ProfileViewState extends State<ProfileView> {
             ItemSetting(
               text: AppLocalizations.of(context)!.privacy_and_policy,
               icon: Icons.privacy_tip_outlined,
-              submit: () {
-
-              },
+              submit: () {},
             ),
             SizedBox(
               height: 5,

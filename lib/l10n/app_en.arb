@@ -102,5 +102,8 @@
     "qty": "Qty",
     "order_info" :"Order Info",
     "items_info" : "Items Info",
-    "change_language" : "Change Language"
+    "change_language" : "Change Language",
+    "please_choose_your_language" : "Please Choose Your Language",
+    "arabic" : "العربية",
+    "english" : "English"
 }

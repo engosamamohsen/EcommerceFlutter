@@ -102,5 +102,8 @@
     "qty": "الكمية",
     "order_info" :"معلومات الطلب",
     "items_info" : "معلومات العناصر",
-    "change_language" : "تغيير اللغة"
+    "change_language" : "تغيير اللغة",
+    "please_choose_your_language" : "من فضلك قم باختيار اللغة",
+    "arabic" : "العربية",
+    "english" : "English"
 }

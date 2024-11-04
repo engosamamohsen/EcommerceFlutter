@@ -84,6 +84,7 @@ class _TMenuState extends State<TMenu> {
                 });
               },
             ),
+
             SizedBox(height: TSize.spaceBtwItems),
             MenuItem(
               title: AppLocalizations.of(context)!.orders,

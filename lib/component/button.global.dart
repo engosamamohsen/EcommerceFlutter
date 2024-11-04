@@ -2,7 +2,7 @@ import 'package:Emend/utils/constants/color.dart';
 import 'package:flutter/material.dart';
 
 class ButtonGlobal extends StatelessWidget {
-  const ButtonGlobal(
+  ButtonGlobal(
       {super.key,
       required this.text,
       this.onTap,
@@ -10,7 +10,9 @@ class ButtonGlobal extends StatelessWidget {
       this.padding = 10,
       this.fontSize = 18,
       this.height = 50,
+      this.color = TColor.primary,
       this.showProgress = false});
+
   final String text;
   final bool showProgress;
   final double radius;
@@ -18,6 +20,7 @@ class ButtonGlobal extends StatelessWidget {
   final double fontSize;
   final VoidCallback? onTap;
   final double height;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +33,7 @@ class ButtonGlobal extends StatelessWidget {
             alignment: Alignment.center,
             height: height,
             decoration: BoxDecoration(
-                color: TColor.primary,
+                color: color,
                 borderRadius: BorderRadius.all(Radius.circular(radius)),
                 boxShadow: [
                   BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 6)

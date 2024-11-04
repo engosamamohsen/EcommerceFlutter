@@ -3,7 +3,7 @@ import 'package:hexcolor/hexcolor.dart';
 
 class TColor {
   //1E9311
-  static Color primary = const Color(0xFF4b68ff);//0xFF4b68ff
+  static const Color primary = const Color(0xFF4b68ff);//0xFF4b68ff
   static Color secondary = const Color(0xff00072c);
   static Color accent = const Color(0xffb0c7ff);
 
